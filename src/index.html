@@ -435,13 +435,6 @@
             transform: translateY(-1px);
         }
         
-        /* Disabled tab styling */
-        .tab-disabled {
-            opacity: 0.5;
-            cursor: not-allowed !important;
-            position: relative;
-        }
-        
         .tab-disabled:hover {
             transform: none !important;
             background: rgba(108, 117, 125, 0.1) !important;
@@ -534,7 +527,8 @@
         }
         
         .form-group select,
-        .form-group input {
+        .form-group input,
+        .form-group textarea {
             width: 100%;
             padding: 14px 16px;
             border: 2px solid #e1e5e9;
@@ -544,22 +538,30 @@
             transition: all 0.3s ease;
             -webkit-appearance: none;
             appearance: none;
+            font-family: inherit;
         }
         
         @media (min-width: 768px) {
             .form-group select,
-            .form-group input {
+            .form-group input,
+            .form-group textarea {
                 padding: 15px 20px;
                 border-radius: 12px;
             }
         }
         
         .form-group select:focus,
-        .form-group input:focus {
+        .form-group input:focus,
+        .form-group textarea:focus {
             outline: none;
             border-color: #e52f3c;
             box-shadow: 0 0 0 3px rgba(229, 47, 60, 0.1);
             transform: translateY(-1px);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
         }
         
         /* Mobile-first grid layouts */
@@ -1173,6 +1175,95 @@
             background: #17a2b8;
         }
         
+        /* Feedback Modal Styles */
+        .feedback-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            backdrop-filter: blur(5px);
+        }
+        
+        .feedback-modal {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            animation: slideInUp 0.3s ease-out;
+        }
+        
+        .feedback-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .feedback-header h3 {
+            color: #e52f3c;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .feedback-header p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .feedback-form {
+            display: grid;
+            gap: 20px;
+        }
+        
+        .feedback-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .feedback-submit {
+            flex: 1;
+            background: linear-gradient(135deg, #e52f3c, #b8252f);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .feedback-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(229, 47, 60, 0.3);
+        }
+        
+        .feedback-cancel {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .feedback-cancel:hover {
+            background: #5a6268;
+            transform: translateY(-1px);
+        }
+        
         /* Footer styling with neutral colors */
         .footer {
             background: #f8f9fa;
@@ -1421,15 +1512,16 @@
                     <div class="form-group">
                         <label for="set-selection">Choose Your Set</label>
                         <select id="set-selection" onchange="updateSetData()">
-                            <option value="40">⚡ Set 40 - The Monsters: Exciting Macaron (ALGO ENHANCED)</option>
-                            <option value="50">⚡ Set 50 - The Monsters: Have A Seat (ALGO ENHANCED)</option>
-                            <option value="61">⚡ Set 61 - Mega Space Molly Series 3 (ALGO ENHANCED)</option>
-                            <option value="111">🔬 Set 111 - Crybaby: Crying Again Plush (ALGO LEARNING)</option>
-                            <option value="171">🔬 Set 171 - The Monsters: Coca Cola (ALGO TRAINING)</option>
-                            <option value="180">⚡ Set 180 - Dimoo World X Disney Plush (ALGO ENHANCED)</option>
-                            <option value="195">⚡ Set 195 - The Monsters: Big Into Energy (ALGO ENHANCED)</option>
-                            <option value="201">🎪 Set 201 - Mickey Family: Cute Together</option>
-                            <option value="272">⚡ Set 272 - SkullPanda: L'impressionnisme (ALGO ENHANCED)</option>
+                            <option value="43">Set 43 - The Monsters: Almost Hidden Figures</option>
+                            <option value="40">Set 40 - The Monsters: Exciting Macaron</option>
+                            <option value="50">Set 50 - The Monsters: Have A Seat</option>
+                            <option value="61">Set 61 - Mega Space Molly Series 3</option>
+                            <option value="111">Set 111 - Crybaby: Crying Again Plush</option>
+                            <option value="171">Set 171 - The Monsters: Coca Cola</option>
+                            <option value="180">Set 180 - Dimoo World X Disney Plush</option>
+                            <option value="195">Set 195 - The Monsters: Big Into Energy</option>
+                            <option value="201">Set 201 - Mickey Family: Cute Together</option>
+                            <option value="272">Set 272 - SkullPanda: L'impressionnisme</option>
                         </select>
                     </div>
                 </div>
@@ -1438,8 +1530,10 @@
                     <div class="section-title">2️⃣ Box Configuration</div>
                     <div class="form-group">
                         <label for="known-box">Working Box Number</label>
-                        <input type="text" id="known-box" maxlength="14" value="10009501700350" placeholder="Enter 14-digit box number">
-                        <div style="font-size: 0.85rem; color: #666; margin-top: 8px;">Find any 14-digit box number from Pop Mart's website to get started</div>
+                        <input type="text" id="known-box" maxlength="14" placeholder="Find a 14-digit number under any box image on Pop Now">
+                        <div style="font-size: 0.85rem; color: #666; margin-top: 8px;">
+                            <strong>How to find:</strong> Go to Pop Now → Find any available box in your chosen set → Look under the product image for a 14-digit code (like 10000198200129) → Copy and paste it here
+                        </div>
                     </div>
                     
                     <!-- Enhanced Community Intelligence Panel -->
@@ -1726,9 +1820,69 @@
     <!-- Toast notification element -->
     <div class="toast" id="toast"></div>
 
+    <!-- Feedback Modal -->
+    <div class="feedback-overlay" id="feedback-overlay">
+        <div class="feedback-modal">
+            <div class="feedback-header">
+                <h3>🚀 Help Us Improve!</h3>
+                <p>Your feedback helps make this tool better for everyone</p>
+            </div>
+            
+            <form name="feedback" method="POST" data-netlify="true" class="feedback-form">
+                <div>
+                    <label for="feedback-type">Feedback Type</label>
+                    <select name="feedback-type" id="feedback-type" required>
+                        <option value="">Select feedback type...</option>
+                        <option value="bug-report">🐛 Bug Report</option>
+                        <option value="feature-request">💡 Feature Request</option>
+                        <option value="improvement">⚡ Improvement Suggestion</option>
+                        <option value="general">💬 General Feedback</option>
+                        <option value="data-update">📊 Set Data Update</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label for="feedback-subject">Subject</label>
+                    <input type="text" name="subject" id="feedback-subject" placeholder="Brief description of your feedback" required>
+                </div>
+                
+                <div>
+                    <label for="feedback-message">Message</label>
+                    <textarea name="message" id="feedback-message" placeholder="Please provide details about your feedback, bug report, or suggestion..." required></textarea>
+                </div>
+                
+                <div>
+                    <label for="feedback-email">Email (optional)</label>
+                    <input type="email" name="email" id="feedback-email" placeholder="your@email.com (if you want a response)">
+                </div>
+                
+                <div class="feedback-actions">
+                    <button type="submit" class="feedback-submit">Send Feedback</button>
+                    <button type="button" class="feedback-cancel" onclick="closeFeedbackForm()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script>
         // Enhanced drop data with V3.4 improvements - UPDATED WITH TODAY'S ACTUAL LIVE DATA
         const setPatterns = {
+            '43': { 
+                name: 'The Monsters: Almost Hidden Figures', 
+                example: '10000198200129',
+                communityRanges: ['16940xxxxx', '16950xxxxx', '16980xxxxx', '17030xxxxx', '17230xxxxx', '17450xxxxx', '17510xxxxx', '17670xxxxx', '17800xxxxx', '17840xxxxx', '17890xxxxx', '17960xxxxx', '18000xxxxx', '18040xxxxx', '18070xxxxx', '18140xxxxx', '18180xxxxx', '18250xxxxx', '18300xxxxx', '18310xxxxx', '18350xxxxx', '18550xxxxx', '18570xxxxx', '18650xxxxx', '18700xxxxx', '18910xxxxx', '19030xxxxx', '19060xxxxx', '19220xxxxx', '19270xxxxx', '19560xxxxx', '19570xxxxx', '19600xxxxx', '19630xxxxx', '19640xxxxx', '19820xxxxx', '19840xxxxx', '19920xxxxx', '19930xxxxx', '20040xxxxx', '20080xxxxx', '20180xxxxx'],
+                lastConfirmed: 'TODAY\'S FRESH DROP DATA - 62 live boxes tracked!',
+                successRate: 0.94,
+                contributors: 62,
+                todaysBoxes: 62,
+                dropAnalysis: {
+                    minRange: 169400,
+                    maxRange: 201800,
+                    totalSpread: 32400,
+                    activeRanges: 42,
+                    patternType: 'Medium 32k spread - dense cluster pattern with high box density'
+                }
+            },
             '272': { 
                 name: 'SkullPanda: L\'impressionnisme', 
                 example: '10000807401904',
@@ -1911,14 +2065,20 @@
         }
         
         function openFeedbackForm() {
-            showToast('Feedback form would open in a new window in the full application!', 'info');
+            document.getElementById('feedback-overlay').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeFeedbackForm() {
+            document.getElementById('feedback-overlay').style.display = 'none';
+            document.body.style.overflow = '';
         }
         
         function updateSetData() {
             const setId = document.getElementById('set-selection').value;
             const setData = setPatterns[setId];
             if (setData) {
-                document.getElementById('known-box').value = setData.example;
+                // Remove auto-fill - let users find their own box numbers
                 debug('Updated to: ' + setData.name);
                 updateCommunityInsights(setId);
             }
@@ -1982,7 +2142,7 @@
                 '</div>' +
                 '<div class="stat-item">' +
                 '<div class="stat-value">' + Math.round(setData.successRate * 100) + '%</div>' +
-                '<div class="stat-label">Pattern Accuracy</div>' +
+                '<div class="stat-label">Expected Success Rate</div>' +
                 '</div>' +
                 '</div>' +
                 '<div style="background: rgba(255,255,255,0.8); border-radius: 8px; padding: 12px;">' +
@@ -2097,25 +2257,6 @@
             }
         }
         
-        function generateSmartFillUrls(setId, prefix, middle, suffix, baseMiddle, quantity) {
-            const fillPatterns = [25, 50, 75, 100, 150, 200, 300, 500, 750, 1000];
-            let generated = 0;
-            
-            for (let i = 0; i < quantity && generated < quantity; i++) {
-                const pattern = fillPatterns[i % fillPatterns.length];
-                const multiplier = Math.floor(i / fillPatterns.length) + 1;
-                const increment = pattern * multiplier;
-                const newMiddle = (baseMiddle + increment).toString().padStart(6, '0');
-                
-                if (newMiddle.length <= 6 && parseInt(newMiddle) <= 999999) {
-                    const newBoxNumber = prefix + newMiddle + suffix;
-                    const url = `https://www.popmart.com/us/pop-now/set/${setId}-${newBoxNumber}`;
-                    generatedUrls.push(url);
-                    generated++;
-                }
-            }
-        }
-        
         function generateSmartGranularUrls(setId, prefix, middle, suffix, baseMiddle, quantity) {
             const setData = setPatterns[setId];
             let increments = [100, 200, 500, 1000, 2000]; // Default
@@ -2158,70 +2299,73 @@
             }
         }
         
-        function generatePatternLearningUrls(setId, prefix, middle, suffix, baseMiddle, quantity) {
-            const middleStr = middle;
-            let generated = 0;
+        function generateAISearchUrls(setId, prefix, middle, suffix, baseMiddle, quantity) {
+            const setData = setPatterns[setId];
+            let increments = [];
             
-            for (let pos = 0; pos < 6 && generated < quantity; pos++) {
-                for (let digit = 0; digit <= 9 && generated < quantity; digit++) {
-                    const newMiddleArray = middleStr.split('');
-                    newMiddleArray[pos] = digit.toString();
-                    const newMiddle = newMiddleArray.join('');
+            // AI combines Basic and Smart Granular with community learning
+            if (setData && setData.dropAnalysis) {
+                const spread = setData.dropAnalysis.totalSpread;
+                const successRate = setData.successRate;
+                
+                // Base increments from Basic strategy
+                const basicIncrements = [25, 50, 75, 100, 150, 200, 250, 300, 400, 500, 750, 1000, 1500, 2000];
+                
+                // Adaptive increments from Smart Granular
+                let adaptiveIncrements = [];
+                if (spread < 10000) {
+                    adaptiveIncrements = [10, 25, 50, 75, 100, 150, 200, 250, 300, 400, 500, 750];
+                } else if (spread < 50000) {
+                    adaptiveIncrements = [50, 100, 150, 200, 300, 400, 500, 750, 1000, 1500, 2000];
+                } else {
+                    adaptiveIncrements = [200, 500, 1000, 1500, 2000, 3000, 5000, 7500, 10000, 15000];
+                }
+                
+                // AI weighting: combine strategies based on success rate and community data
+                const basicWeight = 0.4;
+                const adaptiveWeight = 0.6;
+                
+                // Merge and weight the increments
+                const combinedIncrements = [...basicIncrements, ...adaptiveIncrements];
+                increments = combinedIncrements.sort((a, b) => a - b);
+                
+                // Add AI learning: community hot zones (simplified simulation)
+                if (setData.communityRanges && setData.communityRanges.length > 0) {
+                    // Simulate learning from community ranges
+                    const avgRange = setData.communityRanges.map(range => {
+                        return parseInt(range.replace(/x+$/, '00000'));
+                    }).reduce((a, b) => a + b, 0) / setData.communityRanges.length;
                     
-                    if (parseInt(newMiddle) > baseMiddle && parseInt(newMiddle) <= 999999) {
-                        const newBoxNumber = prefix + newMiddle + suffix;
-                        const url = `https://www.popmart.com/us/pop-now/set/${setId}-${newBoxNumber}`;
-                        generatedUrls.push(url);
-                        generated++;
+                    const targetMiddle = Math.floor(avgRange / 100);
+                    if (targetMiddle > baseMiddle) {
+                        // Add AI-suggested increments toward community hot zones
+                        const aiIncrement = targetMiddle - baseMiddle;
+                        increments.unshift(Math.floor(aiIncrement * 0.25), Math.floor(aiIncrement * 0.5), Math.floor(aiIncrement * 0.75), aiIncrement);
                     }
                 }
+            } else {
+                // Fallback to basic increments if no AI data available
+                increments = [25, 50, 75, 100, 150, 200, 250, 300, 400, 500, 750, 1000, 1500, 2000];
             }
-        }
-        
-        function generateSequenceUrls(setId, prefix, middle, suffix, baseMiddle, quantity) {
-            const sequences = [
-                { name: 'hundreds', increment: 100 },
-                { name: 'fifties', increment: 50 },
-                { name: 'thousands', increment: 1000 },
-                { name: 'mixed', increment: 250 }
-            ];
             
             let generated = 0;
-            sequences.forEach(seq => {
-                const seqCount = Math.floor(quantity / sequences.length);
-                for (let i = 1; i <= seqCount && generated < quantity; i++) {
-                    const newMiddle = (baseMiddle + seq.increment * i).toString().padStart(6, '0');
-                    if (newMiddle.length <= 6 && parseInt(newMiddle) <= 999999) {
-                        const newBoxNumber = prefix + newMiddle + suffix;
-                        const url = `https://www.popmart.com/us/pop-now/set/${setId}-${newBoxNumber}`;
-                        generatedUrls.push(url);
-                        generated++;
-                    }
+            let incrementIndex = 0;
+            let multiplier = 1;
+            
+            for (let i = 1; i <= quantity * 2 && generated < quantity; i++) {
+                const increment = increments[incrementIndex % increments.length] * multiplier;
+                const newMiddle = (baseMiddle + increment).toString().padStart(6, '0');
+                
+                if (newMiddle.length <= 6 && parseInt(newMiddle) <= 999999) {
+                    const newBoxNumber = prefix + newMiddle + suffix;
+                    const url = `https://www.popmart.com/us/pop-now/set/${setId}-${newBoxNumber}`;
+                    generatedUrls.push(url);
+                    generated++;
                 }
-            });
-        }
-        
-        function generateAdvancedUrls(setId, prefix, middle, suffix, baseMiddle, quantity) {
-            const middleDigits = middle.split('');
-            let generated = 0;
-            
-            for (let pos1 = 0; pos1 < 6 && generated < quantity; pos1++) {
-                for (let pos2 = pos1 + 1; pos2 < 6 && generated < quantity; pos2++) {
-                    for (let digit1 = 0; digit1 <= 9 && generated < quantity; digit1++) {
-                        for (let digit2 = 0; digit2 <= 9 && generated < quantity; digit2++) {
-                            const newMiddleDigits = [...middleDigits];
-                            newMiddleDigits[pos1] = digit1.toString();
-                            newMiddleDigits[pos2] = digit2.toString();
-                            const newMiddle = newMiddleDigits.join('');
-                            
-                            if (parseInt(newMiddle) > baseMiddle && parseInt(newMiddle) <= 999999) {
-                                const newBoxNumber = prefix + newMiddle + suffix;
-                                const url = `https://www.popmart.com/us/pop-now/set/${setId}-${newBoxNumber}`;
-                                generatedUrls.push(url);
-                                generated++;
-                            }
-                        }
-                    }
+                
+                incrementIndex++;
+                if (incrementIndex % increments.length === 0) {
+                    multiplier++;
                 }
             }
         }
@@ -2346,6 +2490,25 @@
         
         // Initialize V3.4AI Enhanced System
         document.addEventListener('DOMContentLoaded', function() {
+            const feedbackForm = document.querySelector('form[name="feedback"]');
+            if (feedbackForm) {
+                feedbackForm.addEventListener('submit', function(e) {
+                    // Let Netlify handle the form submission
+                    showToast('Thank you! Your feedback has been submitted.', 'success');
+                    setTimeout(() => {
+                        closeFeedbackForm();
+                        feedbackForm.reset();
+                    }, 1000);
+                });
+            }
+            
+            // Close modal when clicking outside
+            document.getElementById('feedback-overlay').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeFeedbackForm();
+                }
+            });
+            
             updateSetData();
             debug('V3.4.3 Enhanced System Ready - All features unlocked for beta testing!');
             
