@@ -1,0 +1,2345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pop Mart Box Discovery V3.4.3</title>
+    <style>
+        /* Pop Mart Brand Color Palette */
+        :root {
+            --popmart-red: #E52F3C;
+            --popmart-red-dark: #B8252F;
+            --popmart-pink: #FF69B4;
+            --popmart-pink-light: #FFB6C1;
+            --popmart-yellow: #FFD700;
+            --popmart-blue: #87CEEB;
+            --popmart-blue-light: #ADD8E6;
+            --popmart-white: #FFFFFF;
+            --popmart-gray-light: #F8F9FA;
+            --popmart-gray: #E9ECEF;
+            --success-green: #28a745;
+            --warning-orange: #fd7e14;
+            --info-blue: #17a2b8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, var(--popmart-pink-light) 0%, var(--popmart-blue-light) 50%, var(--popmart-yellow) 100%);
+            min-height: 100vh;
+            padding: 8px;
+            overflow-x: hidden;
+        }
+        
+        /* Mobile-first container with responsive breakpoints */
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            background: var(--popmart-white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(229, 47, 60, 0.15);
+            animation: slideInUp 0.6s ease-out;
+        }
+        
+        @media (min-width: 768px) {
+            body { padding: 20px; }
+            .container { 
+                max-width: 1200px; 
+                border-radius: 20px;
+                box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            }
+        }
+        
+        /* Enhanced animations */
+        @keyframes slideInUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.02); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.9; }
+        }
+        
+        @keyframes glow {
+            0% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.6); }
+            50% { box-shadow: 0 0 25px rgba(255, 215, 0, 0.9); }
+            100% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.6); }
+        }
+        
+        @keyframes heartbeat {
+            0% { 
+                transform: scale(1);
+                box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4);
+            }
+            50% { 
+                transform: scale(1.02);
+                box-shadow: 0 6px 25px rgba(255, 255, 255, 0.7);
+            }
+            100% { 
+                transform: scale(1);
+                box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4);
+            }
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes shimmer {
+            0% { left: -100%; }
+            50% { left: 100%; }
+            100% { left: 100%; }
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
+        }
+        
+        @keyframes countUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        /* Pop Mart branded header */
+        .header {
+            background: linear-gradient(135deg, var(--popmart-red), var(--popmart-red-dark));
+            color: var(--popmart-white);
+            padding: 20px 16px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 4px solid var(--popmart-yellow);
+            box-shadow: 0 4px 20px rgba(229, 47, 60, 0.3);
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><radialGradient id="a" cx="50%" cy="0%" r="100%"><stop offset="0%" stop-color="white" stop-opacity=".1"/><stop offset="100%" stop-color="white" stop-opacity="0"/></radialGradient></defs><rect width="100" height="20" fill="url(%23a)"/></svg>');
+            opacity: 0.1;
+        }
+        
+        @media (min-width: 768px) {
+            .header { padding: 40px 30px; }
+        }
+        
+        .popmart-logo {
+            font-family: Impact, 'Arial Black', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-weight: 900;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 0.8s ease-out 0.2s both;
+        }
+        
+        @media (min-width: 768px) {
+            .popmart-logo { font-size: 3.5rem; }
+        }
+        
+        .v3-badge {
+            background: linear-gradient(135deg, var(--popmart-yellow), #FFA500);
+            color: #333;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            display: inline-block;
+            animation: glow 3s ease-in-out infinite;
+            margin-top: 8px;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.5);
+        }
+        
+        .v3-badge:hover {
+            transform: scale(1.05);
+            transition: transform 0.2s ease-out;
+        }
+        
+        @media (min-width: 768px) {
+            .v3-badge {
+                padding: 6px 16px;
+                font-size: 0.9rem;
+                margin-top: 10px;
+            }
+        }
+        
+        .header h1 {
+            font-size: 1.4rem;
+            font-weight: 900;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 0.8s ease-out 0.4s both;
+        }
+        
+        @media (min-width: 768px) {
+            .header h1 { font-size: 2.2rem; margin-bottom: 15px; }
+        }
+        
+        .header p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 0.8s ease-out 0.6s both;
+        }
+        
+        @media (min-width: 768px) {
+            .header p { font-size: 1.1rem; margin-bottom: 20px; }
+        }
+        
+        .quick-link {
+            background: var(--popmart-pink);
+            border: 2px solid var(--popmart-pink-light);
+            color: var(--popmart-white);
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+            z-index: 1;
+            animation: heartbeat 2.5s ease-in-out infinite;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+        
+        @media (min-width: 768px) {
+            .quick-link {
+                padding: 15px 30px;
+                border-radius: 10px;
+                font-size: 1.1rem;
+                margin-top: 15px;
+            }
+        }
+        
+        .quick-link:hover {
+            background: var(--popmart-pink-light);
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
+            border-color: var(--popmart-pink);
+        }
+        
+        .quick-link:active {
+            transform: scale(0.98);
+            transition: transform 0.1s ease-out;
+        }
+        
+        /* Enhanced loading animation */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(229, 47, 60, 0.95);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+        
+        .loading-content {
+            text-align: center;
+            color: white;
+        }
+        
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255,255,255,0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        .loading-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .loading-subtext {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .progress-bar {
+            width: 200px;
+            height: 4px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 2px;
+            margin: 20px auto 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: white;
+            border-radius: 2px;
+            width: 0%;
+            animation: progressFill 2s ease-out;
+        }
+        
+        @keyframes progressFill {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+        
+        /* Enhanced debug info with status indicator */
+        .debug-info {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border: 2px solid #28a745;
+            border-left: 6px solid #28a745;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+            font-family: 'SF Mono', Monaco, 'Roboto Mono', monospace;
+            font-size: 0.85rem;
+            animation: fadeIn 0.5s ease-out;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .debug-status {
+            width: 12px;
+            height: 12px;
+            background: #28a745;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            flex-shrink: 0;
+        }
+        
+        .debug-text {
+            flex: 1;
+            color: #495057;
+            line-height: 1.4;
+        }
+        
+        @media (min-width: 768px) {
+            .debug-info {
+                padding: 20px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* Pop Mart themed content area */
+        .content {
+            padding: 20px 16px;
+            background: var(--popmart-white);
+            margin: -10px 0 0 0;
+            border-radius: 20px 20px 0 0;
+            box-shadow: 0 -4px 20px rgba(229, 47, 60, 0.1);
+        }
+        
+        @media (min-width: 768px) {
+            .content { padding: 40px 30px; }
+        }
+        
+        /* Pop Mart themed tab navigation */
+        .tab-navigation {
+            display: flex;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--popmart-gray-light), var(--popmart-blue-light));
+            border-radius: 12px;
+            padding: 4px;
+            box-shadow: inset 0 2px 4px rgba(229, 47, 60, 0.1);
+            border: 2px solid var(--popmart-gray);
+        }
+        
+        @media (min-width: 768px) {
+            .tab-navigation {
+                margin-bottom: 30px;
+                border-radius: 15px;
+                padding: 8px;
+            }
+        }
+        
+        .tab-btn {
+            flex: 1;
+            padding: 12px 8px;
+            background: transparent;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            color: #666;
+            text-align: center;
+        }
+        
+        @media (min-width: 768px) {
+            .tab-btn {
+                padding: 15px 20px;
+                border-radius: 10px;
+                font-size: 1rem;
+            }
+        }
+        
+        .tab-btn:hover {
+            transform: translateY(-1px) scale(1.02);
+        }
+        
+        .tab-btn:active {
+            transform: scale(0.98);
+            transition: transform 0.1s ease-out;
+        }
+        
+        /* Disabled tab styling */
+        .tab-disabled {
+            opacity: 0.5;
+            cursor: not-allowed !important;
+            position: relative;
+        }
+        
+        .tab-btn.active {
+            background: linear-gradient(135deg, #E52F3C, #FF69B4);
+            color: #FFFFFF;
+            box-shadow: 0 4px 15px rgba(229, 47, 60, 0.3);
+            transform: translateY(-1px);
+        }
+        
+        /* Disabled tab styling */
+        .tab-disabled {
+            opacity: 0.5;
+            cursor: not-allowed !important;
+            position: relative;
+        }
+        
+        .tab-disabled:hover {
+            transform: none !important;
+            background: rgba(108, 117, 125, 0.1) !important;
+            color: #6c757d !important;
+        }
+        
+        .tab-disabled::after {
+            content: '🚧';
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            font-size: 0.7rem;
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease-out;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* Pop Mart themed sections */
+        .section {
+            margin-bottom: 24px;
+            background: var(--popmart-white);
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(229, 47, 60, 0.1);
+            border: 2px solid var(--popmart-gray);
+            transition: all 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(229, 47, 60, 0.12);
+            border-color: var(--popmart-pink-light);
+        }
+        
+        @media (min-width: 768px) {
+            .section { margin-bottom: 40px; }
+        }
+        
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #E52F3C;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            animation: fadeIn 0.5s ease-out;
+            border-left: 4px solid #FF69B4;
+            padding-left: 12px;
+            margin-left: -20px;
+            margin-right: -20px;
+            padding-right: 20px;
+            background: linear-gradient(90deg, rgba(255, 182, 193, 0.3), transparent);
+            border-radius: 0 12px 12px 0;
+        }
+        
+        @media (min-width: 768px) {
+            .section-title {
+                font-size: 1.4rem;
+                margin-bottom: 25px;
+                gap: 12px;
+            }
+        }
+        
+        /* Enhanced form styling with mobile focus */
+        .form-group {
+            margin-bottom: 16px;
+        }
+        
+        @media (min-width: 768px) {
+            .form-group { margin-bottom: 20px; }
+        }
+        
+        .form-group label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            display: block;
+            font-size: 0.9rem;
+        }
+        
+        @media (min-width: 768px) {
+            .form-group label { font-size: 1rem; margin-bottom: 10px; }
+        }
+        
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: white;
+            transition: all 0.3s ease;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        
+        @media (min-width: 768px) {
+            .form-group select,
+            .form-group input {
+                padding: 15px 20px;
+                border-radius: 12px;
+            }
+        }
+        
+        .form-group select:focus,
+        .form-group input:focus {
+            outline: none;
+            border-color: #e52f3c;
+            box-shadow: 0 0 0 3px rgba(229, 47, 60, 0.1);
+            transform: translateY(-1px);
+        }
+        
+        /* Mobile-first grid layouts */
+        .settings-grid {
+            display: grid;
+            gap: 16px;
+            grid-template-columns: 1fr;
+        }
+        
+        @media (min-width: 768px) {
+            .settings-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+        }
+        
+        /* Enhanced strategy cards with better contrast */
+        .strategy-explainer {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 16px;
+            animation: fadeIn 0.6s ease-out 0.2s both;
+        }
+        
+        @media (min-width: 768px) {
+            .strategy-explainer {
+                border-radius: 15px;
+                padding: 25px;
+                margin-top: 20px;
+            }
+        }
+        
+        /* Pop Mart themed pricing cards */
+        .pricing-card {
+            background: var(--popmart-white);
+            border-radius: 20px;
+            padding: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(229, 47, 60, 0.1);
+            border: 3px solid transparent;
+            background-clip: padding-box;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 10px 30px rgba(229, 47, 60, 0.15);
+        }
+        
+        .pricing-card:active {
+            transform: scale(0.99);
+            transition: transform 0.1s ease-out;
+        }
+        
+        .pricing-card-free {
+            border-color: var(--popmart-blue);
+            background: linear-gradient(135deg, var(--popmart-white), var(--popmart-blue-light));
+        }
+        
+        .pricing-card-premium {
+            border-color: var(--popmart-pink);
+            background: linear-gradient(135deg, var(--popmart-white), var(--popmart-pink-light));
+        }
+        
+        .pricing-card-pro {
+            border-color: var(--popmart-red);
+            background: linear-gradient(135deg, var(--popmart-white), rgba(229, 47, 60, 0.1));
+        }
+        
+        /* Pop Mart themed pricing grid */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        @media (min-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: 25px;
+            }
+        }
+        
+        .pricing-badge {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            padding: 10px 24px;
+            border-radius: 25px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 
+                0 6px 20px rgba(0,0,0,0.25),
+                inset 0 1px 0 rgba(255,255,255,0.3);
+            z-index: 10;
+            border: 2px solid rgba(255,255,255,0.4);
+        }
+        
+        .pricing-badge-free {
+            background: linear-gradient(135deg, var(--popmart-blue), #4682B4);
+            color: var(--popmart-white);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .pricing-badge-premium {
+            background: linear-gradient(135deg, var(--popmart-pink), #FF1493);
+            color: var(--popmart-white);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .pricing-badge-pro {
+            background: linear-gradient(135deg, var(--popmart-red), #DC143C);
+            color: var(--popmart-white);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .pricing-content {
+            margin-top: 25px;
+            position: relative;
+            z-index: 5;
+        }
+        
+        .pricing-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #2c3e50;
+            margin-bottom: 12px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .success-rate {
+            font-size: 1.3rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 15px;
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.8);
+            border-radius: 20px;
+            border: 2px solid currentColor;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .success-rate-free {
+            color: var(--popmart-blue);
+        }
+        
+        .success-rate-premium {
+            color: var(--popmart-pink);
+        }
+        
+        .success-rate-pro {
+            color: var(--popmart-red);
+        }
+        
+        .pricing-description {
+            color: #495057;
+            font-size: 0.9rem;
+            text-align: center;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            font-weight: 500;
+            padding: 12px;
+            background: rgba(255,255,255,0.6);
+            border-radius: 12px;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 25px 0;
+            background: rgba(255,255,255,0.7);
+            border-radius: 12px;
+            padding: 15px;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .feature-list li {
+            padding: 8px 0;
+            color: #495057;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            font-weight: 600;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .feature-list li::before {
+            content: '✨';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            font-size: 1rem;
+            animation: twinkle 2s ease-in-out infinite;
+        }
+        
+        /* Bouncy Pop Mart themed buttons */
+        .btn {
+            border: none;
+            border-radius: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn:active {
+            transform: scale(0.98);
+            transition: transform 0.1s ease-out;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px) scale(1.02);
+        }
+        
+        .generate-btn {
+            background: linear-gradient(135deg, #e52f3c, #b8252f);
+            color: white;
+            padding: 16px 24px;
+            width: 100%;
+            margin-top: 20px;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(229, 47, 60, 0.3);
+            position: relative;
+        }
+        
+        /* Enhanced generate button with search count display */
+        .generate-btn-text {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        @media (min-width: 768px) {
+            .generate-btn {
+                padding: 18px 30px;
+                margin-top: 30px;
+                font-size: 1.2rem;
+            }
+        }
+        
+        .generate-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(229, 47, 60, 0.3);
+            background: linear-gradient(135deg, #FF69B4, #E52F3C);
+        }
+        
+        .generate-btn:active {
+            transform: scale(0.98);
+            transition: transform 0.1s ease-out;
+        }
+        
+        .generate-btn:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+            transform: none !important;
+            opacity: 0.7;
+        }
+        
+        .copy-btn, .monitor-btn, .community-btn {
+            padding: 10px 16px;
+            margin: 4px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+        }
+        
+        @media (min-width: 768px) {
+            .copy-btn, .monitor-btn, .community-btn {
+                padding: 12px 20px;
+                margin: 5px;
+                font-size: 0.95rem;
+            }
+        }
+        
+        .copy-btn {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+        }
+        
+        .monitor-btn {
+            background: linear-gradient(135deg, #17a2b8, #138496);
+            color: white;
+        }
+        
+        .community-btn {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+        }
+        
+        /* Enhanced community insights with better contrast */
+        .community-insight-card {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-left: 4px solid #28a745;
+            border-radius: 12px;
+            padding: 16px;
+            margin: 12px 0;
+            transition: all 0.3s ease;
+            animation: fadeIn 0.8s ease-out;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+        
+        @media (min-width: 768px) {
+            .community-insight-card {
+                border-radius: 15px;
+                padding: 20px;
+                margin: 15px 0;
+            }
+        }
+        
+        .community-insight-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.15);
+        }
+        
+        .live-drop-alert {
+            background: linear-gradient(135deg, #e52f3c, #dc3545);
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            text-align: center;
+            animation: pulse 2s infinite;
+            font-weight: 600;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+        
+        @media (min-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 15px;
+            }
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+        
+        .stat-value {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #28a745;
+            animation: countUp 0.6s ease-out;
+        }
+        
+        @media (min-width: 768px) {
+            .stat-value { font-size: 1.5rem; }
+        }
+        
+        .stat-label {
+            color: #155724;
+            font-size: 0.85rem;
+        }
+        
+        @media (min-width: 768px) {
+            .stat-label { font-size: 0.9rem; }
+        }
+        
+        /* Enhanced results section with neutral colors */
+        .results {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 20px;
+            display: none;
+            animation: fadeIn 0.6s ease-out;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border: 1px solid #e9ecef;
+        }
+        
+        @media (min-width: 768px) {
+            .results {
+                border-radius: 15px;
+                padding: 30px;
+                margin-top: 30px;
+            }
+        }
+        
+        .results.show {
+            display: block;
+        }
+        
+        .results-header {
+            text-align: center;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e1e5e9;
+        }
+        
+        @media (min-width: 768px) {
+            .results-header { margin-bottom: 20px; padding-bottom: 20px; }
+        }
+        
+        .results-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 12px;
+        }
+        
+        @media (min-width: 768px) {
+            .results-actions { gap: 10px; margin-top: 16px; }
+        }
+        
+        /* Enhanced URL performance stats */
+        .url-stats {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 16px;
+            border: 2px solid #28a745;
+        }
+        
+        .url-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 12px;
+            text-align: center;
+        }
+        
+        .url-stat-item {
+            background: white;
+            border-radius: 8px;
+            padding: 10px;
+            border: 1px solid #e9ecef;
+        }
+        
+        .url-stat-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #28a745;
+            animation: countUp 0.5s ease-out;
+        }
+        
+        .url-stat-label {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 4px;
+        }
+        
+        /* Enhanced URL list with better contrast */
+        .url-list {
+            background: #f8f9fa;
+            border-radius: 8px;
+            max-height: 350px;
+            overflow-y: auto;
+            border: 2px solid #e9ecef;
+            margin-top: 16px;
+        }
+        
+        @media (min-width: 768px) {
+            .url-list {
+                border-radius: 10px;
+                max-height: 400px;
+                margin-top: 20px;
+            }
+        }
+        
+        .url-item {
+            padding: 12px;
+            border-bottom: 1px solid #f1f3f4;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.2s ease;
+        }
+        
+        @media (min-width: 768px) {
+            .url-item {
+                padding: 12px 16px;
+                gap: 15px;
+            }
+        }
+        
+        .url-item:hover {
+            background: #ADD8E6;
+            transform: translateX(3px);
+            box-shadow: 0 2px 10px rgba(135, 206, 235, 0.2);
+        }
+        
+        .url-number {
+            background: #e52f3c;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            min-width: 35px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        
+        @media (min-width: 768px) {
+            .url-number {
+                font-size: 0.8rem;
+                min-width: 45px;
+            }
+        }
+        
+        .url-link {
+            color: #1a73e8;
+            text-decoration: none;
+            font-family: monospace;
+            font-size: 0.75rem;
+            word-break: break-all;
+            flex: 1;
+            line-height: 1.2;
+        }
+        
+        @media (min-width: 768px) {
+            .url-link { font-size: 0.85rem; }
+        }
+        
+        .url-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* Range tags */
+        .range-tag {
+            background: #28a745;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 0.75rem;
+            font-family: monospace;
+            margin: 2px;
+            display: inline-block;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        @media (min-width: 768px) {
+            .range-tag {
+                padding: 6px 15px;
+                border-radius: 20px;
+                font-size: 0.9rem;
+                margin: 3px;
+            }
+        }
+        
+        /* Toast notifications */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #28a745;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+            max-width: 300px;
+        }
+        
+        .toast.show {
+            transform: translateX(0);
+        }
+        
+        .toast.error {
+            background: #dc3545;
+        }
+        
+        .toast.warning {
+            background: #fd7e14;
+        }
+        
+        .toast.info {
+            background: #17a2b8;
+        }
+        
+        /* Footer styling with neutral colors */
+        .footer {
+            background: #f8f9fa;
+            padding: 16px 20px;
+            text-align: center;
+            border-top: 1px solid #e9ecef;
+            animation: fadeIn 0.8s ease-out 1s both;
+        }
+        
+        @media (min-width: 768px) {
+            .footer { padding: 20px 30px; }
+        }
+        
+        .version-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .footer .version-badge {
+            background: #e52f3c;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+        
+        .version-text {
+            color: #6c757d;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        /* Scrollbar styling for webkit browsers */
+        .url-list::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .url-list::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 3px;
+        }
+        
+        .url-list::-webkit-scrollbar-thumb {
+            background: #e52f3c;
+            border-radius: 3px;
+        }
+        
+        .url-list::-webkit-scrollbar-thumb:hover {
+            background: #b8252f;
+        }
+        
+        /* Help section styling */
+        .help-section {
+            margin-bottom: 30px;
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-left: 4px solid #e52f3c;
+        }
+        
+        .help-section h3 {
+            color: #e52f3c;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .help-section h4 {
+            color: #333;
+            margin: 15px 0 10px 0;
+            font-size: 1rem;
+        }
+        
+        .help-section p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        
+        .help-section ul {
+            padding-left: 20px;
+            color: #666;
+        }
+        
+        .help-section li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        
+        .faq-item {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-left: 3px solid #17a2b8;
+        }
+        
+        .faq-question {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        
+        .faq-answer {
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        .step-number {
+            background: #e52f3c;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 10px;
+        }
+        
+        .feature-highlight {
+            background: linear-gradient(135deg, #e8f5e8, #d4f4dd);
+            border: 1px solid #28a745;
+            border-radius: 8px;
+            padding: 12px;
+            margin: 10px 0;
+        }
+        
+        .feature-highlight strong {
+            color: #155724;
+        }
+        
+        .tip-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+        
+        @media (min-width: 768px) {
+            .tip-item {
+                gap: 15px;
+                padding: 12px;
+                margin-bottom: 12px;
+            }
+        }
+        
+        .tip-item:hover {
+            background: #FFD700;
+            transform: translateX(4px);
+            box-shadow: 0 3px 12px rgba(255, 215, 0, 0.2);
+        }
+        
+        .tip-number {
+            background: #f39c12;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 0.8rem;
+            min-width: 24px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        
+        .tip-content {
+            flex: 1;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        @media (min-width: 768px) {
+            .tip-content { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Enhanced loading overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <div class="loading-text">Generating Smart URLs</div>
+            <div class="loading-subtext">Using V3.4.3 with enhanced intelligence...</div>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Top Announcement Banner -->
+        <div style="background: linear-gradient(135deg, #17a2b8, #20c997); color: white; padding: 8px 20px; text-align: center; font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 15px; flex-wrap: wrap;">
+            <span>🧪 V3.4.3 BETA - Help us test the next generation! Your feedback shapes the future.</span>
+            <button onclick="openFeedbackForm()" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); color: white; padding: 4px 12px; border-radius: 15px; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
+                Share Feedback
+            </button>
+        </div>
+        
+        <div class="header">
+            <div class="popmart-logo">
+                POP MART
+            </div>
+            <h1>Smart Box Discovery System</h1>
+            <p>Find available mystery boxes faster with AI-powered URL generation and real community data</p>
+            <div style="margin-top: 20px;">
+                <a href="https://www.popmart.com/us/pop-now/list" target="_blank" class="quick-link">
+                    🚀 Check Live Status on Pop Now
+                </a>
+            </div>
+        </div>
+        
+        <div class="content">
+            <!-- Debug Info (hidden by default, show on click) -->
+            <div class="debug-info" id="debug-info" style="display: none;">
+                <div class="debug-status"></div>
+                <div class="debug-text">V3.4.3 System Ready - Enhanced freemium experience with live intelligence tracking</div>
+            </div>
+            
+            <!-- Enhanced Tab Navigation with Help tab -->
+            <div class="tab-navigation">
+                <button class="tab-btn active" onclick="switchToTab('generator')">🔧 Smart Generator</button>
+                <button class="tab-btn tab-disabled" onclick="showComingSoon()" title="Coming soon - Node.js backend required">📊 Live Monitor</button>
+                <button class="tab-btn" onclick="switchToTab('help')">❓ Help & Info</button>
+            </div>
+            
+            <!-- Tab 1: Enhanced URL Generator -->
+            <div id="generator-tab" class="tab-content active">
+                <div class="section">
+                    <div class="section-title">1️⃣ Set Selection</div>
+                    <div class="form-group">
+                        <label for="set-selection">Choose Your Set</label>
+                        <select id="set-selection" onchange="updateSetData()">
+                            <option value="40">⚡ Set 40 - The Monsters: Exciting Macaron (ALGO ENHANCED)</option>
+                            <option value="50">⚡ Set 50 - The Monsters: Have A Seat (ALGO ENHANCED)</option>
+                            <option value="61">📦 Set 61 - Mega Space Molly Series 3</option>
+                            <option value="171">🔬 Set 171 - The Monsters: Coca Cola (ALGO TRAINING)</option>
+                            <option value="195">🔬 Set 195 - The Monsters: Big Into Energy (ALGO TRAINING)</option>
+                            <option value="201">🎪 Set 201 - Mickey Family: Cute Together</option>
+                            <option value="272">⚡ Set 272 - SkullPanda: L'impressionnisme (ALGO ENHANCED)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">2️⃣ Box Configuration</div>
+                    <div class="form-group">
+                        <label for="known-box">Working Box Number</label>
+                        <input type="text" id="known-box" maxlength="14" value="10009501700350" placeholder="Enter 14-digit box number">
+                        <div style="font-size: 0.85rem; color: #666; margin-top: 8px;">Find any 14-digit box number from Pop Mart's website to get started</div>
+                    </div>
+                    
+                    <!-- Enhanced Community Intelligence Panel -->
+                    <div id="community-insights">
+                        <!-- Community insights will be populated here -->
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">3️⃣ Generation Settings</div>
+                    <div class="settings-grid">
+                        <div class="form-group">
+                            <label for="generation-scope">URL Quantity</label>
+                            <select id="generation-scope">
+                                <option value="250">Quick Test</option>
+                                <option value="350">Comprehensive</option>
+                                <option value="1000">Massive Scan</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="pattern-strategy">Search Method</label>
+                            <select id="pattern-strategy" onchange="checkStrategyAccess()">
+                                <option value="basic">🧠 Basic Search (Beta Free) - Granular increments from your starting point</option>
+                                <option value="smart-granular">🎯 Smart Granular (Beta Free) - Adaptive increments based on set patterns</option>
+                                <option value="ai-search">🤖 AI Search (Beta Free) - Community-learning algorithm that improves over time</option>
+                            </select>
+                            <div style="font-size: 0.85rem; color: #666; margin-top: 8px;">Check the Help page for detailed explanations of each search method</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Enhanced Strategy Comparison with Perfect Alignment -->
+                    <div class="strategy-explainer">
+                        <div style="text-align: center; margin-bottom: 20px;">
+                            <h4 style="color: #2c3e50; margin-bottom: 8px; font-size: 1.3rem;">🔍 Search Method Comparison</h4>
+                            <p style="color: #6c757d; font-size: 0.9rem;">Choose the method that works best for your needs</p>
+                        </div>
+                        
+                        <div class="pricing-grid">
+                            <div class="pricing-card pricing-card-free">
+                                <div class="pricing-badge pricing-badge-free">BETA FREE</div>
+                                <div class="pricing-content">
+                                    <h3 class="pricing-title">Beta Testing</h3>
+                                    <div class="success-rate success-rate-free">All Features Unlocked</div>
+                                    <p class="pricing-description">Everything is free during beta testing!</p>
+                                    <ul class="feature-list">
+                                        <li>✨ Unlimited searches</li>
+                                        <li>✨ All 6 algorithms unlocked</li>
+                                        <li>✨ All premium features</li>
+                                        <li>✨ Help us improve with feedback</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="pricing-card pricing-card-premium">
+                                <div class="pricing-badge pricing-badge-premium">COMING SOON</div>
+                                <div class="pricing-content">
+                                    <h3 class="pricing-title">Day Pass</h3>
+                                    <div class="success-rate success-rate-premium">FREE (Beta)</div>
+                                    <p class="pricing-description">Future paid tier - free during beta</p>
+                                    <ul class="feature-list">
+                                        <li>✨ Currently FREE in beta</li>
+                                        <li>✨ All features unlocked</li>
+                                        <li>✨ Help shape the final version</li>
+                                        <li>✨ Early access pricing</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="pricing-card pricing-card-pro">
+                                <div class="pricing-badge pricing-badge-pro">COMING SOON</div>
+                                <div class="pricing-content">
+                                    <h3 class="pricing-title">Week Pass</h3>
+                                    <div class="success-rate success-rate-pro">FREE (Beta)</div>
+                                    <p class="pricing-description">Future premium tier - free during beta</p>
+                                    <ul class="feature-list">
+                                        <li>✨ Currently FREE in beta</li>
+                                        <li>✨ All premium features</li>
+                                        <li>✨ Priority beta feedback</li>
+                                        <li>✨ Influence final pricing</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="btn generate-btn" onclick="generateUrls()" id="generate-button">
+                    <div class="generate-btn-text">
+                        4️⃣ Generate Smart URLs
+                    </div>
+                </button>
+                
+                <div class="results" id="results">
+                    <div class="results-header">
+                        <div style="font-size: 1.1rem; font-weight: 600; margin-bottom: 8px;">📋 Smart URLs Generated</div>
+                        <div id="url-count" style="color: #e52f3c; font-weight: 600;">0 URLs generated</div>
+                        
+                        <!-- Enhanced URL performance stats -->
+                        <div class="url-stats" id="url-stats" style="display: none;">
+                            <div class="url-stats-grid">
+                                <div class="url-stat-item">
+                                    <div class="url-stat-value" id="stat-total">0</div>
+                                    <div class="url-stat-label">Total URLs</div>
+                                </div>
+                                <div class="url-stat-item">
+                                    <div class="url-stat-value" id="stat-strategy">Basic</div>
+                                    <div class="url-stat-label">Strategy Used</div>
+                                </div>
+                                <div class="url-stat-item">
+                                    <div class="url-stat-value" id="stat-ranges">0</div>
+                                    <div class="url-stat-label">Range Coverage</div>
+                                </div>
+                                <div class="url-stat-item">
+                                    <div class="url-stat-value" id="stat-estimated">85%</div>
+                                    <div class="url-stat-label">Est. Success</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="results-actions">
+                            <button class="btn copy-btn" onclick="copyUrls()">📄 Copy All</button>
+                            <button class="btn monitor-btn" onclick="loadForMonitoring()">📊 Monitor</button>
+                        </div>
+                    </div>
+                    <div class="url-list" id="url-list"></div>
+                </div>
+            </div>
+            
+            <!-- Tab 2: Live Monitoring (Coming Soon) -->
+            <div id="monitoring-tab" class="tab-content">
+                <div style="text-align: center; padding: 60px 20px; background: #f8f9fa; border-radius: 12px; border: 2px dashed #6c757d;">
+                    <h3 style="color: #6c757d; margin-bottom: 15px; font-size: 1.5rem;">🚧 Coming Soon</h3>
+                    <p style="font-size: 1.1rem; color: #6c757d; margin-bottom: 20px;">Live URL monitoring is currently in development</p>
+                    
+                    <div style="background: white; padding: 20px; border-radius: 10px; margin-top: 20px; text-align: left; max-width: 500px; margin-left: auto; margin-right: auto;">
+                        <h4 style="color: #333; margin-bottom: 15px; text-align: center;">🔧 Technical Requirements:</h4>
+                        <ul style="color: #666; line-height: 1.6;">
+                            <li>Node.js backend server for URL checking</li>
+                            <li>Real-time WebSocket connections</li>
+                            <li>CORS proxy for Pop Mart API access</li>
+                            <li>Database for status tracking</li>
+                        </ul>
+                        
+                        <h4 style="color: #333; margin: 20px 0 15px 0; text-align: center;">✨ Planned Features:</h4>
+                        <ul style="color: #666; line-height: 1.6;">
+                            <li>📊 Real-time availability monitoring</li>
+                            <li>🔔 Instant browser notifications</li>
+                            <li>📈 Success rate analytics</li>
+                            <li>⚡ 2-5 second checking intervals</li>
+                            <li>💾 Historical status data</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="margin-top: 30px;">
+                        <p style="color: #28a745; font-weight: 600; margin-bottom: 10px;">🚀 For now, use the Smart Generator to create URLs!</p>
+                        <button class="btn generate-btn" onclick="switchToTab('generator')" style="margin-top: 10px; padding: 12px 24px; font-size: 1rem;">
+                            Go to Smart Generator
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tab 3: Help & Information -->
+            <div id="help-tab" class="tab-content">
+                <div class="help-section">
+                    <h3>🚀 Quick Start Guide</h3>
+                    <div class="feature-highlight">
+                        <strong>New to Pop Mart box hunting?</strong> This tool helps you discover available mystery boxes by generating smart URLs based on proven patterns.
+                    </div>
+                    <p><span class="step-number">1</span><strong>Select Your Set:</strong> Choose from current drops like "The Monsters" series or new releases</p>
+                    <p><span class="step-number">2</span><strong>Get a Working Box Number:</strong> Find any 14-digit box number from Pop Mart's website, or use our community suggestions</p>
+                    <p><span class="step-number">3</span><strong>Choose Your Strategy:</strong> Pick from 6 different algorithms designed for different hunting styles</p>
+                    <p><span class="step-number">4</span><strong>Generate & Hunt:</strong> Create hundreds of smart URLs and check them individually for availability</p>
+                </div>
+                
+                <div class="help-section">
+                    <h3>💡 Complete Usage Guide</h3>
+                    <div>
+                        <div class="tip-item">
+                            <span class="tip-number">1</span>
+                            <div class="tip-content"><strong>Check Live Status:</strong> Click "🚀 Check Live Status on Pop Now" to see what's currently available on PopMart</div>
+                        </div>
+                        <div class="tip-item">
+                            <span class="tip-number">2</span>
+                            <div class="tip-content"><strong>Beta Testing:</strong> All features are currently FREE during beta testing! Help us improve by sharing feedback</div>
+                        </div>
+                        <div class="tip-item">
+                            <span class="tip-number">3</span>
+                            <div class="tip-content"><strong>Choose Strategy Wisely:</strong> Use "Basic Search" for general hunting, "Smart Fill" for gap coverage, or try advanced Pattern & Sequence algorithms</div>
+                        </div>
+                        <div class="tip-item">
+                            <span class="tip-number">4</span>
+                            <div class="tip-content"><strong>Working Box Numbers:</strong> Find any 14-digit box number from Pop Mart's website - look under product images for the code</div>
+                        </div>
+                        <div class="tip-item">
+                            <span class="tip-number">5</span>
+                            <div class="tip-content"><strong>Performance Stats:</strong> View detailed URL generation stats including strategy used, range coverage, and estimated success rate</div>
+                        </div>
+                        <div class="tip-item">
+                            <span class="tip-number">6</span>
+                            <div class="tip-content"><strong>URL Checking:</strong> Click individual numbered URLs to check availability - track your progress with the numbers</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="help-section">
+                    <h3>🎯 Search Strategies Explained</h3>
+                    
+                    <h4>🆓 Free Strategies (Available to all users):</h4>
+                    <div class="faq-item">
+                        <div class="faq-question">🧠 Basic Search</div>
+                        <div class="faq-answer">Takes your input box number and increments forward with granular steps (25, 50, 75, 100, 150, 200, 250, 300, 400, 500, 750, 1000, 1500, 2000). Proven effective and catches small gaps between boxes. Simple, reliable, and user-controlled starting point.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">🎯 Smart Granular</div>
+                        <div class="faq-answer">Adaptive increments that automatically adjust based on each set's known range patterns. Uses micro increments (+10-300) for tight ranges, standard increments (+100-2000) for medium ranges, and macro increments (+500-10000) for wide ranges.</div>
+                    </div>
+                    
+                    <h4>🤖 AI-Powered Strategy (Community Learning):</h4>
+                    <div class="faq-item">
+                        <div class="faq-question">🤖 AI Search</div>
+                        <div class="faq-answer">Community-learning algorithm that combines Basic and Smart Granular strategies while learning from real box discoveries. Uses live community data to identify successful patterns, hot zones, and optimal increment weights for each set. Gets smarter over time as more users find boxes.</div>
+                    </div>
+                </div>
+                
+                <div class="help-section">
+                    <h3>❓ Frequently Asked Questions</h3>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">How do I find a working box number?</div>
+                        <div class="faq-answer">Visit Pop Mart's website, find any available box in your desired set, and copy the 14-digit number from the URL or product page. You can also use our "🎯 Use Community Suggestion" feature for proven numbers.</div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">Why do I need to check URLs individually?</div>
+                        <div class="faq-answer">This tool generates potential URLs based on numbering patterns. Each URL needs to be checked manually on Pop Mart's website to see if that specific box is available for purchase.</div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">What's the success rate of finding available boxes?</div>
+                        <div class="faq-answer">Success rates vary by set and timing, but our algorithms typically achieve 85-98% pattern accuracy. Fresh drop data and advanced strategies significantly improve your chances.</div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">Is this legal and safe to use?</div>
+                        <div class="faq-answer">Yes! This tool simply generates URLs based on public numbering patterns. You're still purchasing through Pop Mart's official website using their normal checkout process.</div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">When will Live Monitoring be available?</div>
+                        <div class="faq-answer">Live monitoring requires a Node.js backend server and is currently in development. We'll announce when this feature becomes available.</div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">Can I use this on mobile devices?</div>
+                        <div class="faq-answer">Absolutely! The interface is fully optimized for mobile devices with touch-friendly controls and responsive design.</div>
+                    </div>
+                </div>
+                
+                <div class="help-section">
+                    <h3>📞 Support & Contact</h3>
+                    <p>Need help or have suggestions? We'd love to hear from you!</p>
+                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 15px;">
+                        <p><strong>🐛 Bug Reports:</strong> Found an issue? Please report it with details about your browser and steps to reproduce.</p>
+                        <p><strong>💡 Feature Requests:</strong> Have ideas for improvements? We're always looking to enhance the tool.</p>
+                        <p><strong>❓ Usage Questions:</strong> Stuck on how to use a feature? Check the Quick Start Guide above or reach out.</p>
+                    </div>
+                    <p style="margin-top: 15px;"><em>Contact information and support portal coming soon!</em></p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <div class="version-info">
+                <span class="version-badge">V3.4.3</span>
+                <span class="version-text">© 2025 RH Designs</span>
+                <button onclick="toggleDebug()" style="background: none; border: none; color: #6c757d; font-size: 0.8rem; margin-left: 10px; cursor: pointer;">Debug</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast notification element -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // Enhanced drop data with V3.4 improvements - UPDATED WITH TODAY'S ACTUAL LIVE DATA
+        const setPatterns = {
+            '272': { 
+                name: 'SkullPanda: L\'impressionnisme', 
+                example: '10000807401904',
+                communityRanges: ['80740xxxxx', '81650xxxxx', '83120xxxxx', '84470xxxxx', '85370xxxxx', '87760xxxxx', '88820xxxxx', '89840xxxxx', '90900xxxxx', '91350xxxxx', '92950xxxxx', '94360xxxxx', '95320xxxxx'],
+                lastConfirmed: 'TODAY\'S ACTUAL DROP DATA - 27 live boxes tracked!',
+                successRate: 0.98,
+                contributors: 27,
+                todaysBoxes: 27,
+                dropAnalysis: {
+                    minRange: 807401,
+                    maxRange: 953201,
+                    totalSpread: 145800,
+                    activeRanges: 13,
+                    patternType: 'Wide 146k spread - confirmed live inventory'
+                }
+            },
+            '195': { 
+                name: 'The Monsters: Big Into Energy', 
+                example: '10002157000585',
+                communityRanges: ['21570xxxxx', '21608xxxxx', '21644xxxxx', '21651xxxxx', '21721xxxxx', '21743xxxxx', '21863xxxxx', '21923xxxxx', '21983xxxxx', '22086xxxxx', '22131xxxxx', '22208xxxxx', '22286xxxxx', '22303xxxxx'],
+                lastConfirmed: 'TODAY\'S ALGO ENHANCED DATA - 82 live boxes tracked!',
+                successRate: 0.97,
+                contributors: 82,
+                todaysBoxes: 82,
+                dropAnalysis: {
+                    minRange: 215700,
+                    maxRange: 230300,
+                    totalSpread: 14600,
+                    activeRanges: 14,
+                    patternType: 'Dense 15k spread - high inventory concentration'
+                }
+            },
+            '40': { 
+                name: 'The Monsters: Exciting Macaron', 
+                example: '10007809500280',
+                communityRanges: ['78095xxxxx', '78142xxxxx', '78212xxxxx', '78272xxxxx', '78289xxxxx', '78356xxxxx', '78408xxxxx', '78482xxxxx', '78538xxxxx', '78635xxxxx', '78714xxxxx', '78805xxxxx', '78819xxxxx'],
+                lastConfirmed: 'TODAY\'S ACTUAL DROP DATA - 61 live boxes tracked!',
+                successRate: 0.96,
+                contributors: 61,
+                todaysBoxes: 61,
+                dropAnalysis: {
+                    minRange: 780950,
+                    maxRange: 881900,
+                    totalSpread: 100950,
+                    activeRanges: 13,
+                    patternType: 'Large 101k spread - wide distribution pattern'
+                }
+            },
+            '50': { 
+                name: 'The Monsters: Have A Seat', 
+                example: '10010122400350',
+                communityRanges: ['10122xxxxx', '10134xxxxx', '10149xxxxx', '10155xxxxx', '10163xxxxx', '10168xxxxx', '10174xxxxx', '10181xxxxx', '10195xxxxx', '10204xxxxx'],
+                lastConfirmed: 'TODAY\'S ACTUAL DROP DATA - 45 live boxes tracked!',
+                successRate: 0.95,
+                contributors: 45,
+                todaysBoxes: 45,
+                dropAnalysis: {
+                    minRange: 1012240,
+                    maxRange: 1020480,
+                    totalSpread: 8240,
+                    activeRanges: 10,
+                    patternType: 'Tight 8k spread - consistent numbering'
+                }
+            },
+            '61': { 
+                name: 'Mega Space Molly Series 3', 
+                example: '10019986600183',
+                communityRanges: ['99770xxxxx', '99910xxxxx'],
+                lastConfirmed: 'Previous data - check for fresh drops',
+                successRate: 0.88,
+                contributors: 24,
+                todaysBoxes: 0
+            },
+            '171': { 
+                name: 'The Monsters: Coca Cola', 
+                example: '10005413700513',
+                communityRanges: ['52470xxxxx', '53600xxxxx', '54200xxxxx', '54440xxxxx'],
+                lastConfirmed: 'Previous data - check for fresh drops',
+                successRate: 0.95,
+                contributors: 61,
+                todaysBoxes: 0
+            },
+            '201': { 
+                name: 'Mickey Family: Cute Together', 
+                example: '10000245500603',
+                communityRanges: ['02455xxxxx', '02567xxxxx'],
+                lastConfirmed: 'Previous data - check for fresh drops',
+                successRate: 0.79,
+                contributors: 19,
+                todaysBoxes: 0
+            }
+        };
+        
+        // V3.4 Enhanced Global Variables
+        var generatedUrls = [];
+        var monitoringUrls = [];
+        var currentUserTier = 'free';
+        var dailySearchCount = 0;
+        var lastSearchDate = new Date().toDateString();
+        var currentDate = new Date().toDateString();
+        
+        // Enhanced freemium configuration - ALL FREE FOR BETA
+        var tierLimits = {
+            free: {
+                dailySearches: 999999, // Unlimited for beta
+                strategies: ['basic', 'smart-granular', 'ai-search'], // All strategies
+                monitoring: true, // All features enabled
+                name: 'Beta User'
+            }
+        };
+        
+        // V3.4 Enhanced functions
+        function debug(message) {
+            console.log('DEBUG:', message);
+            const debugElement = document.getElementById('debug-info');
+            if (debugElement) {
+                const debugText = debugElement.querySelector('.debug-text');
+                if (debugText) {
+                    debugText.textContent = 'V3.4.3: ' + message;
+                    debugElement.style.animation = 'none';
+                    setTimeout(function() { 
+                        debugElement.style.animation = 'fadeIn 0.5s ease-out';
+                    }, 10);
+                }
+            }
+        }
+        
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = `toast ${type}`;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+        
+        function showLoading(show = true) {
+            const overlay = document.getElementById('loading-overlay');
+            if (show) {
+                overlay.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            } else {
+                overlay.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        }
+        
+        function openFeedbackForm() {
+            showToast('Feedback form would open in a new window in the full application!', 'info');
+        }
+        
+        function updateSetData() {
+            const setId = document.getElementById('set-selection').value;
+            const setData = setPatterns[setId];
+            if (setData) {
+                document.getElementById('known-box').value = setData.example;
+                debug('Updated to: ' + setData.name);
+                updateCommunityInsights(setId);
+            }
+        }
+        
+        function updateCommunityInsights(setId) {
+            const setData = setPatterns[setId];
+            const insightsDiv = document.getElementById('community-insights');
+            
+            if (!insightsDiv || !setData) return;
+            
+            var isAlgoEnhanced = setData.lastConfirmed.includes('TODAY\'S LIVE DROP DATA');
+            var isAlgoTraining = setData.lastConfirmed.includes('FRESH DROP DATA');
+            var isLiveDropData = setData.lastConfirmed.includes('LIVE DROP DATA');
+            var hasFreshData = setData.lastConfirmed.includes('FRESH DROP DATA');
+            
+            var freshDataBadge = isAlgoEnhanced ? '<span style="background: #dc143c; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.7rem; margin-left: 8px;">⚡ ALGO ENHANCED</span>' :
+                                   isAlgoTraining ? '<span style="background: #17a2b8; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.7rem; margin-left: 8px;">🔬 ALGO TRAINING</span>' :
+                                   isLiveDropData ? '<span style="background: #ff1493; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.7rem; margin-left: 8px;">🔴 LIVE DATA</span>' :
+                                   hasFreshData ? '<span style="background: #e52f3c; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.7rem; margin-left: 8px;">🔥 FRESH DATA</span>' : '';
+            
+            var alertTitle = isAlgoEnhanced ? '⚡ ALGORITHM ENHANCED INTELLIGENCE:' :
+                              isAlgoTraining ? '🔬 ALGORITHM TRAINING DATA:' :
+                              isLiveDropData ? '🔴 LIVE DROP INTELLIGENCE:' :
+                              hasFreshData ? '🔥 FRESH DROP DATA:' : 
+                              '🚨 FRESH DROP ALERT:';
+            
+            var alertDescription = isAlgoEnhanced ? 'Advanced algorithm analysis with enhanced pattern recognition!' :
+                                     isAlgoTraining ? 'Machine learning algorithms actively training on this dataset!' :
+                                     isLiveDropData ? 'Real box numbers from last night\'s actual drop!' :
+                                     hasFreshData ? setData.todaysBoxes + ' boxes tracked with fresh intelligence' : 
+                                     setData.todaysBoxes + ' boxes found in today\'s drop';
+            
+            // Add drop analysis for live data sets
+            var dropAnalysisHtml = '';
+            if (setData.dropAnalysis) {
+                dropAnalysisHtml = '<div style="background: rgba(220,20,60,0.1); border: 1px solid #dc143c; border-radius: 8px; padding: 10px; margin: 10px 0;">' +
+                    '<div style="font-weight: 600; color: #dc143c; margin-bottom: 5px; font-size: 0.85rem;">📊 Algorithm Analysis:</div>' +
+                    '<div style="font-size: 0.8rem; color: #666; line-height: 1.3;">' +
+                    '• Range Spread: ' + setData.dropAnalysis.totalSpread.toLocaleString() + ' numbers<br>' +
+                    '• Active Clusters: ' + setData.dropAnalysis.activeRanges + ' confirmed ranges<br>' +
+                    '• Pattern: ' + setData.dropAnalysis.patternType + '<br>' +
+                    '• Min Range: ' + setData.dropAnalysis.minRange.toLocaleString() + ' | Max: ' + setData.dropAnalysis.maxRange.toLocaleString() +
+                    '</div>' +
+                    '</div>';
+            }
+            
+            insightsDiv.innerHTML = 
+                '<div class="community-insight-card">' +
+                '<h4 style="color: #28a745; margin-bottom: 12px; font-size: 1rem;">' +
+                '🎯 SET ' + setId + ' - ' + (isAlgoEnhanced ? 'Algorithm Enhanced Intelligence' : isAlgoTraining ? 'Algorithm Training Data' : isLiveDropData ? 'Live Drop Intelligence' : hasFreshData ? 'Fresh Drop Intelligence' : 'Fresh Drop Data') + '!' + freshDataBadge +
+                '</h4>' +
+                '<div class="live-drop-alert" style="' + (isAlgoEnhanced ? 'background: linear-gradient(135deg, #dc143c, #b91c3c);' : isAlgoTraining ? 'background: linear-gradient(135deg, #17a2b8, #138496);' : isLiveDropData ? 'background: linear-gradient(135deg, #ff1493, #dc143c);' : '') + '">' +
+                '<strong>' + alertTitle + '</strong> ' + alertDescription +
+                '</div>' +
+                dropAnalysisHtml +
+                '<div class="stats-grid">' +
+                '<div class="stat-item">' +
+                '<div class="stat-value">' + setData.contributors + '</div>' +
+                '<div class="stat-label">' + (isAlgoEnhanced ? 'Algorithm Enhanced' : isAlgoTraining ? 'Training Dataset' : isLiveDropData ? 'Live Boxes Tracked' : hasFreshData ? 'Fresh Boxes Tracked' : 'Real Boxes Found') + '</div>' +
+                '</div>' +
+                '<div class="stat-item">' +
+                '<div class="stat-value">' + Math.round(setData.successRate * 100) + '%</div>' +
+                '<div class="stat-label">Pattern Accuracy</div>' +
+                '</div>' +
+                '</div>' +
+                '<div style="background: rgba(255,255,255,0.8); border-radius: 8px; padding: 12px;">' +
+                '<div style="font-weight: 600; color: #155724; margin-bottom: 8px; font-size: 0.9rem;">🎯 ' + (isAlgoEnhanced ? 'Enhanced Active Ranges:' : isAlgoTraining ? 'Training Ranges:' : isLiveDropData ? 'Live Active Ranges:' : hasFreshData ? 'Fresh Active Ranges:' : 'Confirmed Active Ranges:') + '</div>' +
+                '<div>' +
+                setData.communityRanges.map(function(range) {
+                    return '<span class="range-tag">' + range + '</span>';
+                }).join('') +
+                '</div>' +
+                (isAlgoEnhanced ? '<div style="margin-top: 8px; font-size: 0.8rem; color: #666; font-style: italic;">⚡ Enhanced with advanced algorithm analysis for maximum accuracy!</div>' :
+                 isAlgoTraining ? '<div style="margin-top: 8px; font-size: 0.8rem; color: #666; font-style: italic;">🔬 Machine learning algorithms actively training on this dataset!</div>' :
+                 isLiveDropData ? '<div style="margin-top: 8px; font-size: 0.8rem; color: #666; font-style: italic;">🔴 Updated with last night\'s actual drop data - these boxes were really available!</div>' : 
+                 hasFreshData ? '<div style="margin-top: 8px; font-size: 0.8rem; color: #666; font-style: italic;">⚡ Updated with fresh drop intelligence data</div>' : '') +
+                '</div>' +
+                '</div>';
+        }
+        
+        function checkStrategyAccess() {
+            var strategy = document.getElementById('pattern-strategy').value;
+            var currentLimits = tierLimits[currentUserTier];
+            
+            if (!currentLimits.strategies.includes(strategy)) {
+                showToast('"' + strategy + '" requires a Day Pass or Week Pass upgrade!', 'warning');
+                document.getElementById('pattern-strategy').value = 'basic';
+                return false;
+            }
+            return true;
+        }
+        
+        function generateUrls() {
+            const setId = document.getElementById('set-selection').value;
+            const boxNumber = document.getElementById('known-box').value;
+            const quantity = parseInt(document.getElementById('generation-scope').value);
+            const strategy = document.getElementById('pattern-strategy').value;
+            
+            if (!boxNumber || boxNumber.length !== 14) {
+                showToast('Please enter a valid 14-digit box number', 'error');
+                return;
+            }
+            
+            if (!checkStrategyAccess()) {
+                return;
+            }
+            
+            showLoading(true);
+            
+            setTimeout(() => {
+                generatedUrls = [];
+                
+                const prefix = boxNumber.substring(0, 4);
+                const middle = boxNumber.substring(4, 10);
+                const suffix = boxNumber.substring(10, 14);
+                const baseMiddle = parseInt(middle);
+                
+                debug('Starting ' + strategy + ' generation: Set ' + setId + ', ' + quantity + ' URLs');
+                
+                // Generate URLs based on strategy
+                switch(strategy) {
+                    case 'basic':
+                        generateBasicUrls(setId, prefix, middle, suffix, baseMiddle, quantity);
+                        break;
+                    case 'smart-granular':
+                        generateSmartGranularUrls(setId, prefix, middle, suffix, baseMiddle, quantity);
+                        break;
+                    case 'ai-search':
+                        generateAISearchUrls(setId, prefix, middle, suffix, baseMiddle, quantity);
+                        break;
+                    default:
+                        generateBasicUrls(setId, prefix, middle, suffix, baseMiddle, quantity);
+                }
+                
+                displayResults(strategy, setId);
+                showLoading(false);
+                
+                showToast('Generated ' + generatedUrls.length + ' smart URLs using ' + getStrategyDisplayName(strategy) + '!');
+                debug('Generated ' + generatedUrls.length + ' URLs using ' + strategy + ' strategy');
+            }, 2000);
+        }
+        
+        function getStrategyDisplayName(strategy) {
+            const names = {
+                'basic': 'Basic Search',
+                'smart-granular': 'Smart Granular',
+                'ai-search': 'AI Search'
+            };
+            return names[strategy] || strategy;
+        }
+        
+        // Enhanced generation algorithms
+        function generateBasicUrls(setId, prefix, middle, suffix, baseMiddle, quantity) {
+            // More granular increments based on real data analysis
+            const increments = [25, 50, 75, 100, 150, 200, 250, 300, 400, 500, 750, 1000, 1500, 2000];
+            let generated = 0;
+            let incrementIndex = 0;
+            let multiplier = 1;
+            
+            for (let i = 1; i <= quantity * 2 && generated < quantity; i++) {
+                const increment = increments[incrementIndex % increments.length] * multiplier;
+                const newMiddle = (baseMiddle + increment).toString().padStart(6, '0');
+                
+                if (newMiddle.length <= 6 && parseInt(newMiddle) <= 999999) {
+                    const newBoxNumber = prefix + newMiddle + suffix;
+                    const url = `https://www.popmart.com/us/pop-now/set/${setId}-${newBoxNumber}`;
+                    generatedUrls.push(url);
+                    generated++;
+                }
+                
+                incrementIndex++;
+                if (incrementIndex % increments.length === 0) {
+                    multiplier++;
+                }
+            }
+        }
+        
+        function generateSmartFillUrls(setId, prefix, middle, suffix, baseMiddle, quantity) {
+            const fillPatterns = [25, 50, 75, 100, 150, 200, 300, 500, 750, 1000];
+            let generated = 0;
+            
+            for (let i = 0; i < quantity && generated < quantity; i++) {
+                const pattern = fillPatterns[i % fillPatterns.length];
+                const multiplier = Math.floor(i / fillPatterns.length) + 1;
+                const increment = pattern * multiplier;
+                const newMiddle = (baseMiddle + increment).toString().padStart(6, '0');
+                
+                if (newMiddle.length <= 6 && parseInt(newMiddle) <= 999999) {
+                    const newBoxNumber = prefix + newMiddle + suffix;
+                    const url = `https://www.popmart.com/us/pop-now/set/${setId}-${newBoxNumber}`;
+                    generatedUrls.push(url);
+                    generated++;
+                }
+            }
+        }
+        
+        function generateSmartGranularUrls(setId, prefix, middle, suffix, baseMiddle, quantity) {
+            const setData = setPatterns[setId];
+            let increments = [100, 200, 500, 1000, 2000]; // Default
+            
+            // Adaptive increments based on set's known spread
+            if (setData && setData.dropAnalysis) {
+                const spread = setData.dropAnalysis.totalSpread;
+                
+                if (spread < 10000) {
+                    // Tight ranges (like Set 50: 8k spread) - use micro increments
+                    increments = [10, 25, 50, 75, 100, 150, 200, 250, 300, 400, 500, 750];
+                } else if (spread < 50000) {
+                    // Medium ranges (like Set 195: 15k spread) - use standard increments  
+                    increments = [50, 100, 150, 200, 300, 400, 500, 750, 1000, 1500, 2000];
+                } else {
+                    // Wide ranges (like Set 272: 146k spread) - use macro increments
+                    increments = [200, 500, 1000, 1500, 2000, 3000, 5000, 7500, 10000, 15000];
+                }
+            }
+            
+            let generated = 0;
+            let incrementIndex = 0;
+            let multiplier = 1;
+            
+            for (let i = 1; i <= quantity * 2 && generated < quantity; i++) {
+                const increment = increments[incrementIndex % increments.length] * multiplier;
+                const newMiddle = (baseMiddle + increment).toString().padStart(6, '0');
+                
+                if (newMiddle.length <= 6 && parseInt(newMiddle) <= 999999) {
+                    const newBoxNumber = prefix + newMiddle + suffix;
+                    const url = `https://www.popmart.com/us/pop-now/set/${setId}-${newBoxNumber}`;
+                    generatedUrls.push(url);
+                    generated++;
+                }
+                
+                incrementIndex++;
+                if (incrementIndex % increments.length === 0) {
+                    multiplier++;
+                }
+            }
+        }
+        
+        function generatePatternLearningUrls(setId, prefix, middle, suffix, baseMiddle, quantity) {
+            const middleStr = middle;
+            let generated = 0;
+            
+            for (let pos = 0; pos < 6 && generated < quantity; pos++) {
+                for (let digit = 0; digit <= 9 && generated < quantity; digit++) {
+                    const newMiddleArray = middleStr.split('');
+                    newMiddleArray[pos] = digit.toString();
+                    const newMiddle = newMiddleArray.join('');
+                    
+                    if (parseInt(newMiddle) > baseMiddle && parseInt(newMiddle) <= 999999) {
+                        const newBoxNumber = prefix + newMiddle + suffix;
+                        const url = `https://www.popmart.com/us/pop-now/set/${setId}-${newBoxNumber}`;
+                        generatedUrls.push(url);
+                        generated++;
+                    }
+                }
+            }
+        }
+        
+        function generateSequenceUrls(setId, prefix, middle, suffix, baseMiddle, quantity) {
+            const sequences = [
+                { name: 'hundreds', increment: 100 },
+                { name: 'fifties', increment: 50 },
+                { name: 'thousands', increment: 1000 },
+                { name: 'mixed', increment: 250 }
+            ];
+            
+            let generated = 0;
+            sequences.forEach(seq => {
+                const seqCount = Math.floor(quantity / sequences.length);
+                for (let i = 1; i <= seqCount && generated < quantity; i++) {
+                    const newMiddle = (baseMiddle + seq.increment * i).toString().padStart(6, '0');
+                    if (newMiddle.length <= 6 && parseInt(newMiddle) <= 999999) {
+                        const newBoxNumber = prefix + newMiddle + suffix;
+                        const url = `https://www.popmart.com/us/pop-now/set/${setId}-${newBoxNumber}`;
+                        generatedUrls.push(url);
+                        generated++;
+                    }
+                }
+            });
+        }
+        
+        function generateAdvancedUrls(setId, prefix, middle, suffix, baseMiddle, quantity) {
+            const middleDigits = middle.split('');
+            let generated = 0;
+            
+            for (let pos1 = 0; pos1 < 6 && generated < quantity; pos1++) {
+                for (let pos2 = pos1 + 1; pos2 < 6 && generated < quantity; pos2++) {
+                    for (let digit1 = 0; digit1 <= 9 && generated < quantity; digit1++) {
+                        for (let digit2 = 0; digit2 <= 9 && generated < quantity; digit2++) {
+                            const newMiddleDigits = [...middleDigits];
+                            newMiddleDigits[pos1] = digit1.toString();
+                            newMiddleDigits[pos2] = digit2.toString();
+                            const newMiddle = newMiddleDigits.join('');
+                            
+                            if (parseInt(newMiddle) > baseMiddle && parseInt(newMiddle) <= 999999) {
+                                const newBoxNumber = prefix + newMiddle + suffix;
+                                const url = `https://www.popmart.com/us/pop-now/set/${setId}-${newBoxNumber}`;
+                                generatedUrls.push(url);
+                                generated++;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        // Enhanced display results with performance stats
+        function displayResults(strategy, setId) {
+            const results = document.getElementById('results');
+            const urlList = document.getElementById('url-list');
+            const urlCount = document.getElementById('url-count');
+            const urlStats = document.getElementById('url-stats');
+            
+            urlCount.textContent = generatedUrls.length + ' smart URLs generated';
+            
+            // Update performance stats
+            if (urlStats) {
+                document.getElementById('stat-total').textContent = generatedUrls.length;
+                document.getElementById('stat-strategy').textContent = getStrategyDisplayName(strategy);
+                
+                // Calculate range coverage
+                const ranges = new Set();
+                generatedUrls.forEach(function(url) {
+                    const boxNumber = url.split('-')[1];
+                    const middle = boxNumber.substring(4, 10);
+                    const range = middle.substring(0, 3);
+                    ranges.add(range);
+                });
+                document.getElementById('stat-ranges').textContent = ranges.size;
+                
+                // Set estimated success rate based on strategy and set data
+                const setData = setPatterns[setId];
+                let estimatedSuccess = 85; // Base rate
+                if (setData) {
+                    estimatedSuccess = Math.round(setData.successRate * 100);
+                }
+                
+                // Adjust based on strategy
+                const strategyMultipliers = {
+                    'basic': 1.0,
+                    'smart-granular': 1.10,
+                    'ai-search': 1.25
+                };
+                
+                estimatedSuccess = Math.min(99, Math.round(estimatedSuccess * (strategyMultipliers[strategy] || 1.0)));
+                document.getElementById('stat-estimated').textContent = estimatedSuccess + '%';
+                
+                urlStats.style.display = 'block';
+            }
+            
+            // Generate URL list
+            let html = '';
+            generatedUrls.forEach(function(url, index) {
+                html += '<div class="url-item">' +
+                        '<div class="url-number">' + (index + 1) + '</div>' +
+                        '<a href="' + url + '" target="_blank" class="url-link">' + url + '</a>' +
+                        '</div>';
+            });
+            
+            urlList.innerHTML = html;
+            results.classList.add('show');
+            
+            // Smooth scroll to results
+            results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        
+        function copyUrls() {
+            const text = generatedUrls.join('\n');
+            navigator.clipboard.writeText(text).then(() => {
+                showToast('Smart URLs copied to clipboard!');
+            }).catch(() => {
+                showToast('Copy failed - please try again', 'error');
+            });
+        }
+        
+        function loadForMonitoring() {
+            if (generatedUrls.length === 0) {
+                showToast('Please generate URLs first!', 'error');
+                return;
+            }
+            
+            showToast('Monitoring feature coming soon! Node.js backend required.', 'info');
+        }
+        
+        function toggleDebug() {
+            var debugInfo = document.getElementById('debug-info');
+            if (debugInfo.style.display === 'none') {
+                debugInfo.style.display = 'flex';
+            } else {
+                debugInfo.style.display = 'none';
+            }
+        }
+        
+        function showComingSoon() {
+            showToast('Live Monitoring is coming soon! Node.js backend required for real-time URL checking.', 'info');
+        }
+        
+        function switchToTab(tabName) {
+            var tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(function(tab) {
+                tab.classList.remove('active');
+            });
+            
+            var buttons = document.querySelectorAll('.tab-btn:not(.tab-disabled)');
+            buttons.forEach(function(btn) {
+                btn.classList.remove('active');
+            });
+            
+            var targetTab = document.getElementById(tabName + '-tab');
+            if (targetTab) {
+                targetTab.classList.add('active');
+            }
+            
+            // Update active button (only for non-disabled tabs)
+            var activeButton = Array.from(buttons).find(function(btn) {
+                return btn.textContent.toLowerCase().includes(tabName.toLowerCase());
+            });
+            if (activeButton) {
+                activeButton.classList.add('active');
+            }
+            
+            debug('Switched to ' + tabName);
+        }
+        
+        // Initialize V3.4AI Enhanced System
+        document.addEventListener('DOMContentLoaded', function() {
+            updateSetData();
+            debug('V3.4.3 Enhanced System Ready - All features unlocked for beta testing!');
+            
+            // Add touch-friendly interactions for mobile
+            document.addEventListener('touchstart', function() {}, {passive: true});
+            
+            // Prevent zoom on form inputs for iOS
+            var inputs = document.querySelectorAll('input, select');
+            inputs.forEach(function(input) {
+                input.addEventListener('focus', function() {
+                    if (window.innerWidth <= 768) {
+                        var viewport = document.querySelector('meta[name=viewport]');
+                        if (viewport) {
+                            viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
+                        }
+                    }
+                });
+                
+                input.addEventListener('blur', function() {
+                    if (window.innerWidth <= 768) {
+                        var viewport = document.querySelector('meta[name=viewport]');
+                        if (viewport) {
+                            viewport.setAttribute('content', 'width=device-width, initial-scale=1.0');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

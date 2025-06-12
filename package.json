@@ -1,0 +1,15 @@
+{
+  "name": "popmart-box-finder",
+  "version": "3.4.3",
+  "description": "Pop Mart Box Discovery Tool",
+  "scripts": {
+    "build": "node build.js",
+    "dev": "serve src",
+    "deploy": "npm run build"
+  },
+  "devDependencies": {
+    "html-minifier-terser": "^7.2.0",
+    "terser": "^5.19.0",
+    "serve": "^14.2.1"
+  }
+}
