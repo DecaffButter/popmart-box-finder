@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pop Mart Box Discovery V3.4.3</title>
     <style>
-        /* Pop Mart Brand Color Palette */
         :root {
             --popmart-red: #E52F3C;
             --popmart-red-dark: #B8252F;
@@ -43,7 +42,6 @@
             border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 20px 40px rgba(229, 47, 60, 0.15);
-            animation: slideInUp 0.6s ease-out;
         }
         
         @media (min-width: 768px) {
@@ -53,11 +51,6 @@
                 border-radius: 20px;
                 box-shadow: 0 25px 50px rgba(0,0,0,0.15);
             }
-        }
-        
-        @keyframes slideInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
         }
         
         @keyframes fadeIn {
@@ -71,20 +64,9 @@
             100% { transform: scale(1); opacity: 0.9; }
         }
         
-        @keyframes glow {
-            0% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.6); }
-            50% { box-shadow: 0 0 25px rgba(255, 215, 0, 0.9); }
-            100% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.6); }
-        }
-        
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
-        }
-        
-        @keyframes countUp {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
         }
         
         .header {
@@ -92,10 +74,7 @@
             color: var(--popmart-white);
             padding: 20px 16px;
             text-align: center;
-            position: relative;
-            overflow: hidden;
             border-bottom: 4px solid var(--popmart-yellow);
-            box-shadow: 0 4px 20px rgba(229, 47, 60, 0.3);
         }
         
         @media (min-width: 768px) {
@@ -109,9 +88,6 @@
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
             font-weight: 900;
             text-transform: uppercase;
-            position: relative;
-            z-index: 1;
-            animation: fadeIn 0.8s ease-out 0.2s both;
         }
         
         @media (min-width: 768px) {
@@ -123,9 +99,6 @@
             font-weight: 900;
             margin-bottom: 12px;
             text-transform: uppercase;
-            position: relative;
-            z-index: 1;
-            animation: fadeIn 0.8s ease-out 0.4s both;
         }
         
         @media (min-width: 768px) {
@@ -136,9 +109,6 @@
             font-size: 0.95rem;
             opacity: 0.9;
             margin-bottom: 16px;
-            position: relative;
-            z-index: 1;
-            animation: fadeIn 0.8s ease-out 0.6s both;
         }
         
         @media (min-width: 768px) {
@@ -158,9 +128,6 @@
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            position: relative;
-            z-index: 1;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
         }
         
         @media (min-width: 768px) {
@@ -219,42 +186,9 @@
             opacity: 0.8;
         }
         
-        .debug-info {
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            border: 2px solid #28a745;
-            border-left: 6px solid #28a745;
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 20px;
-            font-family: 'SF Mono', Monaco, 'Roboto Mono', monospace;
-            font-size: 0.85rem;
-            animation: fadeIn 0.5s ease-out;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .debug-status {
-            width: 12px;
-            height: 12px;
-            background: #28a745;
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-            flex-shrink: 0;
-        }
-        
-        .debug-text {
-            flex: 1;
-            color: #495057;
-            line-height: 1.4;
-        }
-        
         .content {
             padding: 20px 16px;
             background: var(--popmart-white);
-            margin: -10px 0 0 0;
-            border-radius: 20px 20px 0 0;
-            box-shadow: 0 -4px 20px rgba(229, 47, 60, 0.1);
         }
         
         @media (min-width: 768px) {
@@ -267,7 +201,6 @@
             background: linear-gradient(135deg, var(--popmart-gray-light), var(--popmart-blue-light));
             border-radius: 12px;
             padding: 4px;
-            box-shadow: inset 0 2px 4px rgba(229, 47, 60, 0.1);
             border: 2px solid var(--popmart-gray);
         }
         
@@ -308,7 +241,6 @@
         .tab-disabled {
             opacity: 0.5;
             cursor: not-allowed !important;
-            position: relative;
         }
         
         .tab-btn.active {
@@ -324,17 +256,8 @@
             color: #6c757d !important;
         }
         
-        .tab-disabled::after {
-            content: '🚧';
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            font-size: 0.7rem;
-        }
-        
         .tab-content {
             display: none;
-            animation: fadeIn 0.4s ease-out;
         }
         
         .tab-content.active {
@@ -369,7 +292,6 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            animation: fadeIn 0.5s ease-out;
             border-left: 4px solid #FF69B4;
             padding-left: 12px;
             margin-left: -20px;
@@ -417,8 +339,6 @@
             font-size: 1rem;
             background: white;
             transition: all 0.3s ease;
-            -webkit-appearance: none;
-            appearance: none;
             font-family: inherit;
         }
         
@@ -458,173 +378,6 @@
             }
         }
         
-        .strategy-explainer {
-            background: #f8f9fa;
-            border: 2px solid #e9ecef;
-            border-radius: 12px;
-            padding: 16px;
-            margin-top: 16px;
-            animation: fadeIn 0.6s ease-out 0.2s both;
-        }
-        
-        @media (min-width: 768px) {
-            .strategy-explainer {
-                border-radius: 15px;
-                padding: 25px;
-                margin-top: 20px;
-            }
-        }
-        
-        .pricing-card {
-            background: var(--popmart-white);
-            border-radius: 20px;
-            padding: 20px;
-            position: relative;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(229, 47, 60, 0.1);
-            border: 3px solid transparent;
-        }
-        
-        .pricing-card:hover {
-            transform: translateY(-4px) scale(1.01);
-            box-shadow: 0 10px 30px rgba(229, 47, 60, 0.15);
-        }
-        
-        .pricing-card-free {
-            border-color: var(--popmart-blue);
-            background: linear-gradient(135deg, var(--popmart-white), var(--popmart-blue-light));
-        }
-        
-        .pricing-card-premium {
-            border-color: var(--popmart-pink);
-            background: linear-gradient(135deg, var(--popmart-white), var(--popmart-pink-light));
-        }
-        
-        .pricing-card-pro {
-            border-color: var(--popmart-red);
-            background: linear-gradient(135deg, var(--popmart-white), rgba(229, 47, 60, 0.1));
-        }
-        
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-        
-        @media (min-width: 768px) {
-            .pricing-grid {
-                grid-template-columns: 1fr 1fr 1fr;
-                gap: 25px;
-            }
-        }
-        
-        .pricing-badge {
-            position: absolute;
-            top: -12px;
-            left: 20px;
-            padding: 10px 24px;
-            border-radius: 25px;
-            font-size: 0.8rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-            z-index: 10;
-            border: 2px solid rgba(255,255,255,0.4);
-        }
-        
-        .pricing-badge-free {
-            background: linear-gradient(135deg, var(--popmart-blue), #4682B4);
-            color: var(--popmart-white);
-            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-        }
-        
-        .pricing-badge-premium {
-            background: linear-gradient(135deg, var(--popmart-pink), #FF1493);
-            color: var(--popmart-white);
-            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-        }
-        
-        .pricing-badge-pro {
-            background: linear-gradient(135deg, var(--popmart-red), #DC143C);
-            color: var(--popmart-white);
-            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-        }
-        
-        .pricing-content {
-            margin-top: 25px;
-            position: relative;
-            z-index: 5;
-        }
-        
-        .pricing-title {
-            font-size: 1.4rem;
-            font-weight: 800;
-            color: #2c3e50;
-            margin-bottom: 12px;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
-        }
-        
-        .success-rate {
-            font-size: 1.3rem;
-            font-weight: 800;
-            text-align: center;
-            margin-bottom: 15px;
-            padding: 8px 16px;
-            background: rgba(255,255,255,0.8);
-            border-radius: 20px;
-            border: 2px solid currentColor;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        
-        .success-rate-free { color: var(--popmart-blue); }
-        .success-rate-premium { color: var(--popmart-pink); }
-        .success-rate-pro { color: var(--popmart-red); }
-        
-        .pricing-description {
-            color: #495057;
-            font-size: 0.9rem;
-            text-align: center;
-            margin-bottom: 20px;
-            line-height: 1.5;
-            font-weight: 500;
-            padding: 12px;
-            background: rgba(255,255,255,0.6);
-            border-radius: 12px;
-            border: 1px solid rgba(0,0,0,0.1);
-        }
-        
-        .feature-list {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 25px 0;
-            background: rgba(255,255,255,0.7);
-            border-radius: 12px;
-            padding: 15px;
-            border: 1px solid rgba(0,0,0,0.05);
-        }
-        
-        .feature-list li {
-            padding: 8px 0;
-            color: #495057;
-            font-size: 0.9rem;
-            line-height: 1.4;
-            font-weight: 600;
-            position: relative;
-            padding-left: 25px;
-        }
-        
-        .feature-list li::before {
-            content: '✨';
-            position: absolute;
-            left: 0;
-            top: 8px;
-            font-size: 1rem;
-        }
-        
         .btn {
             border: none;
             border-radius: 15px;
@@ -634,8 +387,6 @@
             font-size: 0.95rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            position: relative;
-            overflow: hidden;
         }
         
         .btn:hover {
@@ -706,7 +457,6 @@
             padding: 16px;
             margin: 12px 0;
             transition: all 0.3s ease;
-            animation: fadeIn 0.8s ease-out;
             box-shadow: 0 2px 12px rgba(0,0,0,0.08);
         }
         
@@ -761,7 +511,6 @@
             font-size: 1.3rem;
             font-weight: bold;
             color: #28a745;
-            animation: countUp 0.6s ease-out;
         }
         
         @media (min-width: 768px) {
@@ -783,7 +532,6 @@
             padding: 16px;
             margin-top: 20px;
             display: none;
-            animation: fadeIn 0.6s ease-out;
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             border: 1px solid #e9ecef;
         }
@@ -841,7 +589,6 @@
             font-size: 1.1rem;
             font-weight: 700;
             color: #28a745;
-            animation: countUp 0.5s ease-out;
         }
         
         .url-stat-label {
@@ -935,7 +682,6 @@
             font-family: monospace;
             margin: 2px;
             display: inline-block;
-            animation: fadeIn 0.5s ease-out;
         }
         
         @media (min-width: 768px) {
@@ -1001,7 +747,6 @@
             max-height: 80vh;
             overflow-y: auto;
             box-shadow: 0 25px 50px rgba(0,0,0,0.3);
-            animation: slideInUp 0.3s ease-out;
         }
         
         .feedback-header {
@@ -1071,7 +816,6 @@
             padding: 16px 20px;
             text-align: center;
             border-top: 1px solid #e9ecef;
-            animation: fadeIn 0.8s ease-out 1s both;
         }
         
         @media (min-width: 768px) {
@@ -1094,7 +838,6 @@
             font-size: 0.8rem;
             font-weight: 600;
             display: inline-block;
-            animation: glow 3s ease-in-out infinite alternate;
         }
         
         .version-text {
@@ -1249,7 +992,7 @@
     <div class="container">
         <div style="background: linear-gradient(135deg, #17a2b8, #20c997); color: white; padding: 8px 20px; text-align: center; font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 15px; flex-wrap: wrap;">
             <span>🧪 V3.4.3 BETA - Help us test the next generation! Your feedback shapes the future.</span>
-            <button onclick="openFeedbackForm()" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); color: white; padding: 4px 12px; border-radius: 15px; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
+            <button id="feedback-btn" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); color: white; padding: 4px 12px; border-radius: 15px; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
                 Share Feedback
             </button>
         </div>
@@ -1266,15 +1009,10 @@
         </div>
         
         <div class="content">
-            <div class="debug-info" id="debug-info" style="display: none;">
-                <div class="debug-status"></div>
-                <div class="debug-text">V3.4.3 System Ready - Enhanced freemium experience with live intelligence tracking</div>
-            </div>
-            
             <div class="tab-navigation">
-                <button class="tab-btn active" onclick="switchToTab('generator')">🔧 Smart Generator</button>
-                <button class="tab-btn tab-disabled" onclick="showComingSoon()" title="Coming soon - Node.js backend required">📊 Live Monitor</button>
-                <button class="tab-btn" onclick="switchToTab('help')">❓ Help & Info</button>
+                <button class="tab-btn active" id="generator-btn">🔧 Smart Generator</button>
+                <button class="tab-btn tab-disabled" id="monitor-btn" title="Coming soon - Node.js backend required">📊 Live Monitor</button>
+                <button class="tab-btn" id="help-btn">❓ Help & Info</button>
             </div>
             
             <div id="generator-tab" class="tab-content active">
@@ -1282,7 +1020,7 @@
                     <div class="section-title">1️⃣ Set Selection</div>
                     <div class="form-group">
                         <label for="set-selection">Choose Your Set</label>
-                        <select id="set-selection" onchange="updateSetData()">
+                        <select id="set-selection">
                             <option value="43">Set 43 - The Monsters: Almost Hidden Figures</option>
                             <option value="40">Set 40 - The Monsters: Exciting Macaron</option>
                             <option value="50">Set 50 - The Monsters: Have A Seat</option>
@@ -1323,7 +1061,7 @@
                         
                         <div class="form-group">
                             <label for="pattern-strategy">Search Method</label>
-                            <select id="pattern-strategy" onchange="checkStrategyAccess()">
+                            <select id="pattern-strategy">
                                 <option value="basic">🧠 Basic Search (Beta Free) - Granular increments from your starting point</option>
                                 <option value="smart-granular">🎯 Smart Granular (Beta Free) - Adaptive increments based on set patterns</option>
                                 <option value="ai-search">🤖 AI Search (Beta Free) - Community-learning algorithm that improves over time</option>
@@ -1331,63 +1069,9 @@
                             <div style="font-size: 0.85rem; color: #666; margin-top: 8px;">Check the Help page for detailed explanations of each search method</div>
                         </div>
                     </div>
-                    
-                    <div class="strategy-explainer">
-                        <div style="text-align: center; margin-bottom: 20px;">
-                            <h4 style="color: #2c3e50; margin-bottom: 8px; font-size: 1.3rem;">🔍 Search Method Comparison</h4>
-                            <p style="color: #6c757d; font-size: 0.9rem;">Choose the method that works best for your needs</p>
-                        </div>
-                        
-                        <div class="pricing-grid">
-                            <div class="pricing-card pricing-card-free">
-                                <div class="pricing-badge pricing-badge-free">BETA FREE</div>
-                                <div class="pricing-content">
-                                    <h3 class="pricing-title">Beta Testing</h3>
-                                    <div class="success-rate success-rate-free">All Features Unlocked</div>
-                                    <p class="pricing-description">Everything is free during beta testing!</p>
-                                    <ul class="feature-list">
-                                        <li>✨ Unlimited searches</li>
-                                        <li>✨ All 6 algorithms unlocked</li>
-                                        <li>✨ All premium features</li>
-                                        <li>✨ Help us improve with feedback</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            
-                            <div class="pricing-card pricing-card-premium">
-                                <div class="pricing-badge pricing-badge-premium">COMING SOON</div>
-                                <div class="pricing-content">
-                                    <h3 class="pricing-title">Day Pass</h3>
-                                    <div class="success-rate success-rate-premium">FREE (Beta)</div>
-                                    <p class="pricing-description">Future paid tier - free during beta</p>
-                                    <ul class="feature-list">
-                                        <li>✨ Currently FREE in beta</li>
-                                        <li>✨ All features unlocked</li>
-                                        <li>✨ Help shape the final version</li>
-                                        <li>✨ Early access pricing</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            
-                            <div class="pricing-card pricing-card-pro">
-                                <div class="pricing-badge pricing-badge-pro">COMING SOON</div>
-                                <div class="pricing-content">
-                                    <h3 class="pricing-title">Week Pass</h3>
-                                    <div class="success-rate success-rate-pro">FREE (Beta)</div>
-                                    <p class="pricing-description">Future premium tier - free during beta</p>
-                                    <ul class="feature-list">
-                                        <li>✨ Currently FREE in beta</li>
-                                        <li>✨ All premium features</li>
-                                        <li>✨ Priority beta feedback</li>
-                                        <li>✨ Influence final pricing</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 
-                <button class="btn generate-btn" onclick="generateUrls()" id="generate-button">
+                <button class="btn generate-btn" id="generate-urls-btn">
                     <div>4️⃣ Generate Smart URLs</div>
                 </button>
                 
@@ -1418,8 +1102,8 @@
                         </div>
                         
                         <div class="results-actions">
-                            <button class="btn copy-btn" onclick="copyUrls()">📄 Copy All</button>
-                            <button class="btn monitor-btn" onclick="loadForMonitoring()">📊 Monitor</button>
+                            <button class="btn copy-btn" id="copy-urls-btn">📄 Copy All</button>
+                            <button class="btn monitor-btn" id="load-monitor-btn">📊 Monitor</button>
                         </div>
                     </div>
                     <div class="url-list" id="url-list"></div>
@@ -1452,7 +1136,7 @@
                     
                     <div style="margin-top: 30px;">
                         <p style="color: #28a745; font-weight: 600; margin-bottom: 10px;">🚀 For now, use the Smart Generator to create URLs!</p>
-                        <button class="btn generate-btn" onclick="switchToTab('generator')" style="margin-top: 10px; padding: 12px 24px; font-size: 1rem;">
+                        <button class="btn generate-btn" id="goto-generator-btn" style="margin-top: 10px; padding: 12px 24px; font-size: 1rem;">
                             Go to Smart Generator
                         </button>
                     </div>
@@ -1572,7 +1256,7 @@
             <div class="version-info">
                 <span class="version-badge">V3.4.3</span>
                 <span class="version-text">© 2025 RH Designs</span>
-                <button onclick="toggleDebug()" style="background: none; border: none; color: #6c757d; font-size: 0.8rem; margin-left: 10px; cursor: pointer;">Debug</button>
+                <button id="debug-btn" style="background: none; border: none; color: #6c757d; font-size: 0.8rem; margin-left: 10px; cursor: pointer;">Debug</button>
             </div>
         </div>
     </div>
@@ -1616,18 +1300,13 @@
                 
                 <div class="feedback-actions">
                     <button type="submit" class="feedback-submit">Send Feedback</button>
-                    <button type="button" class="feedback-cancel" onclick="closeFeedbackForm()">Cancel</button>
+                    <button type="button" class="feedback-cancel" id="feedback-cancel-btn">Cancel</button>
                 </div>
             </form>
         </div>
     </div>
 
     <script>
-        // Global variables
-        var generatedUrls = [];
-        var monitoringUrls = [];
-        var currentUserTier = 'free';
-        
         // Set patterns data
         const setPatterns = {
             '43': { 
@@ -1770,28 +1449,12 @@
                 todaysBoxes: 0
             }
         };
-        
-        var tierLimits = {
-            free: {
-                dailySearches: 999999,
-                strategies: ['basic', 'smart-granular', 'ai-search'],
-                monitoring: true,
-                name: 'Beta User'
-            }
-        };
+
+        // Global variables
+        let generatedUrls = [];
+        let currentUserTier = 'free';
         
         // Utility functions
-        function debug(message) {
-            console.log('DEBUG:', message);
-            const debugElement = document.getElementById('debug-info');
-            if (debugElement) {
-                const debugText = debugElement.querySelector('.debug-text');
-                if (debugText) {
-                    debugText.textContent = 'V3.4.3: ' + message;
-                }
-            }
-        }
-        
         function showToast(message, type = 'success') {
             const toast = document.getElementById('toast');
             toast.textContent = message;
@@ -1814,23 +1477,40 @@
             }
         }
         
-        // Feedback functions
-        function openFeedbackForm() {
-            document.getElementById('feedback-overlay').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
+        // Tab functions
+        function switchToTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remove active from all buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show target tab
+            const targetTab = document.getElementById(tabName + '-tab');
+            if (targetTab) {
+                targetTab.classList.add('active');
+            }
+            
+            // Activate correct button
+            if (tabName === 'generator') {
+                document.getElementById('generator-btn').classList.add('active');
+            } else if (tabName === 'help') {
+                document.getElementById('help-btn').classList.add('active');
+            }
+            
+            console.log('Switched to ' + tabName);
         }
         
-        function closeFeedbackForm() {
-            document.getElementById('feedback-overlay').style.display = 'none';
-            document.body.style.overflow = '';
-        }
-        
-        // Main functions
+        // Set data functions
         function updateSetData() {
             const setId = document.getElementById('set-selection').value;
             const setData = setPatterns[setId];
             if (setData) {
-                debug('Updated to: ' + setData.name);
+                console.log('Updated to: ' + setData.name);
                 updateCommunityInsights(setId);
             }
         }
@@ -1910,18 +1590,7 @@
                 '</div>';
         }
         
-        function checkStrategyAccess() {
-            var strategy = document.getElementById('pattern-strategy').value;
-            var currentLimits = tierLimits[currentUserTier];
-            
-            if (!currentLimits.strategies.includes(strategy)) {
-                showToast('"' + strategy + '" requires a Day Pass or Week Pass upgrade!', 'warning');
-                document.getElementById('pattern-strategy').value = 'basic';
-                return false;
-            }
-            return true;
-        }
-        
+        // URL generation functions
         function generateUrls() {
             const setId = document.getElementById('set-selection').value;
             const boxNumber = document.getElementById('known-box').value;
@@ -1930,10 +1599,6 @@
             
             if (!boxNumber || boxNumber.length !== 14) {
                 showToast('Please enter a valid 14-digit box number', 'error');
-                return;
-            }
-            
-            if (!checkStrategyAccess()) {
                 return;
             }
             
@@ -1947,7 +1612,7 @@
                 const suffix = boxNumber.substring(10, 14);
                 const baseMiddle = parseInt(middle);
                 
-                debug('Starting ' + strategy + ' generation: Set ' + setId + ', ' + quantity + ' URLs');
+                console.log('Starting ' + strategy + ' generation: Set ' + setId + ', ' + quantity + ' URLs');
                 
                 switch(strategy) {
                     case 'basic':
@@ -1967,7 +1632,7 @@
                 showLoading(false);
                 
                 showToast('Generated ' + generatedUrls.length + ' smart URLs using ' + getStrategyDisplayName(strategy) + '!');
-                debug('Generated ' + generatedUrls.length + ' URLs using ' + strategy + ' strategy');
+                console.log('Generated ' + generatedUrls.length + ' URLs using ' + strategy + ' strategy');
             }, 2000);
         }
         
@@ -2168,47 +1833,36 @@
             showToast('Monitoring feature coming soon! Node.js backend required.', 'info');
         }
         
-        function toggleDebug() {
-            var debugInfo = document.getElementById('debug-info');
-            if (debugInfo.style.display === 'none') {
-                debugInfo.style.display = 'flex';
-            } else {
-                debugInfo.style.display = 'none';
-            }
+        // Feedback functions
+        function openFeedbackForm() {
+            document.getElementById('feedback-overlay').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
         }
         
-        function showComingSoon() {
-            showToast('Live Monitoring is coming soon! Node.js backend required for real-time URL checking.', 'info');
+        function closeFeedbackForm() {
+            document.getElementById('feedback-overlay').style.display = 'none';
+            document.body.style.overflow = '';
         }
         
-        function switchToTab(tabName) {
-            var tabs = document.querySelectorAll('.tab-content');
-            tabs.forEach(function(tab) {
-                tab.classList.remove('active');
-            });
-            
-            var buttons = document.querySelectorAll('.tab-btn:not(.tab-disabled)');
-            buttons.forEach(function(btn) {
-                btn.classList.remove('active');
-            });
-            
-            var targetTab = document.getElementById(tabName + '-tab');
-            if (targetTab) {
-                targetTab.classList.add('active');
-            }
-            
-            var activeButton = Array.from(buttons).find(function(btn) {
-                return btn.textContent.toLowerCase().includes(tabName.toLowerCase());
-            });
-            if (activeButton) {
-                activeButton.classList.add('active');
-            }
-            
-            debug('Switched to ' + tabName);
-        }
-        
-        // Initialize
+        // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('V3.4.3 Enhanced System Ready - All features unlocked for beta testing!');
+            
+            // Set up event listeners
+            document.getElementById('feedback-btn').addEventListener('click', openFeedbackForm);
+            document.getElementById('feedback-cancel-btn').addEventListener('click', closeFeedbackForm);
+            document.getElementById('generate-urls-btn').addEventListener('click', generateUrls);
+            document.getElementById('copy-urls-btn').addEventListener('click', copyUrls);
+            document.getElementById('load-monitor-btn').addEventListener('click', loadForMonitoring);
+            document.getElementById('set-selection').addEventListener('change', updateSetData);
+            
+            // Tab navigation
+            document.getElementById('generator-btn').addEventListener('click', () => switchToTab('generator'));
+            document.getElementById('help-btn').addEventListener('click', () => switchToTab('help'));
+            document.getElementById('monitor-btn').addEventListener('click', () => showToast('Live Monitoring is coming soon! Node.js backend required for real-time URL checking.', 'info'));
+            document.getElementById('goto-generator-btn').addEventListener('click', () => switchToTab('generator'));
+            
+            // Feedback form submission
             const feedbackForm = document.querySelector('form[name="feedback"]');
             if (feedbackForm) {
                 feedbackForm.addEventListener('submit', function(e) {
@@ -2220,14 +1874,21 @@
                 });
             }
             
+            // Close feedback modal when clicking outside
             document.getElementById('feedback-overlay').addEventListener('click', function(e) {
                 if (e.target === this) {
                     closeFeedbackForm();
                 }
             });
             
+            // Debug button
+            document.getElementById('debug-btn').addEventListener('click', function() {
+                console.log('Debug clicked');
+                showToast('Debug mode - check console for logs', 'info');
+            });
+            
+            // Initialize set data
             updateSetData();
-            debug('V3.4.3 Enhanced System Ready - All features unlocked for beta testing!');
         });
     </script>
 </body>
