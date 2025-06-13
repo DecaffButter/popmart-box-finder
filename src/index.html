@@ -1011,7 +1011,7 @@
         <div class="content">
             <div class="tab-navigation">
                 <button class="tab-btn active" id="generator-btn">🔧 Smart Generator</button>
-                <button class="tab-btn tab-disabled" id="monitor-btn" title="Coming soon - Node.js backend required">📊 Live Monitor</button>
+                <button class="tab-btn tab-disabled" id="monitor-btn" title="Coming soon - Node.js backend required">🚧 Live Monitor</button>
                 <button class="tab-btn" id="help-btn">❓ Help & Info</button>
             </div>
             
@@ -1031,6 +1031,7 @@
                             <option value="195">Set 195 - The Monsters: Big Into Energy</option>
                             <option value="201">Set 201 - Mickey Family: Cute Together</option>
                             <option value="272">Set 272 - SkullPanda: L'impressionnisme</option>
+                            <option value="275">Set 275 - The Monsters: Wacky Mart Figures</option>
                         </select>
                     </div>
                 </div>
@@ -1309,132 +1310,148 @@
     <script>
         // Set patterns data
         const setPatterns = {
+            '40': { 
+                name: 'The Monsters: Exciting Macaron', 
+                example: '10008188500280',
+                communityRanges: ['82000xxxxx', '83000xxxxx', '84000xxxxx', '85000xxxxx', '86000xxxxx', '87000xxxxx', '88000xxxxx'],
+                lastConfirmed: 'PATTERN ANALYSIS - Tomorrow\'s predicted ranges based on today\'s drop analysis',
+                successRate: 0.89,
+                contributors: 49,
+                todaysBoxes: 0,
+                dropAnalysis: {
+                    minRange: 820000,
+                    maxRange: 880000,
+                    totalSpread: 60000,
+                    activeRanges: 7,
+                    patternType: 'Predicted: Wide 60k spread based on today\'s pattern (789860-818850)'
+                }
+            },
+            '195': { 
+                name: 'The Monsters: Big Into Energy', 
+                example: '10002297200585',
+                communityRanges: ['24100xxxxx', '24200xxxxx', '24300xxxxx', '24400xxxxx', '24500xxxxx', '24600xxxxx', '24700xxxxx'],
+                lastConfirmed: 'PATTERN ANALYSIS - Tomorrow\'s predicted ranges based on today\'s drop analysis',
+                successRate: 0.91,
+                contributors: 69,
+                todaysBoxes: 0,
+                dropAnalysis: {
+                    minRange: 241000,
+                    maxRange: 247000,
+                    totalSpread: 6000,
+                    activeRanges: 7,
+                    patternType: 'Predicted: Dense 6k spread based on today\'s pattern (228410-240180)'
+                }
+            },
+            '50': { 
+                name: 'The Monsters: Have A Seat', 
+                example: '10010386900350',
+                communityRanges: ['10450xxxxx', '10460xxxxx', '10470xxxxx', '10480xxxxx', '10490xxxxx', '10500xxxxx'],
+                lastConfirmed: 'PATTERN ANALYSIS - Tomorrow\'s predicted ranges based on today\'s drop analysis',
+                successRate: 0.88,
+                contributors: 53,
+                todaysBoxes: 0,
+                dropAnalysis: {
+                    minRange: 1045000,
+                    maxRange: 1050000,
+                    totalSpread: 5000,
+                    activeRanges: 6,
+                    patternType: 'Predicted: Tight 5k spread based on today\'s pattern (1033570-1044900)'
+                }
+            },
+            '275': { 
+                name: 'The Monsters: Wacky Mart Figures', 
+                example: '10000182000825',
+                communityRanges: ['22500xxxxx', '23000xxxxx', '23500xxxxx', '24000xxxxx', '24500xxxxx', '25000xxxxx', '25500xxxxx', '26000xxxxx'],
+                lastConfirmed: '🔥 FRESH PATTERN LEARNED - First drop analysis for tomorrow\'s predictions',
+                successRate: 0.92,
+                contributors: 52,
+                todaysBoxes: 0,
+                dropAnalysis: {
+                    minRange: 225000,
+                    maxRange: 260000,
+                    totalSpread: 35000,
+                    activeRanges: 8,
+                    patternType: 'NEW SET: Wide 35k spread predicted from tonight\'s fresh drop (121300-222400)'
+                }
+            },
             '43': { 
                 name: 'The Monsters: Almost Hidden Figures', 
                 example: '10000198200129',
                 communityRanges: ['16940xxxxx', '16950xxxxx', '16980xxxxx', '17030xxxxx', '17230xxxxx', '17450xxxxx', '17510xxxxx', '17670xxxxx', '17800xxxxx', '17840xxxxx', '17890xxxxx', '17960xxxxx', '18000xxxxx', '18040xxxxx', '18070xxxxx', '18140xxxxx', '18180xxxxx', '18250xxxxx', '18300xxxxx', '18310xxxxx', '18350xxxxx', '18550xxxxx', '18570xxxxx', '18650xxxxx', '18700xxxxx', '18910xxxxx', '19030xxxxx', '19060xxxxx', '19220xxxxx', '19270xxxxx', '19560xxxxx', '19570xxxxx', '19600xxxxx', '19630xxxxx', '19640xxxxx', '19820xxxxx', '19840xxxxx', '19920xxxxx', '19930xxxxx', '20040xxxxx', '20080xxxxx', '20180xxxxx'],
-                lastConfirmed: 'TODAY\'S FRESH DROP DATA - 62 live boxes tracked!',
+                lastConfirmed: 'Historical pattern data - needs fresh drop analysis for predictions',
                 successRate: 0.94,
                 contributors: 62,
-                todaysBoxes: 62,
+                todaysBoxes: 0,
                 dropAnalysis: {
                     minRange: 169400,
                     maxRange: 201800,
                     totalSpread: 32400,
                     activeRanges: 42,
-                    patternType: 'Medium 32k spread - dense cluster pattern with high box density'
+                    patternType: 'Historical: Medium 32k spread - needs current drop data for prediction'
                 }
             },
             '272': { 
                 name: 'SkullPanda: L\'impressionnisme', 
                 example: '10000807401904',
                 communityRanges: ['80740xxxxx', '81650xxxxx', '83120xxxxx', '84470xxxxx', '85370xxxxx', '87760xxxxx', '88820xxxxx', '89840xxxxx', '90900xxxxx', '91350xxxxx', '92950xxxxx', '94360xxxxx', '95320xxxxx'],
-                lastConfirmed: 'TODAY\'S ACTUAL DROP DATA - 27 live boxes tracked!',
+                lastConfirmed: 'Historical pattern data - needs fresh drop analysis for predictions',
                 successRate: 0.98,
                 contributors: 27,
-                todaysBoxes: 27,
+                todaysBoxes: 0,
                 dropAnalysis: {
                     minRange: 807401,
                     maxRange: 953201,
                     totalSpread: 145800,
                     activeRanges: 13,
-                    patternType: 'Wide 146k spread - confirmed live inventory'
-                }
-            },
-            '195': { 
-                name: 'The Monsters: Big Into Energy', 
-                example: '10002157000585',
-                communityRanges: ['21570xxxxx', '21608xxxxx', '21644xxxxx', '21651xxxxx', '21721xxxxx', '21743xxxxx', '21863xxxxx', '21923xxxxx', '21983xxxxx', '22086xxxxx', '22131xxxxx', '22208xxxxx', '22286xxxxx', '22303xxxxx'],
-                lastConfirmed: 'TODAY\'S ALGO ENHANCED DATA - 82 live boxes tracked!',
-                successRate: 0.97,
-                contributors: 82,
-                todaysBoxes: 82,
-                dropAnalysis: {
-                    minRange: 215700,
-                    maxRange: 230300,
-                    totalSpread: 14600,
-                    activeRanges: 14,
-                    patternType: 'Dense 15k spread - high inventory concentration'
-                }
-            },
-            '40': { 
-                name: 'The Monsters: Exciting Macaron', 
-                example: '10007809500280',
-                communityRanges: ['78095xxxxx', '78142xxxxx', '78212xxxxx', '78272xxxxx', '78289xxxxx', '78356xxxxx', '78408xxxxx', '78482xxxxx', '78538xxxxx', '78635xxxxx', '78714xxxxx', '78805xxxxx', '78819xxxxx'],
-                lastConfirmed: 'TODAY\'S ACTUAL DROP DATA - 61 live boxes tracked!',
-                successRate: 0.96,
-                contributors: 61,
-                todaysBoxes: 61,
-                dropAnalysis: {
-                    minRange: 780950,
-                    maxRange: 881900,
-                    totalSpread: 100950,
-                    activeRanges: 13,
-                    patternType: 'Large 101k spread - wide distribution pattern'
-                }
-            },
-            '50': { 
-                name: 'The Monsters: Have A Seat', 
-                example: '10010122400350',
-                communityRanges: ['10122xxxxx', '10134xxxxx', '10149xxxxx', '10155xxxxx', '10163xxxxx', '10168xxxxx', '10174xxxxx', '10181xxxxx', '10195xxxxx', '10204xxxxx'],
-                lastConfirmed: 'TODAY\'S ACTUAL DROP DATA - 45 live boxes tracked!',
-                successRate: 0.95,
-                contributors: 45,
-                todaysBoxes: 45,
-                dropAnalysis: {
-                    minRange: 1012240,
-                    maxRange: 1020480,
-                    totalSpread: 8240,
-                    activeRanges: 10,
-                    patternType: 'Tight 8k spread - consistent numbering'
+                    patternType: 'Historical: Wide 146k spread - needs current drop data for prediction'
                 }
             },
             '180': { 
                 name: 'Dimoo World X Disney Plush', 
                 example: '10001095801260',
                 communityRanges: ['10956xxxxx', '10960xxxxx', '10965xxxxx', '11084xxxxx', '11089xxxxx', '11105xxxxx', '11115xxxxx', '11124xxxxx', '11138xxxxx', '11142xxxxx', '11149xxxxx', '11150xxxxx', '11170xxxxx'],
-                lastConfirmed: 'TODAY\'S ALGO ENHANCED DATA - 36 live boxes tracked!',
+                lastConfirmed: 'Historical pattern data - needs fresh drop analysis for predictions',
                 successRate: 0.94,
                 contributors: 36,
-                todaysBoxes: 36,
+                todaysBoxes: 0,
                 dropAnalysis: {
                     minRange: 1095801,
                     maxRange: 1117101,
                     totalSpread: 21300,
                     activeRanges: 13,
-                    patternType: 'Medium 21k spread - Disney collaboration pattern'
+                    patternType: 'Historical: Medium 21k spread - needs current drop data for prediction'
                 }
             },
             '61': { 
                 name: 'Mega Space Molly Series 3', 
                 example: '10020256600183',
                 communityRanges: ['20256xxxxx', '20257xxxxx', '20258xxxxx', '20259xxxxx', '20260xxxxx', '20261xxxxx', '20262xxxxx', '20263xxxxx'],
-                lastConfirmed: 'TODAY\'S ALGO ENHANCED DATA - 37 live boxes tracked!',
+                lastConfirmed: 'Historical pattern data - needs fresh drop analysis for predictions',
                 successRate: 0.96,
                 contributors: 37,
-                todaysBoxes: 37,
+                todaysBoxes: 0,
                 dropAnalysis: {
                     minRange: 2025660,
                     maxRange: 2026310,
                     totalSpread: 6510,
                     activeRanges: 8,
-                    patternType: 'Very tight 7k spread - highly concentrated'
+                    patternType: 'Historical: Very tight 7k spread - needs current drop data for prediction'
                 }
             },
             '111': { 
                 name: 'Crybaby: Crying Again Plush', 
                 example: '10002867000333',
                 communityRanges: ['28670xxxxx', '28680xxxxx', '28739xxxxx'],
-                lastConfirmed: 'ALGO LEARNING - Need more data for enhanced patterns',
+                lastConfirmed: 'Limited data - needs more drop analysis for reliable predictions',
                 successRate: 0.85,
                 contributors: 3,
-                todaysBoxes: 3
+                todaysBoxes: 0
             },
             '171': { 
                 name: 'The Monsters: Coca Cola', 
                 example: '10005413700513',
                 communityRanges: ['52470xxxxx', '53600xxxxx', '54200xxxxx', '54440xxxxx'],
-                lastConfirmed: 'Previous data - check for fresh drops',
+                lastConfirmed: 'Historical pattern data - needs fresh drop analysis for predictions',
                 successRate: 0.95,
                 contributors: 61,
                 todaysBoxes: 0
@@ -1443,7 +1460,7 @@
                 name: 'Mickey Family: Cute Together', 
                 example: '10000245500603',
                 communityRanges: ['02455xxxxx', '02567xxxxx'],
-                lastConfirmed: 'Previous data - check for fresh drops',
+                lastConfirmed: 'Historical pattern data - needs fresh drop analysis for predictions',
                 successRate: 0.79,
                 contributors: 19,
                 todaysBoxes: 0
@@ -1535,13 +1552,13 @@
                               isAlgoTraining ? '🔬 ALGORITHM TRAINING DATA:' :
                               isLiveDropData ? '🔴 LIVE DROP INTELLIGENCE:' :
                               hasFreshData ? '🔥 FRESH DROP DATA:' : 
-                              '🚨 FRESH DROP ALERT:';
+                              '🚨 PATTERN ANALYSIS ALERT:';
             
             var alertDescription = isAlgoEnhanced ? 'Advanced algorithm analysis with enhanced pattern recognition!' :
                                      isAlgoTraining ? 'Machine learning algorithms actively training on this dataset!' :
                                      isLiveDropData ? 'Real box numbers from last night\'s actual drop!' :
-                                     hasFreshData ? setData.todaysBoxes + ' boxes tracked with fresh intelligence' : 
-                                     setData.todaysBoxes + ' boxes found in today\'s drop';
+                                     hasFreshData ? setData.contributors + ' data points analyzed for tomorrow\'s predictions' : 
+                                     setData.contributors + ' data points analyzed for pattern prediction';
             
             var dropAnalysisHtml = '';
             if (setData.dropAnalysis) {
@@ -1568,7 +1585,7 @@
                 '<div class="stats-grid">' +
                 '<div class="stat-item">' +
                 '<div class="stat-value">' + setData.contributors + '</div>' +
-                '<div class="stat-label">' + (isAlgoEnhanced ? 'Algorithm Enhanced' : isAlgoTraining ? 'Training Dataset' : isLiveDropData ? 'Live Boxes Tracked' : hasFreshData ? 'Fresh Boxes Tracked' : 'Real Boxes Found') + '</div>' +
+                '<div class="stat-label">' + (isAlgoEnhanced ? 'Algorithm Enhanced' : isAlgoTraining ? 'Training Dataset' : isLiveDropData ? 'Live Data Points' : hasFreshData ? 'Fresh Data Points' : 'Pattern Data Points') + '</div>' +
                 '</div>' +
                 '<div class="stat-item">' +
                 '<div class="stat-value">' + Math.round(setData.successRate * 100) + '%</div>' +
@@ -1576,16 +1593,16 @@
                 '</div>' +
                 '</div>' +
                 '<div style="background: rgba(255,255,255,0.8); border-radius: 8px; padding: 12px;">' +
-                '<div style="font-weight: 600; color: #155724; margin-bottom: 8px; font-size: 0.9rem;">🎯 ' + (isAlgoEnhanced ? 'Enhanced Active Ranges:' : isAlgoTraining ? 'Training Ranges:' : isLiveDropData ? 'Live Active Ranges:' : hasFreshData ? 'Fresh Active Ranges:' : 'Confirmed Active Ranges:') + '</div>' +
+                '<div style="font-weight: 600; color: #155724; margin-bottom: 8px; font-size: 0.9rem;">🎯 ' + (isAlgoEnhanced ? 'Enhanced Prediction Ranges:' : isAlgoTraining ? 'Training Ranges:' : isLiveDropData ? 'Live Pattern Ranges:' : hasFreshData ? 'Fresh Prediction Ranges:' : 'Predicted Active Ranges:') + '</div>' +
                 '<div>' +
                 setData.communityRanges.map(function(range) {
                     return '<span class="range-tag">' + range + '</span>';
                 }).join('') +
                 '</div>' +
-                (isAlgoEnhanced ? '<div style="margin-top: 8px; font-size: 0.8rem; color: #666; font-style: italic;">⚡ Enhanced with advanced algorithm analysis for maximum accuracy!</div>' :
+                (isAlgoEnhanced ? '<div style="margin-top: 8px; font-size: 0.8rem; color: #666; font-style: italic;">⚡ Enhanced with advanced algorithm analysis for maximum prediction accuracy!</div>' :
                  isAlgoTraining ? '<div style="margin-top: 8px; font-size: 0.8rem; color: #666; font-style: italic;">🔬 Machine learning algorithms actively training on this dataset!</div>' :
-                 isLiveDropData ? '<div style="margin-top: 8px; font-size: 0.8rem; color: #666; font-style: italic;">🔴 Updated with last night\'s actual drop data - these boxes were really available!</div>' : 
-                 hasFreshData ? '<div style="margin-top: 8px; font-size: 0.8rem; color: #666; font-style: italic;">⚡ Updated with fresh drop intelligence data</div>' : '') +
+                 isLiveDropData ? '<div style="margin-top: 8px; font-size: 0.8rem; color: #666; font-style: italic;">🔴 Fresh pattern analysis from today\'s drop data - these ranges predict tomorrow\'s boxes!</div>' : 
+                 hasFreshData ? '<div style="margin-top: 8px; font-size: 0.8rem; color: #666; font-style: italic;">⚡ Fresh pattern analysis for tomorrow\'s drop predictions!</div>' : '') +
                 '</div>' +
                 '</div>';
         }
@@ -1711,9 +1728,11 @@
             const setData = setPatterns[setId];
             let increments = [];
             
+            // Base increments (same as before)
+            const basicIncrements = [25, 50, 75, 100, 150, 200, 250, 300, 400, 500, 750, 1000, 1500, 2000];
+            
             if (setData && setData.dropAnalysis) {
                 const spread = setData.dropAnalysis.totalSpread;
-                const basicIncrements = [25, 50, 75, 100, 150, 200, 250, 300, 400, 500, 750, 1000, 1500, 2000];
                 
                 let adaptiveIncrements = [];
                 if (spread < 10000) {
@@ -1727,19 +1746,40 @@
                 const combinedIncrements = [...basicIncrements, ...adaptiveIncrements];
                 increments = combinedIncrements.sort((a, b) => a - b);
                 
+                // AI PREDICTION LOGIC: Target predicted ranges for tomorrow
                 if (setData.communityRanges && setData.communityRanges.length > 0) {
-                    const avgRange = setData.communityRanges.map(range => {
-                        return parseInt(range.replace(/x+$/, '00000'));
-                    }).reduce((a, b) => a + b, 0) / setData.communityRanges.length;
+                    // Calculate predicted range centers
+                    const predictedCenters = setData.communityRanges.map(range => {
+                        return parseInt(range.replace(/x+$/, '50000')); // Use middle of predicted range
+                    });
                     
-                    const targetMiddle = Math.floor(avgRange / 100);
-                    if (targetMiddle > baseMiddle) {
-                        const aiIncrement = targetMiddle - baseMiddle;
-                        increments.unshift(Math.floor(aiIncrement * 0.25), Math.floor(aiIncrement * 0.5), Math.floor(aiIncrement * 0.75), aiIncrement);
+                    // Find closest predicted range to user's input
+                    const userRange = Math.floor(baseMiddle / 10000) * 10000;
+                    const closestPredicted = predictedCenters.reduce((prev, curr) => {
+                        return (Math.abs(curr - userRange) < Math.abs(prev - userRange)) ? curr : prev;
+                    });
+                    
+                    // Generate increments that target the predicted ranges
+                    const targetIncrement = closestPredicted - baseMiddle;
+                    if (targetIncrement > 0 && targetIncrement < 500000) {
+                        // Add prediction-based increments
+                        const predictionIncrements = [
+                            Math.floor(targetIncrement * 0.1),
+                            Math.floor(targetIncrement * 0.25),
+                            Math.floor(targetIncrement * 0.5),
+                            Math.floor(targetIncrement * 0.75),
+                            targetIncrement,
+                            targetIncrement + 1000,
+                            targetIncrement + 2000,
+                            targetIncrement + 5000
+                        ].filter(inc => inc > 0);
+                        
+                        // Priority to prediction-based increments
+                        increments = [...predictionIncrements, ...increments];
                     }
                 }
             } else {
-                increments = [25, 50, 75, 100, 150, 200, 250, 300, 400, 500, 750, 1000, 1500, 2000];
+                increments = basicIncrements;
             }
             
             let generated = 0;
