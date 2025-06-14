@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -20,965 +21,968 @@
             --warning-orange: #fd7e14;
             --info-blue: #17a2b8;
         }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+
+```
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+        background: linear-gradient(135deg, var(--popmart-pink-light) 0%, var(--popmart-blue-light) 50%, var(--popmart-yellow) 100%);
+        min-height: 100vh;
+        padding: 8px;
+        overflow-x: hidden;
+    }
+    
+    .container {
+        max-width: 100%;
+        margin: 0 auto;
+        background: var(--popmart-white);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(229, 47, 60, 0.15);
+    }
+    
+    @media (min-width: 768px) {
+        body { padding: 20px; }
+        .container { 
+            max-width: 1200px; 
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
         }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-            background: linear-gradient(135deg, var(--popmart-pink-light) 0%, var(--popmart-blue-light) 50%, var(--popmart-yellow) 100%);
-            min-height: 100vh;
-            padding: 8px;
-            overflow-x: hidden;
-        }
-        
-        .container {
-            max-width: 100%;
-            margin: 0 auto;
-            background: var(--popmart-white);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(229, 47, 60, 0.15);
-        }
-        
-        @media (min-width: 768px) {
-            body { padding: 20px; }
-            .container { 
-                max-width: 1200px; 
-                border-radius: 20px;
-                box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-            }
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 0.9; }
-            50% { transform: scale(1.02); opacity: 1; }
-            100% { transform: scale(1); opacity: 0.9; }
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .header {
-            background: linear-gradient(135deg, var(--popmart-red), var(--popmart-red-dark));
-            color: var(--popmart-white);
-            padding: 20px 16px;
-            text-align: center;
-            border-bottom: 4px solid var(--popmart-yellow);
-        }
-        
-        @media (min-width: 768px) {
-            .header { padding: 40px 30px; }
-        }
-        
-        .popmart-logo {
-            font-family: Impact, 'Arial Black', sans-serif;
-            font-size: 2.2rem;
-            margin-bottom: 8px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            font-weight: 900;
-            text-transform: uppercase;
-        }
-        
-        @media (min-width: 768px) {
-            .popmart-logo { font-size: 3.5rem; }
-        }
-        
-        .header h1 {
-            font-size: 1.4rem;
-            font-weight: 900;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-        }
-        
-        @media (min-width: 768px) {
-            .header h1 { font-size: 2.2rem; margin-bottom: 15px; }
-        }
-        
-        .header p {
-            font-size: 0.95rem;
-            opacity: 0.9;
-            margin-bottom: 16px;
-        }
-        
-        @media (min-width: 768px) {
-            .header p { font-size: 1.1rem; margin-bottom: 20px; }
-        }
-        
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    
+    @keyframes pulse {
+        0% { transform: scale(1); opacity: 0.9; }
+        50% { transform: scale(1.02); opacity: 1; }
+        100% { transform: scale(1); opacity: 0.9; }
+    }
+    
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    
+    .header {
+        background: linear-gradient(135deg, var(--popmart-red), var(--popmart-red-dark));
+        color: var(--popmart-white);
+        padding: 20px 16px;
+        text-align: center;
+        border-bottom: 4px solid var(--popmart-yellow);
+    }
+    
+    @media (min-width: 768px) {
+        .header { padding: 40px 30px; }
+    }
+    
+    .popmart-logo {
+        font-family: Impact, 'Arial Black', sans-serif;
+        font-size: 2.2rem;
+        margin-bottom: 8px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        font-weight: 900;
+        text-transform: uppercase;
+    }
+    
+    @media (min-width: 768px) {
+        .popmart-logo { font-size: 3.5rem; }
+    }
+    
+    .header h1 {
+        font-size: 1.4rem;
+        font-weight: 900;
+        margin-bottom: 12px;
+        text-transform: uppercase;
+    }
+    
+    @media (min-width: 768px) {
+        .header h1 { font-size: 2.2rem; margin-bottom: 15px; }
+    }
+    
+    .header p {
+        font-size: 0.95rem;
+        opacity: 0.9;
+        margin-bottom: 16px;
+    }
+    
+    @media (min-width: 768px) {
+        .header p { font-size: 1.1rem; margin-bottom: 20px; }
+    }
+    
+    .quick-link {
+        background: var(--popmart-pink);
+        border: 2px solid var(--popmart-pink-light);
+        color: var(--popmart-white);
+        padding: 12px 20px;
+        border-radius: 25px;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.3s ease;
+        font-weight: 700;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    @media (min-width: 768px) {
         .quick-link {
-            background: var(--popmart-pink);
-            border: 2px solid var(--popmart-pink-light);
-            color: var(--popmart-white);
-            padding: 12px 20px;
-            border-radius: 25px;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
-            font-weight: 700;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            margin-top: 15px;
         }
-        
-        @media (min-width: 768px) {
-            .quick-link {
-                padding: 15px 30px;
-                border-radius: 10px;
-                font-size: 1.1rem;
-                margin-top: 15px;
-            }
-        }
-        
-        .quick-link:hover {
-            background: var(--popmart-pink-light);
-            transform: translateY(-2px) scale(1.03);
-            box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
-            border-color: var(--popmart-pink);
-        }
-        
-        .loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(229, 47, 60, 0.95);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            backdrop-filter: blur(5px);
-        }
-        
-        .loading-content {
-            text-align: center;
-            color: white;
-        }
-        
-        .spinner {
-            width: 60px;
-            height: 60px;
-            border: 4px solid rgba(255,255,255,0.3);
-            border-top: 4px solid white;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
-        }
-        
-        .loading-text {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-        
-        .loading-subtext {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-        
-        .content {
-            padding: 20px 16px;
-            background: var(--popmart-white);
-        }
-        
-        @media (min-width: 768px) {
-            .content { padding: 40px 30px; }
-        }
-        
+    }
+    
+    .quick-link:hover {
+        background: var(--popmart-pink-light);
+        transform: translateY(-2px) scale(1.03);
+        box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
+        border-color: var(--popmart-pink);
+    }
+    
+    .loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(229, 47, 60, 0.95);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        backdrop-filter: blur(5px);
+    }
+    
+    .loading-content {
+        text-align: center;
+        color: white;
+    }
+    
+    .spinner {
+        width: 60px;
+        height: 60px;
+        border: 4px solid rgba(255,255,255,0.3);
+        border-top: 4px solid white;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 20px;
+    }
+    
+    .loading-text {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+    
+    .loading-subtext {
+        font-size: 0.9rem;
+        opacity: 0.8;
+    }
+    
+    .content {
+        padding: 20px 16px;
+        background: var(--popmart-white);
+    }
+    
+    @media (min-width: 768px) {
+        .content { padding: 40px 30px; }
+    }
+    
+    .tab-navigation {
+        display: flex;
+        margin-bottom: 20px;
+        background: linear-gradient(135deg, var(--popmart-gray-light), var(--popmart-blue-light));
+        border-radius: 12px;
+        padding: 4px;
+        border: 2px solid var(--popmart-gray);
+    }
+    
+    @media (min-width: 768px) {
         .tab-navigation {
-            display: flex;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, var(--popmart-gray-light), var(--popmart-blue-light));
-            border-radius: 12px;
-            padding: 4px;
-            border: 2px solid var(--popmart-gray);
+            margin-bottom: 30px;
+            border-radius: 15px;
+            padding: 8px;
         }
-        
-        @media (min-width: 768px) {
-            .tab-navigation {
-                margin-bottom: 30px;
-                border-radius: 15px;
-                padding: 8px;
-            }
-        }
-        
+    }
+    
+    .tab-btn {
+        flex: 1;
+        padding: 12px 8px;
+        background: transparent;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 0.85rem;
+        color: #666;
+        text-align: center;
+    }
+    
+    @media (min-width: 768px) {
         .tab-btn {
-            flex: 1;
-            padding: 12px 8px;
-            background: transparent;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.85rem;
-            color: #666;
-            text-align: center;
+            padding: 15px 20px;
+            border-radius: 10px;
+            font-size: 1rem;
         }
-        
-        @media (min-width: 768px) {
-            .tab-btn {
-                padding: 15px 20px;
-                border-radius: 10px;
-                font-size: 1rem;
-            }
-        }
-        
-        .tab-btn:hover {
-            transform: translateY(-1px) scale(1.02);
-        }
-        
-        .tab-disabled {
-            opacity: 0.5;
-            cursor: not-allowed !important;
-        }
-        
-        .tab-btn.active {
-            background: linear-gradient(135deg, #E52F3C, #FF69B4);
-            color: #FFFFFF;
-            box-shadow: 0 4px 15px rgba(229, 47, 60, 0.3);
-            transform: translateY(-1px);
-        }
-        
-        .tab-disabled:hover {
-            transform: none !important;
-            background: rgba(108, 117, 125, 0.1) !important;
-            color: #6c757d !important;
-        }
-        
-        .tab-content {
-            display: none;
-        }
-        
-        .tab-content.active {
-            display: block;
-        }
-        
-        .section {
-            margin-bottom: 24px;
-            background: var(--popmart-white);
-            padding: 20px;
-            border-radius: 16px;
-            box-shadow: 0 4px 15px rgba(229, 47, 60, 0.1);
-            border: 2px solid var(--popmart-gray);
-            transition: all 0.3s ease;
-        }
-        
-        .section:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(229, 47, 60, 0.12);
-            border-color: var(--popmart-pink-light);
-        }
-        
-        @media (min-width: 768px) {
-            .section { margin-bottom: 40px; }
-        }
-        
+    }
+    
+    .tab-btn:hover {
+        transform: translateY(-1px) scale(1.02);
+    }
+    
+    .tab-disabled {
+        opacity: 0.5;
+        cursor: not-allowed !important;
+    }
+    
+    .tab-btn.active {
+        background: linear-gradient(135deg, #E52F3C, #FF69B4);
+        color: #FFFFFF;
+        box-shadow: 0 4px 15px rgba(229, 47, 60, 0.3);
+        transform: translateY(-1px);
+    }
+    
+    .tab-disabled:hover {
+        transform: none !important;
+        background: rgba(108, 117, 125, 0.1) !important;
+        color: #6c757d !important;
+    }
+    
+    .tab-content {
+        display: none;
+    }
+    
+    .tab-content.active {
+        display: block;
+    }
+    
+    .section {
+        margin-bottom: 24px;
+        background: var(--popmart-white);
+        padding: 20px;
+        border-radius: 16px;
+        box-shadow: 0 4px 15px rgba(229, 47, 60, 0.1);
+        border: 2px solid var(--popmart-gray);
+        transition: all 0.3s ease;
+    }
+    
+    .section:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(229, 47, 60, 0.12);
+        border-color: var(--popmart-pink-light);
+    }
+    
+    @media (min-width: 768px) {
+        .section { margin-bottom: 40px; }
+    }
+    
+    .section-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #E52F3C;
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        border-left: 4px solid #FF69B4;
+        padding-left: 12px;
+        margin-left: -20px;
+        margin-right: -20px;
+        padding-right: 20px;
+        background: linear-gradient(90deg, rgba(255, 182, 193, 0.3), transparent);
+        border-radius: 0 12px 12px 0;
+    }
+    
+    @media (min-width: 768px) {
         .section-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #E52F3C;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            border-left: 4px solid #FF69B4;
-            padding-left: 12px;
-            margin-left: -20px;
-            margin-right: -20px;
-            padding-right: 20px;
-            background: linear-gradient(90deg, rgba(255, 182, 193, 0.3), transparent);
-            border-radius: 0 12px 12px 0;
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            gap: 12px;
         }
-        
-        @media (min-width: 768px) {
-            .section-title {
-                font-size: 1.4rem;
-                margin-bottom: 25px;
-                gap: 12px;
-            }
-        }
-        
-        .form-group {
-            margin-bottom: 16px;
-        }
-        
-        @media (min-width: 768px) {
-            .form-group { margin-bottom: 20px; }
-        }
-        
-        .form-group label {
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 8px;
-            display: block;
-            font-size: 0.9rem;
-        }
-        
-        @media (min-width: 768px) {
-            .form-group label { font-size: 1rem; margin-bottom: 10px; }
-        }
-        
+    }
+    
+    .form-group {
+        margin-bottom: 16px;
+    }
+    
+    @media (min-width: 768px) {
+        .form-group { margin-bottom: 20px; }
+    }
+    
+    .form-group label {
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 8px;
+        display: block;
+        font-size: 0.9rem;
+    }
+    
+    @media (min-width: 768px) {
+        .form-group label { font-size: 1rem; margin-bottom: 10px; }
+    }
+    
+    .form-group select,
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 14px 16px;
+        border: 2px solid #e1e5e9;
+        border-radius: 10px;
+        font-size: 1rem;
+        background: white;
+        transition: all 0.3s ease;
+        font-family: inherit;
+    }
+    
+    @media (min-width: 768px) {
         .form-group select,
         .form-group input,
         .form-group textarea {
-            width: 100%;
-            padding: 14px 16px;
-            border: 2px solid #e1e5e9;
-            border-radius: 10px;
-            font-size: 1rem;
-            background: white;
-            transition: all 0.3s ease;
-            font-family: inherit;
+            padding: 15px 20px;
+            border-radius: 12px;
         }
-        
-        @media (min-width: 768px) {
-            .form-group select,
-            .form-group input,
-            .form-group textarea {
-                padding: 15px 20px;
-                border-radius: 12px;
-            }
-        }
-        
-        .form-group select:focus,
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #e52f3c;
-            box-shadow: 0 0 0 3px rgba(229, 47, 60, 0.1);
-            transform: translateY(-1px);
-        }
-        
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-        
+    }
+    
+    .form-group select:focus,
+    .form-group input:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: #e52f3c;
+        box-shadow: 0 0 0 3px rgba(229, 47, 60, 0.1);
+        transform: translateY(-1px);
+    }
+    
+    .form-group textarea {
+        resize: vertical;
+        min-height: 120px;
+    }
+    
+    .settings-grid {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: 1fr;
+    }
+    
+    @media (min-width: 768px) {
         .settings-grid {
-            display: grid;
-            gap: 16px;
-            grid-template-columns: 1fr;
-        }
-        
-        @media (min-width: 768px) {
-            .settings-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 20px;
-            }
-        }
-        
-        .btn {
-            border: none;
-            border-radius: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .btn:hover {
-            transform: translateY(-2px) scale(1.02);
-        }
-        
-        .generate-btn {
-            background: linear-gradient(135deg, #e52f3c, #b8252f);
-            color: white;
-            padding: 16px 24px;
-            width: 100%;
-            margin-top: 20px;
-            font-size: 1.1rem;
-            box-shadow: 0 4px 15px rgba(229, 47, 60, 0.3);
-        }
-        
-        @media (min-width: 768px) {
-            .generate-btn {
-                padding: 18px 30px;
-                margin-top: 30px;
-                font-size: 1.2rem;
-            }
-        }
-        
-        .generate-btn:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 8px 25px rgba(229, 47, 60, 0.3);
-            background: linear-gradient(135deg, #FF69B4, #E52F3C);
-        }
-        
-        .generate-btn:disabled {
-            background: #6c757d;
-            cursor: not-allowed;
-            transform: none !important;
-            opacity: 0.7;
-        }
-        
-        .copy-btn, .monitor-btn {
-            padding: 10px 16px;
-            margin: 4px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-        }
-        
-        @media (min-width: 768px) {
-            .copy-btn, .monitor-btn {
-                padding: 12px 20px;
-                margin: 5px;
-                font-size: 0.95rem;
-            }
-        }
-        
-        .copy-btn {
-            background: linear-gradient(135deg, #28a745, #20c997);
-            color: white;
-        }
-        
-        .monitor-btn {
-            background: linear-gradient(135deg, #17a2b8, #138496);
-            color: white;
-        }
-        
-        .community-insight-card {
-            background: white;
-            border: 2px solid #e9ecef;
-            border-left: 4px solid #28a745;
-            border-radius: 12px;
-            padding: 16px;
-            margin: 12px 0;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-        }
-        
-        @media (min-width: 768px) {
-            .community-insight-card {
-                border-radius: 15px;
-                padding: 20px;
-                margin: 15px 0;
-            }
-        }
-        
-        .community-insight-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.15);
-        }
-        
-        .live-drop-alert {
-            background: linear-gradient(135deg, #e52f3c, #dc3545);
-            color: white;
-            padding: 12px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            text-align: center;
-            animation: pulse 2s infinite;
-            font-weight: 600;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
-        }
-        
-        .stats-grid {
-            display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 15px;
-        }
-        
-        @media (min-width: 768px) {
-            .stats-grid {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-                gap: 15px;
-            }
-        }
-        
-        .stat-item {
-            text-align: center;
-            padding: 12px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            border: 1px solid #e9ecef;
-        }
-        
-        .stat-value {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: #28a745;
-        }
-        
-        @media (min-width: 768px) {
-            .stat-value { font-size: 1.5rem; }
-        }
-        
-        .stat-label {
-            color: #155724;
-            font-size: 0.85rem;
-        }
-        
-        @media (min-width: 768px) {
-            .stat-label { font-size: 0.9rem; }
-        }
-        
-        .results {
-            background: white;
-            border-radius: 12px;
-            padding: 16px;
-            margin-top: 20px;
-            display: none;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            border: 1px solid #e9ecef;
-        }
-        
-        @media (min-width: 768px) {
-            .results {
-                border-radius: 15px;
-                padding: 30px;
-                margin-top: 30px;
-            }
-        }
-        
-        .results.show {
-            display: block;
-        }
-        
-        .results-header {
-            text-align: center;
-            margin-bottom: 16px;
-            padding-bottom: 16px;
-            border-bottom: 2px solid #e1e5e9;
-        }
-        
-        .results-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            justify-content: center;
-            margin-top: 12px;
-        }
-        
-        .url-stats {
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            border-radius: 10px;
-            padding: 16px;
-            margin-bottom: 16px;
-            border: 2px solid #28a745;
-        }
-        
-        .url-stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 12px;
-            text-align: center;
-        }
-        
-        .url-stat-item {
-            background: white;
-            border-radius: 8px;
-            padding: 10px;
-            border: 1px solid #e9ecef;
-        }
-        
-        .url-stat-value {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #28a745;
-        }
-        
-        .url-stat-label {
-            font-size: 0.8rem;
-            color: #666;
-            margin-top: 4px;
-        }
-        
-        .url-list {
-            background: #f8f9fa;
-            border-radius: 8px;
-            max-height: 350px;
-            overflow-y: auto;
-            border: 2px solid #e9ecef;
-            margin-top: 16px;
-        }
-        
-        @media (min-width: 768px) {
-            .url-list {
-                border-radius: 10px;
-                max-height: 400px;
-                margin-top: 20px;
-            }
-        }
-        
-        .url-item {
-            padding: 12px;
-            border-bottom: 1px solid #f1f3f4;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: all 0.2s ease;
-        }
-        
-        @media (min-width: 768px) {
-            .url-item {
-                padding: 12px 16px;
-                gap: 15px;
-            }
-        }
-        
-        .url-item:hover {
-            background: #ADD8E6;
-            transform: translateX(3px);
-            box-shadow: 0 2px 10px rgba(135, 206, 235, 0.2);
-        }
-        
-        .url-number {
-            background: #e52f3c;
-            color: white;
-            padding: 4px 8px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            min-width: 35px;
-            text-align: center;
-            flex-shrink: 0;
-        }
-        
-        @media (min-width: 768px) {
-            .url-number {
-                font-size: 0.8rem;
-                min-width: 45px;
-            }
-        }
-        
-        .url-link {
-            color: #1a73e8;
-            text-decoration: none;
-            font-family: monospace;
-            font-size: 0.75rem;
-            word-break: break-all;
-            flex: 1;
-            line-height: 1.2;
-        }
-        
-        @media (min-width: 768px) {
-            .url-link { font-size: 0.85rem; }
-        }
-        
-        .url-link:hover {
-            text-decoration: underline;
-        }
-        
-        .range-tag {
-            background: #28a745;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 16px;
-            font-size: 0.75rem;
-            font-family: monospace;
-            margin: 2px;
-            display: inline-block;
-        }
-        
-        @media (min-width: 768px) {
-            .range-tag {
-                padding: 6px 15px;
-                border-radius: 20px;
-                font-size: 0.9rem;
-                margin: 3px;
-            }
-        }
-        
-        .toast {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #28a745;
-            color: white;
-            padding: 12px 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            transform: translateX(400px);
-            transition: transform 0.3s ease;
-            z-index: 1000;
-            max-width: 300px;
-        }
-        
-        .toast.show {
-            transform: translateX(0);
-        }
-        
-        .toast.error {
-            background: #dc3545;
-        }
-        
-        .toast.warning {
-            background: #fd7e14;
-        }
-        
-        .toast.info {
-            background: #17a2b8;
-        }
-        
-        .feedback-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 2000;
-            backdrop-filter: blur(5px);
-        }
-        
-        .feedback-modal {
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            max-width: 500px;
-            width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
-        }
-        
-        .feedback-header {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-        
-        .feedback-header h3 {
-            color: #e52f3c;
-            margin-bottom: 10px;
-            font-size: 1.5rem;
-        }
-        
-        .feedback-header p {
-            color: #666;
-            font-size: 0.9rem;
-        }
-        
-        .feedback-form {
-            display: grid;
             gap: 20px;
         }
-        
-        .feedback-actions {
-            display: flex;
+    }
+    
+    .btn {
+        border: none;
+        border-radius: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 0.95rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    .btn:hover {
+        transform: translateY(-2px) scale(1.02);
+    }
+    
+    .generate-btn {
+        background: linear-gradient(135deg, #e52f3c, #b8252f);
+        color: white;
+        padding: 16px 24px;
+        width: 100%;
+        margin-top: 20px;
+        font-size: 1.1rem;
+        box-shadow: 0 4px 15px rgba(229, 47, 60, 0.3);
+    }
+    
+    @media (min-width: 768px) {
+        .generate-btn {
+            padding: 18px 30px;
+            margin-top: 30px;
+            font-size: 1.2rem;
+        }
+    }
+    
+    .generate-btn:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 8px 25px rgba(229, 47, 60, 0.3);
+        background: linear-gradient(135deg, #FF69B4, #E52F3C);
+    }
+    
+    .generate-btn:disabled {
+        background: #6c757d;
+        cursor: not-allowed;
+        transform: none !important;
+        opacity: 0.7;
+    }
+    
+    .copy-btn, .monitor-btn {
+        padding: 10px 16px;
+        margin: 4px;
+        border-radius: 8px;
+        font-size: 0.85rem;
+    }
+    
+    @media (min-width: 768px) {
+        .copy-btn, .monitor-btn {
+            padding: 12px 20px;
+            margin: 5px;
+            font-size: 0.95rem;
+        }
+    }
+    
+    .copy-btn {
+        background: linear-gradient(135deg, #28a745, #20c997);
+        color: white;
+    }
+    
+    .monitor-btn {
+        background: linear-gradient(135deg, #17a2b8, #138496);
+        color: white;
+    }
+    
+    .community-insight-card {
+        background: white;
+        border: 2px solid #e9ecef;
+        border-left: 4px solid #28a745;
+        border-radius: 12px;
+        padding: 16px;
+        margin: 12px 0;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+    
+    @media (min-width: 768px) {
+        .community-insight-card {
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+    }
+    
+    .community-insight-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(40, 167, 69, 0.15);
+    }
+    
+    .live-drop-alert {
+        background: linear-gradient(135deg, #e52f3c, #dc3545);
+        color: white;
+        padding: 12px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        text-align: center;
+        animation: pulse 2s infinite;
+        font-weight: 600;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    }
+    
+    .stats-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-bottom: 15px;
+    }
+    
+    @media (min-width: 768px) {
+        .stats-grid {
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 15px;
+        }
+    }
+    
+    .stat-item {
+        text-align: center;
+        padding: 12px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        border: 1px solid #e9ecef;
+    }
+    
+    .stat-value {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: #28a745;
+    }
+    
+    @media (min-width: 768px) {
+        .stat-value { font-size: 1.5rem; }
+    }
+    
+    .stat-label {
+        color: #155724;
+        font-size: 0.85rem;
+    }
+    
+    @media (min-width: 768px) {
+        .stat-label { font-size: 0.9rem; }
+    }
+    
+    .results {
+        background: white;
+        border-radius: 12px;
+        padding: 16px;
+        margin-top: 20px;
+        display: none;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        border: 1px solid #e9ecef;
+    }
+    
+    @media (min-width: 768px) {
+        .results {
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+        }
+    }
+    
+    .results.show {
+        display: block;
+    }
+    
+    .results-header {
+        text-align: center;
+        margin-bottom: 16px;
+        padding-bottom: 16px;
+        border-bottom: 2px solid #e1e5e9;
+    }
+    
+    .results-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        margin-top: 12px;
+    }
+    
+    .url-stats {
+        background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        border-radius: 10px;
+        padding: 16px;
+        margin-bottom: 16px;
+        border: 2px solid #28a745;
+    }
+    
+    .url-stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 12px;
+        text-align: center;
+    }
+    
+    .url-stat-item {
+        background: white;
+        border-radius: 8px;
+        padding: 10px;
+        border: 1px solid #e9ecef;
+    }
+    
+    .url-stat-value {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #28a745;
+    }
+    
+    .url-stat-label {
+        font-size: 0.8rem;
+        color: #666;
+        margin-top: 4px;
+    }
+    
+    .url-list {
+        background: #f8f9fa;
+        border-radius: 8px;
+        max-height: 350px;
+        overflow-y: auto;
+        border: 2px solid #e9ecef;
+        margin-top: 16px;
+    }
+    
+    @media (min-width: 768px) {
+        .url-list {
+            border-radius: 10px;
+            max-height: 400px;
             margin-top: 20px;
         }
-        
-        .feedback-submit {
-            flex: 1;
-            background: linear-gradient(135deg, #e52f3c, #b8252f);
-            color: white;
-            border: none;
-            padding: 15px 25px;
-            border-radius: 10px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
+    }
+    
+    .url-item {
+        padding: 12px;
+        border-bottom: 1px solid #f1f3f4;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: all 0.2s ease;
+    }
+    
+    @media (min-width: 768px) {
+        .url-item {
+            padding: 12px 16px;
+            gap: 15px;
         }
-        
-        .feedback-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(229, 47, 60, 0.3);
+    }
+    
+    .url-item:hover {
+        background: #ADD8E6;
+        transform: translateX(3px);
+        box-shadow: 0 2px 10px rgba(135, 206, 235, 0.2);
+    }
+    
+    .url-number {
+        background: #e52f3c;
+        color: white;
+        padding: 4px 8px;
+        border-radius: 6px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        min-width: 35px;
+        text-align: center;
+        flex-shrink: 0;
+    }
+    
+    @media (min-width: 768px) {
+        .url-number {
+            font-size: 0.8rem;
+            min-width: 45px;
         }
-        
-        .feedback-cancel {
-            background: #6c757d;
-            color: white;
-            border: none;
-            padding: 15px 25px;
-            border-radius: 10px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .feedback-cancel:hover {
-            background: #5a6268;
-            transform: translateY(-1px);
-        }
-        
-        .footer {
-            background: #f8f9fa;
-            padding: 16px 20px;
-            text-align: center;
-            border-top: 1px solid #e9ecef;
-        }
-        
-        @media (min-width: 768px) {
-            .footer { padding: 20px 30px; }
-        }
-        
-        .version-info {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-        
-        .footer .version-badge {
-            background: #e52f3c;
-            color: white;
-            padding: 4px 12px;
+    }
+    
+    .url-link {
+        color: #1a73e8;
+        text-decoration: none;
+        font-family: monospace;
+        font-size: 0.75rem;
+        word-break: break-all;
+        flex: 1;
+        line-height: 1.2;
+    }
+    
+    @media (min-width: 768px) {
+        .url-link { font-size: 0.85rem; }
+    }
+    
+    .url-link:hover {
+        text-decoration: underline;
+    }
+    
+    .range-tag {
+        background: #28a745;
+        color: white;
+        padding: 4px 12px;
+        border-radius: 16px;
+        font-size: 0.75rem;
+        font-family: monospace;
+        margin: 2px;
+        display: inline-block;
+    }
+    
+    @media (min-width: 768px) {
+        .range-tag {
+            padding: 6px 15px;
             border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: inline-block;
-        }
-        
-        .version-text {
-            color: #6c757d;
             font-size: 0.9rem;
-            font-weight: 500;
+            margin: 3px;
         }
-        
-        .help-section {
-            margin-bottom: 30px;
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            border-left: 4px solid #e52f3c;
-        }
-        
-        .help-section h3 {
-            color: #e52f3c;
-            margin-bottom: 15px;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .help-section h4 {
-            color: #333;
-            margin: 15px 0 10px 0;
-            font-size: 1rem;
-        }
-        
-        .help-section p {
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 10px;
-        }
-        
-        .help-section ul {
-            padding-left: 20px;
-            color: #666;
-        }
-        
-        .help-section li {
-            margin-bottom: 8px;
-            line-height: 1.5;
-        }
-        
-        .faq-item {
-            background: #f8f9fa;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 10px;
-            border-left: 3px solid #17a2b8;
-        }
-        
-        .faq-question {
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 8px;
-        }
-        
-        .faq-answer {
-            color: #666;
-            line-height: 1.5;
-        }
-        
-        .step-number {
-            background: #e52f3c;
-            color: white;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-right: 10px;
-        }
-        
-        .feature-highlight {
-            background: linear-gradient(135deg, #e8f5e8, #d4f4dd);
-            border: 1px solid #28a745;
-            border-radius: 8px;
-            padding: 12px;
-            margin: 10px 0;
-        }
-        
-        .feature-highlight strong {
-            color: #155724;
-        }
-        
+    }
+    
+    .toast {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #28a745;
+        color: white;
+        padding: 12px 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        transform: translateX(400px);
+        transition: transform 0.3s ease;
+        z-index: 1000;
+        max-width: 300px;
+    }
+    
+    .toast.show {
+        transform: translateX(0);
+    }
+    
+    .toast.error {
+        background: #dc3545;
+    }
+    
+    .toast.warning {
+        background: #fd7e14;
+    }
+    
+    .toast.info {
+        background: #17a2b8;
+    }
+    
+    .feedback-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 2000;
+        backdrop-filter: blur(5px);
+    }
+    
+    .feedback-modal {
+        background: white;
+        border-radius: 20px;
+        padding: 30px;
+        max-width: 500px;
+        width: 90%;
+        max-height: 80vh;
+        overflow-y: auto;
+        box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+    }
+    
+    .feedback-header {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+    
+    .feedback-header h3 {
+        color: #e52f3c;
+        margin-bottom: 10px;
+        font-size: 1.5rem;
+    }
+    
+    .feedback-header p {
+        color: #666;
+        font-size: 0.9rem;
+    }
+    
+    .feedback-form {
+        display: grid;
+        gap: 20px;
+    }
+    
+    .feedback-actions {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+    }
+    
+    .feedback-submit {
+        flex: 1;
+        background: linear-gradient(135deg, #e52f3c, #b8252f);
+        color: white;
+        border: none;
+        padding: 15px 25px;
+        border-radius: 10px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .feedback-submit:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(229, 47, 60, 0.3);
+    }
+    
+    .feedback-cancel {
+        background: #6c757d;
+        color: white;
+        border: none;
+        padding: 15px 25px;
+        border-radius: 10px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .feedback-cancel:hover {
+        background: #5a6268;
+        transform: translateY(-1px);
+    }
+    
+    .footer {
+        background: #f8f9fa;
+        padding: 16px 20px;
+        text-align: center;
+        border-top: 1px solid #e9ecef;
+    }
+    
+    @media (min-width: 768px) {
+        .footer { padding: 20px 30px; }
+    }
+    
+    .version-info {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+    
+    .footer .version-badge {
+        background: #e52f3c;
+        color: white;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        display: inline-block;
+    }
+    
+    .version-text {
+        color: #6c757d;
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+    
+    .help-section {
+        margin-bottom: 30px;
+        background: white;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        border-left: 4px solid #e52f3c;
+    }
+    
+    .help-section h3 {
+        color: #e52f3c;
+        margin-bottom: 15px;
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .help-section h4 {
+        color: #333;
+        margin: 15px 0 10px 0;
+        font-size: 1rem;
+    }
+    
+    .help-section p {
+        color: #666;
+        line-height: 1.6;
+        margin-bottom: 10px;
+    }
+    
+    .help-section ul {
+        padding-left: 20px;
+        color: #666;
+    }
+    
+    .help-section li {
+        margin-bottom: 8px;
+        line-height: 1.5;
+    }
+    
+    .faq-item {
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 10px;
+        border-left: 3px solid #17a2b8;
+    }
+    
+    .faq-question {
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 8px;
+    }
+    
+    .faq-answer {
+        color: #666;
+        line-height: 1.5;
+    }
+    
+    .step-number {
+        background: #e52f3c;
+        color: white;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-right: 10px;
+    }
+    
+    .feature-highlight {
+        background: linear-gradient(135deg, #e8f5e8, #d4f4dd);
+        border: 1px solid #28a745;
+        border-radius: 8px;
+        padding: 12px;
+        margin: 10px 0;
+    }
+    
+    .feature-highlight strong {
+        color: #155724;
+    }
+    
+    .tip-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 10px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        margin-bottom: 8px;
+        transition: all 0.3s ease;
+        border: 1px solid #e9ecef;
+    }
+    
+    @media (min-width: 768px) {
         .tip-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            padding: 10px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            margin-bottom: 8px;
-            transition: all 0.3s ease;
-            border: 1px solid #e9ecef;
+            gap: 15px;
+            padding: 12px;
+            margin-bottom: 12px;
         }
-        
-        @media (min-width: 768px) {
-            .tip-item {
-                gap: 15px;
-                padding: 12px;
-                margin-bottom: 12px;
-            }
-        }
-        
-        .tip-item:hover {
-            background: #FFD700;
-            transform: translateX(4px);
-            box-shadow: 0 3px 12px rgba(255, 215, 0, 0.2);
-        }
-        
-        .tip-number {
-            background: #f39c12;
-            color: white;
-            padding: 4px 8px;
-            border-radius: 50%;
-            font-weight: bold;
-            font-size: 0.8rem;
-            min-width: 24px;
-            text-align: center;
-            flex-shrink: 0;
-        }
-        
-        .tip-content {
-            flex: 1;
-            font-size: 0.9rem;
-            line-height: 1.4;
-        }
-        
-        @media (min-width: 768px) {
-            .tip-content { font-size: 1rem; }
-        }
-    </style>
+    }
+    
+    .tip-item:hover {
+        background: #FFD700;
+        transform: translateX(4px);
+        box-shadow: 0 3px 12px rgba(255, 215, 0, 0.2);
+    }
+    
+    .tip-number {
+        background: #f39c12;
+        color: white;
+        padding: 4px 8px;
+        border-radius: 50%;
+        font-weight: bold;
+        font-size: 0.8rem;
+        min-width: 24px;
+        text-align: center;
+        flex-shrink: 0;
+    }
+    
+    .tip-content {
+        flex: 1;
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+    
+    @media (min-width: 768px) {
+        .tip-content { font-size: 1rem; }
+    }
+</style>
+```
+
 </head>
 <body>
     <div class="loading-overlay" id="loading-overlay">
@@ -989,947 +993,997 @@
         </div>
     </div>
 
-    <div class="container">
-        <div style="background: linear-gradient(135deg, #17a2b8, #20c997); color: white; padding: 8px 20px; text-align: center; font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 15px; flex-wrap: wrap;">
-            <span>🧪 V3.4.3 BETA - Help us test the next generation! Your feedback shapes the future.</span>
-            <button id="feedback-btn" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); color: white; padding: 4px 12px; border-radius: 15px; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
-                Share Feedback
-            </button>
-        </div>
-        
-        <div class="header">
-            <div class="popmart-logo">POP MART</div>
-            <h1>Smart Box Discovery System</h1>
-            <p>Find available mystery boxes faster with AI-powered URL generation and real community data</p>
-            <div style="margin-top: 20px;">
-                <a href="https://www.popmart.com/us/pop-now/list" target="_blank" class="quick-link">
-                    🚀 Check Live Status on Pop Now
-                </a>
-            </div>
-        </div>
-        
-        <div class="content">
-            <div class="tab-navigation">
-                <button class="tab-btn active" id="generator-btn">🔧 Smart Generator</button>
-                <button class="tab-btn tab-disabled" id="monitor-btn" title="Coming soon - Node.js backend required">🚧 Live Monitor</button>
-                <button class="tab-btn" id="help-btn">❓ Help & Info</button>
-            </div>
-            
-            <div id="generator-tab" class="tab-content active">
-                <div class="section">
-                    <div class="section-title">1️⃣ Set Selection</div>
-                    <div class="form-group">
-                        <label for="set-selection">Choose Your Set</label>
-                        <select id="set-selection">
-                            <option value="40">Set 40 - The Monsters: Exciting Macaron</option>
-                            <option value="43">Set 43 - The Monsters: Almost Hidden Figures</option>
-                            <option value="50">Set 50 - The Monsters: Have A Seat</option>
-                            <option value="61">Set 61 - Mega Space Molly Series 3</option>
-                            <option value="111">Set 111 - Crybaby: Crying Again Plush</option>
-                            <option value="171">Set 171 - The Monsters: Coca Cola</option>
-                            <option value="180">Set 180 - Dimoo World X Disney Plush</option>
-                            <option value="195">Set 195 - The Monsters: Big Into Energy</option>
-                            <option value="201">Set 201 - Mickey Family: Cute Together</option>
-                            <option value="272">Set 272 - SkullPanda: L'impressionnisme</option>
-                            <option value="275">Set 275 - The Monsters: Wacky Mart Figures</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <div class="section">
-                    <div class="section-title">2️⃣ Box Configuration</div>
-                    <div class="form-group">
-                        <label for="known-box">Working Box Number</label>
-                        <input type="text" id="known-box" maxlength="14" placeholder="Find a 14-digit number under any box image on Pop Now">
-                        <div style="font-size: 0.85rem; color: #666; margin-top: 8px;">
-                            <strong>How to find:</strong> Go to Pop Now → Find any available box in your chosen set → Look under the product image for a 14-digit code (like 10000198200129) → Copy and paste it here
-                        </div>
-                    </div>
-                    <div id="community-insights"></div>
-                </div>
-                
-                <div class="section">
-                    <div class="section-title">3️⃣ Generation Settings</div>
-                    <div class="settings-grid">
-                        <div class="form-group">
-                            <label for="generation-scope">URL Quantity</label>
-                            <select id="generation-scope">
-                                <option value="250">Quick Test</option>
-                                <option value="350">Comprehensive</option>
-                                <option value="1000">Massive Scan</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="pattern-strategy">Search Method</label>
-                            <select id="pattern-strategy">
-                                <option value="basic">🧠 Basic Search (Beta Free) - Granular increments from your starting point</option>
-                                <option value="smart-granular">🎯 Smart Granular (Beta Free) - Adaptive increments based on set patterns</option>
-                                <option value="ai-search">🤖 AI Search (Beta Free) - Community-learning algorithm that improves over time</option>
-                            </select>
-                            <div style="font-size: 0.85rem; color: #666; margin-top: 8px;">Check the Help page for detailed explanations of each search method</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <button class="btn generate-btn" id="generate-urls-btn">
-                    <div>4️⃣ Generate Smart URLs</div>
-                </button>
-                
-                <div class="results" id="results">
-                    <div class="results-header">
-                        <div style="font-size: 1.1rem; font-weight: 600; margin-bottom: 8px;">📋 Smart URLs Generated</div>
-                        <div id="url-count" style="color: #e52f3c; font-weight: 600;">0 URLs generated</div>
-                        
-                        <div class="url-stats" id="url-stats" style="display: none;">
-                            <div class="url-stats-grid">
-                                <div class="url-stat-item">
-                                    <div class="url-stat-value" id="stat-total">0</div>
-                                    <div class="url-stat-label">Total URLs</div>
-                                </div>
-                                <div class="url-stat-item">
-                                    <div class="url-stat-value" id="stat-strategy">Basic</div>
-                                    <div class="url-stat-label">Strategy Used</div>
-                                </div>
-                                <div class="url-stat-item">
-                                    <div class="url-stat-value" id="stat-ranges">0</div>
-                                    <div class="url-stat-label">Range Coverage</div>
-                                </div>
-                                <div class="url-stat-item">
-                                    <div class="url-stat-value" id="stat-estimated">85%</div>
-                                    <div class="url-stat-label">Est. Success</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="results-actions">
-                            <button class="btn copy-btn" id="copy-urls-btn">📄 Copy All</button>
-                            <button class="btn monitor-btn" id="load-monitor-btn">📊 Monitor</button>
-                        </div>
-                    </div>
-                    <div class="url-list" id="url-list"></div>
-                </div>
-            </div>
-            
-            <div id="monitoring-tab" class="tab-content">
-                <div style="text-align: center; padding: 60px 20px; background: #f8f9fa; border-radius: 12px; border: 2px dashed #6c757d;">
-                    <h3 style="color: #6c757d; margin-bottom: 15px; font-size: 1.5rem;">🚧 Coming Soon</h3>
-                    <p style="font-size: 1.1rem; color: #6c757d; margin-bottom: 20px;">Live URL monitoring is currently in development</p>
-                    
-                    <div style="background: white; padding: 20px; border-radius: 10px; margin-top: 20px; text-align: left; max-width: 500px; margin-left: auto; margin-right: auto;">
-                        <h4 style="color: #333; margin-bottom: 15px; text-align: center;">🔧 Technical Requirements:</h4>
-                        <ul style="color: #666; line-height: 1.6;">
-                            <li>Node.js backend server for URL checking</li>
-                            <li>Real-time WebSocket connections</li>
-                            <li>CORS proxy for Pop Mart API access</li>
-                            <li>Database for status tracking</li>
-                        </ul>
-                        
-                        <h4 style="color: #333; margin: 20px 0 15px 0; text-align: center;">✨ Planned Features:</h4>
-                        <ul style="color: #666; line-height: 1.6;">
-                            <li>📊 Real-time availability monitoring</li>
-                            <li>🔔 Instant browser notifications</li>
-                            <li>📈 Success rate analytics</li>
-                            <li>⚡ 2-5 second checking intervals</li>
-                            <li>💾 Historical status data</li>
-                        </ul>
-                    </div>
-                    
-                    <div style="margin-top: 30px;">
-                        <p style="color: #28a745; font-weight: 600; margin-bottom: 10px;">🚀 For now, use the Smart Generator to create URLs!</p>
-                        <button class="btn generate-btn" id="goto-generator-btn" style="margin-top: 10px; padding: 12px 24px; font-size: 1rem;">
-                            Go to Smart Generator
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            <div id="help-tab" class="tab-content">
-                <div class="help-section">
-                    <h3>🚀 Quick Start Guide</h3>
-                    <div class="feature-highlight">
-                        <strong>New to Pop Mart box hunting?</strong> This tool helps you discover available mystery boxes by generating smart URLs based on proven patterns.
-                    </div>
-                    <p><span class="step-number">1</span><strong>Select Your Set:</strong> Choose from current drops like "The Monsters" series or new releases</p>
-                    <p><span class="step-number">2</span><strong>Get a Working Box Number:</strong> Find any 14-digit box number from Pop Mart's website, or use our community suggestions</p>
-                    <p><span class="step-number">3</span><strong>Choose Your Strategy:</strong> Pick from 3 different algorithms designed for different hunting styles</p>
-                    <p><span class="step-number">4</span><strong>Generate & Hunt:</strong> Create hundreds of smart URLs and check them individually for availability</p>
-                </div>
-                
-                <div class="help-section">
-                    <h3>💡 Complete Usage Guide</h3>
-                    <div>
-                        <div class="tip-item">
-                            <span class="tip-number">1</span>
-                            <div class="tip-content"><strong>Check Live Status:</strong> Click "🚀 Check Live Status on Pop Now" to see what's currently available on PopMart</div>
-                        </div>
-                        <div class="tip-item">
-                            <span class="tip-number">2</span>
-                            <div class="tip-content"><strong>Beta Testing:</strong> All features are currently FREE during beta testing! Help us improve by sharing feedback</div>
-                        </div>
-                        <div class="tip-item">
-                            <span class="tip-number">3</span>
-                            <div class="tip-content"><strong>Choose Strategy Wisely:</strong> Use "Basic Search" for general hunting, "Smart Granular" for adaptive increments, or try "AI Search" with community learning</div>
-                        </div>
-                        <div class="tip-item">
-                            <span class="tip-number">4</span>
-                            <div class="tip-content"><strong>Working Box Numbers:</strong> Find any 14-digit box number from Pop Mart's website - look under product images for the code</div>
-                        </div>
-                        <div class="tip-item">
-                            <span class="tip-number">5</span>
-                            <div class="tip-content"><strong>Performance Stats:</strong> View detailed URL generation stats including strategy used, range coverage, and estimated success rate</div>
-                        </div>
-                        <div class="tip-item">
-                            <span class="tip-number">6</span>
-                            <div class="tip-content"><strong>URL Checking:</strong> Click individual numbered URLs to check availability - track your progress with the numbers</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="help-section">
-                    <h3>🎯 Search Strategies Explained</h3>
-                    
-                    <h4>🆓 Free Strategies (Available to all users):</h4>
-                    <div class="faq-item">
-                        <div class="faq-question">🧠 Basic Search</div>
-                        <div class="faq-answer">Takes your input box number and increments forward with granular steps (25, 50, 75, 100, 150, 200, 250, 300, 400, 500, 750, 1000, 1500, 2000). Proven effective and catches small gaps between boxes. Simple, reliable, and user-controlled starting point.</div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question">🎯 Smart Granular</div>
-                        <div class="faq-answer">Adaptive increments that automatically adjust based on each set's known range patterns. Uses micro increments (+10-300) for tight ranges, standard increments (+100-2000) for medium ranges, and macro increments (+500-10000) for wide ranges.</div>
-                    </div>
-                    
-                    <h4>🤖 AI-Powered Strategy (Community Learning):</h4>
-                    <div class="faq-item">
-                        <div class="faq-question">🤖 AI Search</div>
-                        <div class="faq-answer">Community-learning algorithm that combines Basic and Smart Granular strategies while learning from real box discoveries. Uses live community data to identify successful patterns, hot zones, and optimal increment weights for each set. Gets smarter over time as more users find boxes.</div>
-                    </div>
-                </div>
-                
-                <div class="help-section">
-                    <h3>❓ Frequently Asked Questions</h3>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">How do I find a working box number?</div>
-                        <div class="faq-answer">Visit Pop Mart's website, find any available box in your desired set, and copy the 14-digit number from the URL or product page. You can also use our community suggestions for proven numbers.</div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">Why do I need to check URLs individually?</div>
-                        <div class="faq-answer">This tool generates potential URLs based on numbering patterns. Each URL needs to be checked manually on Pop Mart's website to see if that specific box is available for purchase.</div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">What's the success rate of finding available boxes?</div>
-                        <div class="faq-answer">Success rates vary by set and timing, but our algorithms typically achieve 85-98% pattern accuracy. Fresh drop data and advanced strategies significantly improve your chances.</div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">Is this legal and safe to use?</div>
-                        <div class="faq-answer">Yes! This tool simply generates URLs based on public numbering patterns. You're still purchasing through Pop Mart's official website using their normal checkout process.</div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">When will Live Monitoring be available?</div>
-                        <div class="faq-answer">Live monitoring requires a Node.js backend server and is currently in development. We'll announce when this feature becomes available.</div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">Can I use this on mobile devices?</div>
-                        <div class="faq-answer">Absolutely! The interface is fully optimized for mobile devices with touch-friendly controls and responsive design.</div>
-                    </div>
-                </div>
-                
-                <div class="help-section">
-                    <h3>📞 Support & Contact</h3>
-                    <p>Need help or have suggestions? We'd love to hear from you!</p>
-                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 15px;">
-                        <p><strong>🐛 Bug Reports:</strong> Found an issue? Please report it with details about your browser and steps to reproduce.</p>
-                        <p><strong>💡 Feature Requests:</strong> Have ideas for improvements? We're always looking to enhance the tool.</p>
-                        <p><strong>❓ Usage Questions:</strong> Stuck on how to use a feature? Check the Quick Start Guide above or reach out.</p>
-                    </div>
-                    <p style="margin-top: 15px;"><em>Contact information and support portal coming soon!</em></p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="footer">
-            <div class="version-info">
-                <span class="version-badge">V3.4.3</span>
-                <span class="version-text">© 2025 RH Designs</span>
-                <button id="debug-btn" style="background: none; border: none; color: #6c757d; font-size: 0.8rem; margin-left: 10px; cursor: pointer;">Debug</button>
-            </div>
+```
+<div class="container">
+    <div style="background: linear-gradient(135deg, #17a2b8, #20c997); color: white; padding: 8px 20px; text-align: center; font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 15px; flex-wrap: wrap;">
+        <span>🧪 V3.4.3 BETA - Help us test the next generation! Your feedback shapes the future.</span>
+        <button id="feedback-btn" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); color: white; padding: 4px 12px; border-radius: 15px; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
+            Share Feedback
+        </button>
+    </div>
+    
+    <div class="header">
+        <div class="popmart-logo">POP MART</div>
+        <h1>Smart Box Discovery System</h1>
+        <p>Find available mystery boxes faster with AI-powered URL generation and real community data</p>
+        <div style="margin-top: 20px;">
+            <a href="https://www.popmart.com/us/pop-now/list" target="_blank" class="quick-link">
+                🚀 Check Live Status on Pop Now
+            </a>
         </div>
     </div>
-
-    <div class="toast" id="toast"></div>
-
-    <div class="feedback-overlay" id="feedback-overlay">
-        <div class="feedback-modal">
-            <div class="feedback-header">
-                <h3>🚀 Help Us Improve!</h3>
-                <p>Your feedback helps make this tool better for everyone</p>
-            </div>
-            
-            <form name="feedback" method="POST" data-netlify="true" class="feedback-form">
-                <div>
-                    <label for="feedback-type">Feedback Type</label>
-                    <select name="feedback-type" id="feedback-type" required>
-                        <option value="">Select feedback type...</option>
-                        <option value="bug-report">🐛 Bug Report</option>
-                        <option value="feature-request">💡 Feature Request</option>
-                        <option value="improvement">⚡ Improvement Suggestion</option>
-                        <option value="general">💬 General Feedback</option>
-                        <option value="data-update">📊 Set Data Update</option>
+    
+    <div class="content">
+        <div class="tab-navigation">
+            <button class="tab-btn active" id="generator-btn">🔧 Smart Generator</button>
+            <button class="tab-btn tab-disabled" id="monitor-btn" title="Coming soon - Node.js backend required">🚧 Live Monitor</button>
+            <button class="tab-btn" id="help-btn">❓ Help & Info</button>
+        </div>
+        
+        <div id="generator-tab" class="tab-content active">
+            <div class="section">
+                <div class="section-title">1️⃣ Set Selection</div>
+                <div class="form-group">
+                    <label for="set-selection">Choose Your Set</label>
+                    <select id="set-selection">
+                        <option value="40">Set 40 - The Monsters: Exciting Macaron</option>
+                        <option value="43">Set 43 - The Monsters: Almost Hidden Figures</option>
+                        <option value="50">Set 50 - The Monsters: Have A Seat</option>
+                        <option value="61">Set 61 - Mega Space Molly Series 3</option>
+                        <option value="111">Set 111 - Crybaby: Crying Again Plush</option>
+                        <option value="171">Set 171 - The Monsters: Coca Cola</option>
+                        <option value="180">Set 180 - Dimoo World X Disney Plush</option>
+                        <option value="195">Set 195 - The Monsters: Big Into Energy</option>
+                        <option value="201">Set 201 - Mickey Family: Cute Together</option>
+                        <option value="272">Set 272 - SkullPanda: L'impressionnisme</option>
+                        <option value="275">Set 275 - The Monsters: Wacky Mart Figures</option>
                     </select>
                 </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">2️⃣ Box Configuration</div>
+                <div class="form-group">
+                    <label for="known-box">Working Box Number</label>
+                    <input type="text" id="known-box" maxlength="14" placeholder="Find a 14-digit number under any box image on Pop Now">
+                    <div style="font-size: 0.85rem; color: #666; margin-top: 8px;">
+                        <strong>How to find:</strong> Go to Pop Now → Find any available box in your chosen set → Look under the product image for a 14-digit code (like 10000198200129) → Copy and paste it here
+                    </div>
+                </div>
+                <div id="community-insights"></div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">3️⃣ Generation Settings</div>
+                <div class="settings-grid">
+                    <div class="form-group">
+                        <label for="generation-scope">URL Quantity</label>
+                        <select id="generation-scope">
+                            <option value="250">Quick Test</option>
+                            <option value="350">Comprehensive</option>
+                            <option value="1000">Massive Scan</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="pattern-strategy">Search Method</label>
+                        <select id="pattern-strategy">
+                            <option value="basic">🧠 Basic Search (Beta Free) - Granular increments from your starting point</option>
+                            <option value="smart-granular">🎯 Smart Granular (Beta Free) - Adaptive increments based on set patterns</option>
+                            <option value="ai-search">🤖 AI Search (Beta Free) - Community-learning algorithm that improves over time</option>
+                        </select>
+                        <div style="font-size: 0.85rem; color: #666; margin-top: 8px;">Check the Help page for detailed explanations of each search method</div>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="btn generate-btn" id="generate-urls-btn">
+                <div>4️⃣ Generate Smart URLs</div>
+            </button>
+            
+            <div class="results" id="results">
+                <div class="results-header">
+                    <div style="font-size: 1.1rem; font-weight: 600; margin-bottom: 8px;">📋 Smart URLs Generated</div>
+                    <div id="url-count" style="color: #e52f3c; font-weight: 600;">0 URLs generated</div>
+                    
+                    <div class="url-stats" id="url-stats" style="display: none;">
+                        <div class="url-stats-grid">
+                            <div class="url-stat-item">
+                                <div class="url-stat-value" id="stat-total">0</div>
+                                <div class="url-stat-label">Total URLs</div>
+                            </div>
+                            <div class="url-stat-item">
+                                <div class="url-stat-value" id="stat-strategy">Basic</div>
+                                <div class="url-stat-label">Strategy Used</div>
+                            </div>
+                            <div class="url-stat-item">
+                                <div class="url-stat-value" id="stat-ranges">0</div>
+                                <div class="url-stat-label">Range Coverage</div>
+                            </div>
+                            <div class="url-stat-item">
+                                <div class="url-stat-value" id="stat-estimated">85%</div>
+                                <div class="url-stat-label">Est. Success</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="results-actions">
+                        <button class="btn copy-btn" id="copy-urls-btn">📄 Copy All</button>
+                        <button class="btn monitor-btn" id="load-monitor-btn">📊 Monitor</button>
+                    </div>
+                    
+                    <div style="background: linear-gradient(135deg, #e8f5e8, #d4f4dd); border: 1px solid #28a745; border-radius: 8px; padding: 12px; margin-top: 15px; text-align: center;">
+                        <div style="color: #155724; font-size: 0.9rem; margin-bottom: 8px;">
+                            🎯 <strong>Found your treasure?</strong> This tool helped generate these smart URLs for free!
+                        </div>
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap;">
+                            <span style="color: #155724; font-size: 0.85rem;">If this helped you find your prized Labubu or saved you time, please consider:</span>
+                            <a href="https://buymeacoffee.com/Boxfinder" target="_blank" style="background: #28a745; color: white; padding: 6px 15px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: all 0.3s ease; display: inline-block;">
+                                🍕 Buy me a pizza
+                            </a>
+                        </div>
+                        <div style="color: #666; font-size: 0.75rem; margin-top: 5px; font-style: italic;">
+                            Helps keep the tool free & servers running! Thank you! 💚
+                        </div>
+                    </div>
+                </div>
+                <div class="url-list" id="url-list"></div>
+            </div>
+        </div>
+        
+        <div id="monitoring-tab" class="tab-content">
+            <div style="text-align: center; padding: 60px 20px; background: #f8f9fa; border-radius: 12px; border: 2px dashed #6c757d;">
+                <h3 style="color: #6c757d; margin-bottom: 15px; font-size: 1.5rem;">🚧 Coming Soon</h3>
+                <p style="font-size: 1.1rem; color: #6c757d; margin-bottom: 20px;">Live URL monitoring is currently in development</p>
                 
+                <div style="background: white; padding: 20px; border-radius: 10px; margin-top: 20px; text-align: left; max-width: 500px; margin-left: auto; margin-right: auto;">
+                    <h4 style="color: #333; margin-bottom: 15px; text-align: center;">🔧 Technical Requirements:</h4>
+                    <ul style="color: #666; line-height: 1.6;">
+                        <li>Node.js backend server for URL checking</li>
+                        <li>Real-time WebSocket connections</li>
+                        <li>CORS proxy for Pop Mart API access</li>
+                        <li>Database for status tracking</li>
+                    </ul>
+                    
+                    <h4 style="color: #333; margin: 20px 0 15px 0; text-align: center;">✨ Planned Features:</h4>
+                    <ul style="color: #666; line-height: 1.6;">
+                        <li>📊 Real-time availability monitoring</li>
+                        <li>🔔 Instant browser notifications</li>
+                        <li>📈 Success rate analytics</li>
+                        <li>⚡ 2-5 second checking intervals</li>
+                        <li>💾 Historical status data</li>
+                    </ul>
+                </div>
+                
+                <div style="margin-top: 30px;">
+                    <p style="color: #28a745; font-weight: 600; margin-bottom: 10px;">🚀 For now, use the Smart Generator to create URLs!</p>
+                    <button class="btn generate-btn" id="goto-generator-btn" style="margin-top: 10px; padding: 12px 24px; font-size: 1rem;">
+                        Go to Smart Generator
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="help-tab" class="tab-content">
+            <div class="help-section">
+                <h3>🚀 Quick Start Guide</h3>
+                <div class="feature-highlight">
+                    <strong>New to Pop Mart box hunting?</strong> This tool helps you discover available mystery boxes by generating smart URLs based on proven patterns.
+                </div>
+                <p><span class="step-number">1</span><strong>Select Your Set:</strong> Choose from current drops like "The Monsters" series or new releases</p>
+                <p><span class="step-number">2</span><strong>Get a Working Box Number:</strong> Find any 14-digit box number from Pop Mart's website, or use our community suggestions</p>
+                <p><span class="step-number">3</span><strong>Choose Your Strategy:</strong> Pick from 3 different algorithms designed for different hunting styles</p>
+                <p><span class="step-number">4</span><strong>Generate & Hunt:</strong> Create hundreds of smart URLs and check them individually for availability</p>
+            </div>
+            
+            <div class="help-section">
+                <h3>💡 Complete Usage Guide</h3>
                 <div>
-                    <label for="feedback-subject">Subject</label>
-                    <input type="text" name="subject" id="feedback-subject" placeholder="Brief description of your feedback" required>
+                    <div class="tip-item">
+                        <span class="tip-number">1</span>
+                        <div class="tip-content"><strong>Check Live Status:</strong> Click "🚀 Check Live Status on Pop Now" to see what's currently available on PopMart</div>
+                    </div>
+                    <div class="tip-item">
+                        <span class="tip-number">2</span>
+                        <div class="tip-content"><strong>Beta Testing:</strong> All features are currently FREE during beta testing! Help us improve by sharing feedback</div>
+                    </div>
+                    <div class="tip-item">
+                        <span class="tip-number">3</span>
+                        <div class="tip-content"><strong>Choose Strategy Wisely:</strong> Use "Basic Search" for general hunting, "Smart Granular" for adaptive increments, or try "AI Search" with community learning</div>
+                    </div>
+                    <div class="tip-item">
+                        <span class="tip-number">4</span>
+                        <div class="tip-content"><strong>Working Box Numbers:</strong> Find any 14-digit box number from Pop Mart's website - look under product images for the code</div>
+                    </div>
+                    <div class="tip-item">
+                        <span class="tip-number">5</span>
+                        <div class="tip-content"><strong>Performance Stats:</strong> View detailed URL generation stats including strategy used, range coverage, and estimated success rate</div>
+                    </div>
+                    <div class="tip-item">
+                        <span class="tip-number">6</span>
+                        <div class="tip-content"><strong>URL Checking:</strong> Click individual numbered URLs to check availability - track your progress with the numbers</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="help-section">
+                <h3>🎯 Search Strategies Explained</h3>
+                
+                <h4>🆓 Free Strategies (Available to all users):</h4>
+                <div class="faq-item">
+                    <div class="faq-question">🧠 Basic Search</div>
+                    <div class="faq-answer">Takes your input box number and increments forward with granular steps (25, 50, 75, 100, 150, 200, 250, 300, 400, 500, 750, 1000, 1500, 2000). Proven effective and catches small gaps between boxes. Simple, reliable, and user-controlled starting point.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">🎯 Smart Granular</div>
+                    <div class="faq-answer">Adaptive increments that automatically adjust based on each set's known range patterns. Uses micro increments (+10-300) for tight ranges, standard increments (+100-2000) for medium ranges, and macro increments (+500-10000) for wide ranges.</div>
                 </div>
                 
-                <div>
-                    <label for="feedback-message">Message</label>
-                    <textarea name="message" id="feedback-message" placeholder="Please provide details about your feedback, bug report, or suggestion..." required></textarea>
+                <h4>🤖 AI-Powered Strategy (Community Learning):</h4>
+                <div class="faq-item">
+                    <div class="faq-question">🤖 AI Search</div>
+                    <div class="faq-answer">Community-learning algorithm that combines Basic and Smart Granular strategies while learning from real box discoveries. Uses live community data to identify successful patterns, hot zones, and optimal increment weights for each set. Gets smarter over time as more users find boxes.</div>
+                </div>
+            </div>
+            
+            <div class="help-section">
+                <h3>❓ Frequently Asked Questions</h3>
+                
+                <div class="faq-item">
+                    <div class="faq-question">How do I find a working box number?</div>
+                    <div class="faq-answer">Visit Pop Mart's website, find any available box in your desired set, and copy the 14-digit number from the URL or product page. You can also use our community suggestions for proven numbers.</div>
                 </div>
                 
-                <div>
-                    <label for="feedback-email">Email (optional)</label>
-                    <input type="email" name="email" id="feedback-email" placeholder="your@email.com (if you want a response)">
+                <div class="faq-item">
+                    <div class="faq-question">Why do I need to check URLs individually?</div>
+                    <div class="faq-answer">This tool generates potential URLs based on numbering patterns. Each URL needs to be checked manually on Pop Mart's website to see if that specific box is available for purchase.</div>
                 </div>
                 
-                <div class="feedback-actions">
-                    <button type="submit" class="feedback-submit">Send Feedback</button>
-                    <button type="button" class="feedback-cancel" id="feedback-cancel-btn">Cancel</button>
+                <div class="faq-item">
+                    <div class="faq-question">What's the success rate of finding available boxes?</div>
+                    <div class="faq-answer">Success rates vary by set and timing, but our algorithms typically achieve 85-98% pattern accuracy. Fresh drop data and advanced strategies significantly improve your chances.</div>
                 </div>
-            </form>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Is this legal and safe to use?</div>
+                    <div class="faq-answer">Yes! This tool simply generates URLs based on public numbering patterns. You're still purchasing through Pop Mart's official website using their normal checkout process.</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">When will Live Monitoring be available?</div>
+                    <div class="faq-answer">Live monitoring requires a Node.js backend server and is currently in development. We'll announce when this feature becomes available.</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Can I use this on mobile devices?</div>
+                    <div class="faq-answer">Absolutely! The interface is fully optimized for mobile devices with touch-friendly controls and responsive design.</div>
+                </div>
+            </div>
+            
+            <div class="help-section">
+                <h3>📞 Support & Contact</h3>
+                <p>Need help or have suggestions? We'd love to hear from you!</p>
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 15px;">
+                    <p><strong>🐛 Bug Reports:</strong> Found an issue? Please report it with details about your browser and steps to reproduce.</p>
+                    <p><strong>💡 Feature Requests:</strong> Have ideas for improvements? We're always looking to enhance the tool.</p>
+                    <p><strong>❓ Usage Questions:</strong> Stuck on how to use a feature? Check the Quick Start Guide above or reach out.</p>
+                </div>
+                <p style="margin-top: 15px;"><em>Contact information and support portal coming soon!</em></p>
+            </div>
+            
+            <div class="help-section">
+                <h3>💚 Support the Project</h3>
+                <div style="background: linear-gradient(135deg, #e8f5e8, #d4f4dd); padding: 20px; border-radius: 10px; margin-top: 15px; border: 1px solid #28a745;">
+                    <p style="color: #155724; margin-bottom: 15px;">This tool is <strong>completely free</strong> and has helped thousands of collectors find their dream boxes, including rare Labubu figures!</p>
+                    
+                    <div style="background: white; padding: 15px; border-radius: 8px; margin: 15px 0;">
+                        <h4 style="color: #28a745; margin-bottom: 10px;">🎯 What your support helps with:</h4>
+                        <ul style="color: #155724; line-height: 1.6;">
+                            <li>💻 <strong>Server costs</strong> - keeping the tool online 24/7</li>
+                            <li>🔄 <strong>Fresh data analysis</strong> - daily pattern updates</li>
+                            <li>⚡ <strong>New features</strong> - better algorithms and monitoring tools</li>
+                            <li>📦 <strong>New sets</strong> - adding latest Pop Mart releases quickly</li>
+                            <li>🛠️ <strong>Bug fixes</strong> - maintaining and improving the system</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 20px;">
+                        <p style="color: #155724; margin-bottom: 15px;">Found your prized Labubu or this tool saved you hours of hunting?</p>
+                        <a href="https://buymeacoffee.com/Boxfinder" target="_blank" style="background: #28a745; color: white; padding: 12px 25px; border-radius: 25px; font-size: 1rem; font-weight: 600; text-decoration: none; transition: all 0.3s ease; display: inline-block; box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);">
+                            🍕 Buy me a pizza - Thank you!
+                        </a>
+                    </div>
+                    
+                    <p style="color: #666; font-size: 0.85rem; text-align: center; margin-top: 15px; font-style: italic;">
+                        Every pizza helps keep this tool free for the entire Pop Mart community! 🙏
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
+    
+    <div class="footer">
+        <div class="version-info">
+            <span class="version-badge">V3.4.3</span>
+            <span class="version-text">© 2025 RH Designs</span>
+            <a href="https://buymeacoffee.com/Boxfinder" target="_blank" style="background: #e63b7a; color: white; padding: 4px 12px; border-radius: 15px; font-size: 0.8rem; font-weight: 600; text-decoration: none; margin-left: 15px; transition: all 0.3s ease;">
+                🍕 Support the project
+            </a>
+            <button id="debug-btn" style="background: none; border: none; color: #6c757d; font-size: 0.8rem; margin-left: 10px; cursor: pointer;">Debug</button>
+        </div>
+    </div>
+</div>
 
-    <script>
-        // Set patterns data
-        const setPatterns = {
-            '40': { 
-                name: 'The Monsters: Exciting Macaron', 
-                example: '10008188500280',
-                communityRanges: ['82000xxxxx', '83000xxxxx', '84000xxxxx', '85000xxxxx', '86000xxxxx', '87000xxxxx', '88000xxxxx'],
-                lastConfirmed: 'PATTERN ANALYSIS - Tomorrow\'s predicted ranges based on today\'s drop analysis',
-                successRate: 0.89,
-                contributors: 49,
-                todaysBoxes: 0,
-                dropAnalysis: {
-                    minRange: 820000,
-                    maxRange: 880000,
-                    totalSpread: 60000,
-                    activeRanges: 7,
-                    patternType: 'Predicted: Wide 60k spread based on today\'s pattern (789860-818850)'
-                }
-            },
-            '195': { 
-                name: 'The Monsters: Big Into Energy', 
-                example: '10002297200585',
-                communityRanges: ['24100xxxxx', '24200xxxxx', '24300xxxxx', '24400xxxxx', '24500xxxxx', '24600xxxxx', '24700xxxxx'],
-                lastConfirmed: 'PATTERN ANALYSIS - Tomorrow\'s predicted ranges based on today\'s drop analysis',
-                successRate: 0.91,
-                contributors: 69,
-                todaysBoxes: 0,
-                dropAnalysis: {
-                    minRange: 241000,
-                    maxRange: 247000,
-                    totalSpread: 6000,
-                    activeRanges: 7,
-                    patternType: 'Predicted: Dense 6k spread based on today\'s pattern (228410-240180)'
-                }
-            },
-            '50': { 
-                name: 'The Monsters: Have A Seat', 
-                example: '10010386900350',
-                communityRanges: ['10450xxxxx', '10460xxxxx', '10470xxxxx', '10480xxxxx', '10490xxxxx', '10500xxxxx'],
-                lastConfirmed: 'PATTERN ANALYSIS - Tomorrow\'s predicted ranges based on today\'s drop analysis',
-                successRate: 0.88,
-                contributors: 53,
-                todaysBoxes: 0,
-                dropAnalysis: {
-                    minRange: 1045000,
-                    maxRange: 1050000,
-                    totalSpread: 5000,
-                    activeRanges: 6,
-                    patternType: 'Predicted: Tight 5k spread based on today\'s pattern (1033570-1044900)'
-                }
-            },
-            '275': { 
-                name: 'The Monsters: Wacky Mart Figures', 
-                example: '10000182000825',
-                communityRanges: ['22500xxxxx', '23000xxxxx', '23500xxxxx', '24000xxxxx', '24500xxxxx', '25000xxxxx', '25500xxxxx', '26000xxxxx'],
-                lastConfirmed: '🔥 FRESH PATTERN LEARNED - First drop analysis for tomorrow\'s predictions',
-                successRate: 0.92,
-                contributors: 52,
-                todaysBoxes: 0,
-                dropAnalysis: {
-                    minRange: 225000,
-                    maxRange: 260000,
-                    totalSpread: 35000,
-                    activeRanges: 8,
-                    patternType: 'NEW SET: Wide 35k spread predicted from tonight\'s fresh drop (121300-222400)'
-                }
-            },
-            '43': { 
-                name: 'The Monsters: Almost Hidden Figures', 
-                example: '10000198200129',
-                communityRanges: ['16940xxxxx', '16950xxxxx', '16980xxxxx', '17030xxxxx', '17230xxxxx', '17450xxxxx', '17510xxxxx', '17670xxxxx', '17800xxxxx', '17840xxxxx', '17890xxxxx', '17960xxxxx', '18000xxxxx', '18040xxxxx', '18070xxxxx', '18140xxxxx', '18180xxxxx', '18250xxxxx', '18300xxxxx', '18310xxxxx', '18350xxxxx', '18550xxxxx', '18570xxxxx', '18650xxxxx', '18700xxxxx', '18910xxxxx', '19030xxxxx', '19060xxxxx', '19220xxxxx', '19270xxxxx', '19560xxxxx', '19570xxxxx', '19600xxxxx', '19630xxxxx', '19640xxxxx', '19820xxxxx', '19840xxxxx', '19920xxxxx', '19930xxxxx', '20040xxxxx', '20080xxxxx', '20180xxxxx'],
-                lastConfirmed: 'Historical pattern data - needs fresh drop analysis for predictions',
-                successRate: 0.94,
-                contributors: 62,
-                todaysBoxes: 0,
-                dropAnalysis: {
-                    minRange: 169400,
-                    maxRange: 201800,
-                    totalSpread: 32400,
-                    activeRanges: 42,
-                    patternType: 'Historical: Medium 32k spread - needs current drop data for prediction'
-                }
-            },
-            '272': { 
-                name: 'SkullPanda: L\'impressionnisme', 
-                example: '10000807401904',
-                communityRanges: ['80740xxxxx', '81650xxxxx', '83120xxxxx', '84470xxxxx', '85370xxxxx', '87760xxxxx', '88820xxxxx', '89840xxxxx', '90900xxxxx', '91350xxxxx', '92950xxxxx', '94360xxxxx', '95320xxxxx'],
-                lastConfirmed: 'Historical pattern data - needs fresh drop analysis for predictions',
-                successRate: 0.98,
-                contributors: 27,
-                todaysBoxes: 0,
-                dropAnalysis: {
-                    minRange: 807401,
-                    maxRange: 953201,
-                    totalSpread: 145800,
-                    activeRanges: 13,
-                    patternType: 'Historical: Wide 146k spread - needs current drop data for prediction'
-                }
-            },
-            '180': { 
-                name: 'Dimoo World X Disney Plush', 
-                example: '10001095801260',
-                communityRanges: ['10956xxxxx', '10960xxxxx', '10965xxxxx', '11084xxxxx', '11089xxxxx', '11105xxxxx', '11115xxxxx', '11124xxxxx', '11138xxxxx', '11142xxxxx', '11149xxxxx', '11150xxxxx', '11170xxxxx'],
-                lastConfirmed: 'Historical pattern data - needs fresh drop analysis for predictions',
-                successRate: 0.94,
-                contributors: 36,
-                todaysBoxes: 0,
-                dropAnalysis: {
-                    minRange: 1095801,
-                    maxRange: 1117101,
-                    totalSpread: 21300,
-                    activeRanges: 13,
-                    patternType: 'Historical: Medium 21k spread - needs current drop data for prediction'
-                }
-            },
-            '61': { 
-                name: 'Mega Space Molly Series 3', 
-                example: '10020256600183',
-                communityRanges: ['20256xxxxx', '20257xxxxx', '20258xxxxx', '20259xxxxx', '20260xxxxx', '20261xxxxx', '20262xxxxx', '20263xxxxx'],
-                lastConfirmed: 'Historical pattern data - needs fresh drop analysis for predictions',
-                successRate: 0.96,
-                contributors: 37,
-                todaysBoxes: 0,
-                dropAnalysis: {
-                    minRange: 2025660,
-                    maxRange: 2026310,
-                    totalSpread: 6510,
-                    activeRanges: 8,
-                    patternType: 'Historical: Very tight 7k spread - needs current drop data for prediction'
-                }
-            },
-            '111': { 
-                name: 'Crybaby: Crying Again Plush', 
-                example: '10002867000333',
-                communityRanges: ['28670xxxxx', '28680xxxxx', '28739xxxxx'],
-                lastConfirmed: 'Limited data - needs more drop analysis for reliable predictions',
-                successRate: 0.85,
-                contributors: 3,
-                todaysBoxes: 0
-            },
-            '171': { 
-                name: 'The Monsters: Coca Cola', 
-                example: '10005413700513',
-                communityRanges: ['52470xxxxx', '53600xxxxx', '54200xxxxx', '54440xxxxx'],
-                lastConfirmed: 'Historical pattern data - needs fresh drop analysis for predictions',
-                successRate: 0.95,
-                contributors: 61,
-                todaysBoxes: 0
-            },
-            '201': { 
-                name: 'Mickey Family: Cute Together', 
-                example: '10000245500603',
-                communityRanges: ['02455xxxxx', '02567xxxxx'],
-                lastConfirmed: 'Historical pattern data - needs fresh drop analysis for predictions',
-                successRate: 0.79,
-                contributors: 19,
-                todaysBoxes: 0
-            }
-        };
+<div class="toast" id="toast"></div>
 
-        // Global variables
-        let generatedUrls = [];
-        let currentUserTier = 'free';
+<div class="feedback-overlay" id="feedback-overlay">
+    <div class="feedback-modal">
+        <div class="feedback-header">
+            <h3>🚀 Help Us Improve!</h3>
+            <p>Your feedback helps make this tool better for everyone</p>
+        </div>
         
-        // Utility functions
-        function showToast(message, type = 'success') {
-            const toast = document.getElementById('toast');
-            toast.textContent = message;
-            toast.className = `toast ${type}`;
-            toast.classList.add('show');
+        <form name="feedback" method="POST" data-netlify="true" class="feedback-form">
+            <div>
+                <label for="feedback-type">Feedback Type</label>
+                <select name="feedback-type" id="feedback-type" required>
+                    <option value="">Select feedback type...</option>
+                    <option value="bug-report">🐛 Bug Report</option>
+                    <option value="feature-request">💡 Feature Request</option>
+                    <option value="improvement">⚡ Improvement Suggestion</option>
+                    <option value="general">💬 General Feedback</option>
+                    <option value="data-update">📊 Set Data Update</option>
+                </select>
+            </div>
             
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
+            <div>
+                <label for="feedback-subject">Subject</label>
+                <input type="text" name="subject" id="feedback-subject" placeholder="Brief description of your feedback" required>
+            </div>
+            
+            <div>
+                <label for="feedback-message">Message</label>
+                <textarea name="message" id="feedback-message" placeholder="Please provide details about your feedback, bug report, or suggestion..." required></textarea>
+            </div>
+            
+            <div>
+                <label for="feedback-email">Email (optional)</label>
+                <input type="email" name="email" id="feedback-email" placeholder="your@email.com (if you want a response)">
+            </div>
+            
+            <div class="feedback-actions">
+                <button type="submit" class="feedback-submit">Send Feedback</button>
+                <button type="button" class="feedback-cancel" id="feedback-cancel-btn">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Set patterns data
+    const setPatterns = {
+        '40': { 
+            name: 'The Monsters: Exciting Macaron', 
+            example: '10008188500280',
+            communityRanges: ['82000xxxxx', '83000xxxxx', '84000xxxxx', '85000xxxxx', '86000xxxxx', '87000xxxxx', '88000xxxxx'],
+            lastConfirmed: 'PATTERN ANALYSIS - Tomorrow\'s predicted ranges based on today\'s drop analysis',
+            successRate: 0.89,
+            contributors: 49,
+            todaysBoxes: 0,
+            dropAnalysis: {
+                minRange: 820000,
+                maxRange: 880000,
+                totalSpread: 60000,
+                activeRanges: 7,
+                patternType: 'Predicted: Wide 60k spread based on today\'s pattern (789860-818850)'
+            }
+        },
+        '195': { 
+            name: 'The Monsters: Big Into Energy', 
+            example: '10002297200585',
+            communityRanges: ['24100xxxxx', '24200xxxxx', '24300xxxxx', '24400xxxxx', '24500xxxxx', '24600xxxxx', '24700xxxxx'],
+            lastConfirmed: 'PATTERN ANALYSIS - Tomorrow\'s predicted ranges based on today\'s drop analysis',
+            successRate: 0.91,
+            contributors: 69,
+            todaysBoxes: 0,
+            dropAnalysis: {
+                minRange: 241000,
+                maxRange: 247000,
+                totalSpread: 6000,
+                activeRanges: 7,
+                patternType: 'Predicted: Dense 6k spread based on today\'s pattern (228410-240180)'
+            }
+        },
+        '50': { 
+            name: 'The Monsters: Have A Seat', 
+            example: '10010386900350',
+            communityRanges: ['10450xxxxx', '10460xxxxx', '10470xxxxx', '10480xxxxx', '10490xxxxx', '10500xxxxx'],
+            lastConfirmed: 'PATTERN ANALYSIS - Tomorrow\'s predicted ranges based on today\'s drop analysis',
+            successRate: 0.88,
+            contributors: 53,
+            todaysBoxes: 0,
+            dropAnalysis: {
+                minRange: 1045000,
+                maxRange: 1050000,
+                totalSpread: 5000,
+                activeRanges: 6,
+                patternType: 'Predicted: Tight 5k spread based on today\'s pattern (1033570-1044900)'
+            }
+        },
+        '275': { 
+            name: 'The Monsters: Wacky Mart Figures', 
+            example: '10000182000825',
+            communityRanges: ['22500xxxxx', '23000xxxxx', '23500xxxxx', '24000xxxxx', '24500xxxxx', '25000xxxxx', '25500xxxxx', '26000xxxxx'],
+            lastConfirmed: '🔥 FRESH PATTERN LEARNED - First drop analysis for tomorrow\'s predictions',
+            successRate: 0.92,
+            contributors: 52,
+            todaysBoxes: 0,
+            dropAnalysis: {
+                minRange: 225000,
+                maxRange: 260000,
+                totalSpread: 35000,
+                activeRanges: 8,
+                patternType: 'NEW SET: Wide 35k spread predicted from tonight\'s fresh drop (121300-222400)'
+            }
+        },
+        '43': { 
+            name: 'The Monsters: Almost Hidden Figures', 
+            example: '10000198200129',
+            communityRanges: ['16940xxxxx', '16950xxxxx', '16980xxxxx', '17030xxxxx', '17230xxxxx', '17450xxxxx', '17510xxxxx', '17670xxxxx', '17800xxxxx', '17840xxxxx', '17890xxxxx', '17960xxxxx', '18000xxxxx', '18040xxxxx', '18070xxxxx', '18140xxxxx', '18180xxxxx', '18250xxxxx', '18300xxxxx', '18310xxxxx', '18350xxxxx', '18550xxxxx', '18570xxxxx', '18650xxxxx', '18700xxxxx', '18910xxxxx', '19030xxxxx', '19060xxxxx', '19220xxxxx', '19270xxxxx', '19560xxxxx', '19570xxxxx', '19600xxxxx', '19630xxxxx', '19640xxxxx', '19820xxxxx', '19840xxxxx', '19920xxxxx', '19930xxxxx', '20040xxxxx', '20080xxxxx', '20180xxxxx'],
+            lastConfirmed: 'Historical pattern data - needs fresh drop analysis for predictions',
+            successRate: 0.94,
+            contributors: 62,
+            todaysBoxes: 0,
+            dropAnalysis: {
+                minRange: 169400,
+                maxRange: 201800,
+                totalSpread: 32400,
+                activeRanges: 42,
+                patternType: 'Historical: Medium 32k spread - needs current drop data for prediction'
+            }
+        },
+        '272': { 
+            name: 'SkullPanda: L\'impressionnisme', 
+            example: '10000807401904',
+            communityRanges: ['80740xxxxx', '81650xxxxx', '83120xxxxx', '84470xxxxx', '85370xxxxx', '87760xxxxx', '88820xxxxx', '89840xxxxx', '90900xxxxx', '91350xxxxx', '92950xxxxx', '94360xxxxx', '95320xxxxx'],
+            lastConfirmed: 'Historical pattern data - needs fresh drop analysis for predictions',
+            successRate: 0.98,
+            contributors: 27,
+            todaysBoxes: 0,
+            dropAnalysis: {
+                minRange: 807401,
+                maxRange: 953201,
+                totalSpread: 145800,
+                activeRanges: 13,
+                patternType: 'Historical: Wide 146k spread - needs current drop data for prediction'
+            }
+        },
+        '180': { 
+            name: 'Dimoo World X Disney Plush', 
+            example: '10001095801260',
+            communityRanges: ['10956xxxxx', '10960xxxxx', '10965xxxxx', '11084xxxxx', '11089xxxxx', '11105xxxxx', '11115xxxxx', '11124xxxxx', '11138xxxxx', '11142xxxxx', '11149xxxxx', '11150xxxxx', '11170xxxxx'],
+            lastConfirmed: 'Historical pattern data - needs fresh drop analysis for predictions',
+            successRate: 0.94,
+            contributors: 36,
+            todaysBoxes: 0,
+            dropAnalysis: {
+                minRange: 1095801,
+                maxRange: 1117101,
+                totalSpread: 21300,
+                activeRanges: 13,
+                patternType: 'Historical: Medium 21k spread - needs current drop data for prediction'
+            }
+        },
+        '61': { 
+            name: 'Mega Space Molly Series 3', 
+            example: '10020256600183',
+            communityRanges: ['20256xxxxx', '20257xxxxx', '20258xxxxx', '20259xxxxx', '20260xxxxx', '20261xxxxx', '20262xxxxx', '20263xxxxx'],
+            lastConfirmed: 'Historical pattern data - needs fresh drop analysis for predictions',
+            successRate: 0.96,
+            contributors: 37,
+            todaysBoxes: 0,
+            dropAnalysis: {
+                minRange: 2025660,
+                maxRange: 2026310,
+                totalSpread: 6510,
+                activeRanges: 8,
+                patternType: 'Historical: Very tight 7k spread - needs current drop data for prediction'
+            }
+        },
+        '111': { 
+            name: 'Crybaby: Crying Again Plush', 
+            example: '10002867000333',
+            communityRanges: ['28670xxxxx', '28680xxxxx', '28739xxxxx'],
+            lastConfirmed: 'Limited data - needs more drop analysis for reliable predictions',
+            successRate: 0.85,
+            contributors: 3,
+            todaysBoxes: 0
+        },
+        '171': { 
+            name: 'The Monsters: Coca Cola', 
+            example: '10005413700513',
+            communityRanges: ['52470xxxxx', '53600xxxxx', '54200xxxxx', '54440xxxxx'],
+            lastConfirmed: 'Historical pattern data - needs fresh drop analysis for predictions',
+            successRate: 0.95,
+            contributors: 61,
+            todaysBoxes: 0
+        },
+        '201': { 
+            name: 'Mickey Family: Cute Together', 
+            example: '10000245500603',
+            communityRanges: ['02455xxxxx', '02567xxxxx'],
+            lastConfirmed: 'Historical pattern data - needs fresh drop analysis for predictions',
+            successRate: 0.79,
+            contributors: 19,
+            todaysBoxes: 0
+        }
+    };
+
+    // Global variables
+    let generatedUrls = [];
+    let currentUserTier = 'free';
+    
+    // Utility functions
+    function showToast(message, type = 'success') {
+        const toast = document.getElementById('toast');
+        toast.textContent = message;
+        toast.className = `toast ${type}`;
+        toast.classList.add('show');
+        
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 3000);
+    }
+    
+    function showLoading(show = true) {
+        const overlay = document.getElementById('loading-overlay');
+        if (show) {
+            overlay.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        } else {
+            overlay.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    }
+    
+    // Tab functions
+    function switchToTab(tabName) {
+        // Hide all tabs
+        document.querySelectorAll('.tab-content').forEach(tab => {
+            tab.classList.remove('active');
+        });
+        
+        // Remove active from all buttons
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        
+        // Show target tab
+        const targetTab = document.getElementById(tabName + '-tab');
+        if (targetTab) {
+            targetTab.classList.add('active');
         }
         
-        function showLoading(show = true) {
-            const overlay = document.getElementById('loading-overlay');
-            if (show) {
-                overlay.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
-            } else {
-                overlay.style.display = 'none';
-                document.body.style.overflow = '';
-            }
+        // Activate correct button
+        if (tabName === 'generator') {
+            document.getElementById('generator-btn').classList.add('active');
+        } else if (tabName === 'help') {
+            document.getElementById('help-btn').classList.add('active');
         }
         
-        // Tab functions
-        function switchToTab(tabName) {
-            // Hide all tabs
-            document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            // Remove active from all buttons
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            // Show target tab
-            const targetTab = document.getElementById(tabName + '-tab');
-            if (targetTab) {
-                targetTab.classList.add('active');
-            }
-            
-            // Activate correct button
-            if (tabName === 'generator') {
-                document.getElementById('generator-btn').classList.add('active');
-            } else if (tabName === 'help') {
-                document.getElementById('help-btn').classList.add('active');
-            }
-            
-            console.log('Switched to ' + tabName);
+        console.log('Switched to ' + tabName);
+    }
+    
+    // Set data functions
+    function updateSetData() {
+        const setId = document.getElementById('set-selection').value;
+        const setData = setPatterns[setId];
+        if (setData) {
+            console.log('Updated to: ' + setData.name);
+            updateCommunityInsights(setId);
         }
+    }
+    
+    function updateCommunityInsights(setId) {
+        const setData = setPatterns[setId];
+        const insightsDiv = document.getElementById('community-insights');
         
-        // Set data functions
-        function updateSetData() {
-            const setId = document.getElementById('set-selection').value;
-            const setData = setPatterns[setId];
-            if (setData) {
-                console.log('Updated to: ' + setData.name);
-                updateCommunityInsights(setId);
-            }
-        }
+        if (!insightsDiv || !setData) return;
         
-        function updateCommunityInsights(setId) {
-            const setData = setPatterns[setId];
-            const insightsDiv = document.getElementById('community-insights');
-            
-            if (!insightsDiv || !setData) return;
-            
-            var isAlgoEnhanced = setData.lastConfirmed.includes('ALGO ENHANCED');
-            var isAlgoTraining = setData.lastConfirmed.includes('ALGO TRAINING');
-            var isLiveDropData = setData.lastConfirmed.includes('LIVE DROP DATA');
-            var hasFreshData = setData.lastConfirmed.includes('FRESH DROP DATA');
-            
-            var freshDataBadge = isAlgoEnhanced ? '<span style="background: #dc143c; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.7rem; margin-left: 8px;">⚡ ALGO ENHANCED</span>' :
-                                   isAlgoTraining ? '<span style="background: #17a2b8; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.7rem; margin-left: 8px;">🔬 ALGO TRAINING</span>' :
-                                   isLiveDropData ? '<span style="background: #ff1493; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.7rem; margin-left: 8px;">🔴 LIVE DATA</span>' :
-                                   hasFreshData ? '<span style="background: #e52f3c; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.7rem; margin-left: 8px;">🔥 FRESH DATA</span>' : '';
-            
-            var alertTitle = isAlgoEnhanced ? '⚡ ALGORITHM ENHANCED INTELLIGENCE:' :
-                              isAlgoTraining ? '🔬 ALGORITHM TRAINING DATA:' :
-                              isLiveDropData ? '🔴 LIVE DROP INTELLIGENCE:' :
-                              hasFreshData ? '🔥 FRESH DROP DATA:' : 
-                              '🚨 PATTERN ANALYSIS ALERT:';
-            
-            var alertDescription = isAlgoEnhanced ? 'Advanced algorithm analysis with enhanced pattern recognition!' :
-                                     isAlgoTraining ? 'Machine learning algorithms actively training on this dataset!' :
-                                     isLiveDropData ? 'Real box numbers from last night\'s actual drop!' :
-                                     hasFreshData ? setData.contributors + ' data points analyzed for tomorrow\'s predictions' : 
-                                     setData.contributors + ' data points analyzed for pattern prediction';
-            
-            var dropAnalysisHtml = '';
-            if (setData.dropAnalysis) {
-                dropAnalysisHtml = '<div style="background: rgba(220,20,60,0.1); border: 1px solid #dc143c; border-radius: 8px; padding: 10px; margin: 10px 0;">' +
-                    '<div style="font-weight: 600; color: #dc143c; margin-bottom: 5px; font-size: 0.85rem;">📊 Algorithm Analysis:</div>' +
-                    '<div style="font-size: 0.8rem; color: #666; line-height: 1.3;">' +
-                    '• Range Spread: ' + setData.dropAnalysis.totalSpread.toLocaleString() + ' numbers<br>' +
-                    '• Active Clusters: ' + setData.dropAnalysis.activeRanges + ' confirmed ranges<br>' +
-                    '• Pattern: ' + setData.dropAnalysis.patternType + '<br>' +
-                    '• Min Range: ' + setData.dropAnalysis.minRange.toLocaleString() + ' | Max: ' + setData.dropAnalysis.maxRange.toLocaleString() +
-                    '</div>' +
-                    '</div>';
-            }
-            
-            insightsDiv.innerHTML = 
-                '<div class="community-insight-card">' +
-                '<h4 style="color: #28a745; margin-bottom: 12px; font-size: 1rem;">' +
-                '🎯 SET ' + setId + ' - ' + (isAlgoEnhanced ? 'Algorithm Enhanced Intelligence' : isAlgoTraining ? 'Algorithm Training Data' : isLiveDropData ? 'Live Drop Intelligence' : hasFreshData ? 'Fresh Drop Intelligence' : 'Fresh Drop Data') + '!' + freshDataBadge +
-                '</h4>' +
-                '<div class="live-drop-alert" style="' + (isAlgoEnhanced ? 'background: linear-gradient(135deg, #dc143c, #b91c3c);' : isAlgoTraining ? 'background: linear-gradient(135deg, #17a2b8, #138496);' : isLiveDropData ? 'background: linear-gradient(135deg, #ff1493, #dc143c);' : '') + '">' +
-                '<strong>' + alertTitle + '</strong> ' + alertDescription +
-                '</div>' +
-                dropAnalysisHtml +
-                '<div class="stats-grid">' +
-                '<div class="stat-item">' +
-                '<div class="stat-value">' + setData.contributors + '</div>' +
-                '<div class="stat-label">' + (isAlgoEnhanced ? 'Algorithm Enhanced' : isAlgoTraining ? 'Training Dataset' : isLiveDropData ? 'Live Data Points' : hasFreshData ? 'Fresh Data Points' : 'Pattern Data Points') + '</div>' +
-                '</div>' +
-                '<div class="stat-item">' +
-                '<div class="stat-value">' + Math.round(setData.successRate * 100) + '%</div>' +
-                '<div class="stat-label">Expected Success Rate</div>' +
-                '</div>' +
-                '</div>' +
-                '<div style="background: rgba(255,255,255,0.8); border-radius: 8px; padding: 12px;">' +
-                '<div style="font-weight: 600; color: #155724; margin-bottom: 8px; font-size: 0.9rem;">🎯 ' + (isAlgoEnhanced ? 'Enhanced Prediction Ranges:' : isAlgoTraining ? 'Training Ranges:' : isLiveDropData ? 'Live Pattern Ranges:' : hasFreshData ? 'Fresh Prediction Ranges:' : 'Predicted Active Ranges:') + '</div>' +
-                '<div>' +
-                setData.communityRanges.map(function(range) {
-                    return '<span class="range-tag">' + range + '</span>';
-                }).join('') +
-                '</div>' +
-                (isAlgoEnhanced ? '<div style="margin-top: 8px; font-size: 0.8rem; color: #666; font-style: italic;">⚡ Enhanced with advanced algorithm analysis for maximum prediction accuracy!</div>' :
-                 isAlgoTraining ? '<div style="margin-top: 8px; font-size: 0.8rem; color: #666; font-style: italic;">🔬 Machine learning algorithms actively training on this dataset!</div>' :
-                 isLiveDropData ? '<div style="margin-top: 8px; font-size: 0.8rem; color: #666; font-style: italic;">🔴 Fresh pattern analysis from today\'s drop data - these ranges predict tomorrow\'s boxes!</div>' : 
-                 hasFreshData ? '<div style="margin-top: 8px; font-size: 0.8rem; color: #666; font-style: italic;">⚡ Fresh pattern analysis for tomorrow\'s drop predictions!</div>' : '') +
+        var isAlgoEnhanced = setData.lastConfirmed.includes('ALGO ENHANCED');
+        var isAlgoTraining = setData.lastConfirmed.includes('ALGO TRAINING');
+        var isLiveDropData = setData.lastConfirmed.includes('LIVE DROP DATA');
+        var hasFreshData = setData.lastConfirmed.includes('FRESH DROP DATA');
+        
+        var freshDataBadge = isAlgoEnhanced ? '<span style="background: #dc143c; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.7rem; margin-left: 8px;">⚡ ALGO ENHANCED</span>' :
+                               isAlgoTraining ? '<span style="background: #17a2b8; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.7rem; margin-left: 8px;">🔬 ALGO TRAINING</span>' :
+                               isLiveDropData ? '<span style="background: #ff1493; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.7rem; margin-left: 8px;">🔴 LIVE DATA</span>' :
+                               hasFreshData ? '<span style="background: #e52f3c; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.7rem; margin-left: 8px;">🔥 FRESH DATA</span>' : '';
+        
+        var alertTitle = isAlgoEnhanced ? '⚡ ALGORITHM ENHANCED INTELLIGENCE:' :
+                          isAlgoTraining ? '🔬 ALGORITHM TRAINING DATA:' :
+                          isLiveDropData ? '🔴 LIVE DROP INTELLIGENCE:' :
+                          hasFreshData ? '🔥 FRESH DROP DATA:' : 
+                          '🚨 PATTERN ANALYSIS ALERT:';
+        
+        var alertDescription = isAlgoEnhanced ? 'Advanced algorithm analysis with enhanced pattern recognition!' :
+                                 isAlgoTraining ? 'Machine learning algorithms actively training on this dataset!' :
+                                 isLiveDropData ? 'Real box numbers from last night\'s actual drop!' :
+                                 hasFreshData ? setData.contributors + ' data points analyzed for tomorrow\'s predictions' : 
+                                 setData.contributors + ' data points analyzed for pattern prediction';
+        
+        var dropAnalysisHtml = '';
+        if (setData.dropAnalysis) {
+            dropAnalysisHtml = '<div style="background: rgba(220,20,60,0.1); border: 1px solid #dc143c; border-radius: 8px; padding: 10px; margin: 10px 0;">' +
+                '<div style="font-weight: 600; color: #dc143c; margin-bottom: 5px; font-size: 0.85rem;">📊 Algorithm Analysis:</div>' +
+                '<div style="font-size: 0.8rem; color: #666; line-height: 1.3;">' +
+                '• Range Spread: ' + setData.dropAnalysis.totalSpread.toLocaleString() + ' numbers<br>' +
+                '• Active Clusters: ' + setData.dropAnalysis.activeRanges + ' confirmed ranges<br>' +
+                '• Pattern: ' + setData.dropAnalysis.patternType + '<br>' +
+                '• Min Range: ' + setData.dropAnalysis.minRange.toLocaleString() + ' | Max: ' + setData.dropAnalysis.maxRange.toLocaleString() +
                 '</div>' +
                 '</div>';
         }
         
-        // URL generation functions
-        function generateUrls() {
-            const setId = document.getElementById('set-selection').value;
-            const boxNumber = document.getElementById('known-box').value;
-            const quantity = parseInt(document.getElementById('generation-scope').value);
-            const strategy = document.getElementById('pattern-strategy').value;
-            
-            if (!boxNumber || boxNumber.length !== 14) {
-                showToast('Please enter a valid 14-digit box number', 'error');
-                return;
-            }
-            
-            showLoading(true);
-            
-            setTimeout(() => {
-                generatedUrls = [];
-                
-                const prefix = boxNumber.substring(0, 4);
-                const middle = boxNumber.substring(4, 10);
-                const suffix = boxNumber.substring(10, 14);
-                const baseMiddle = parseInt(middle);
-                
-                console.log('Starting ' + strategy + ' generation: Set ' + setId + ', ' + quantity + ' URLs');
-                
-                switch(strategy) {
-                    case 'basic':
-                        generateBasicUrls(setId, prefix, middle, suffix, baseMiddle, quantity);
-                        break;
-                    case 'smart-granular':
-                        generateSmartGranularUrls(setId, prefix, middle, suffix, baseMiddle, quantity);
-                        break;
-                    case 'ai-search':
-                        generateAISearchUrls(setId, prefix, middle, suffix, baseMiddle, quantity);
-                        break;
-                    default:
-                        generateBasicUrls(setId, prefix, middle, suffix, baseMiddle, quantity);
-                }
-                
-                displayResults(strategy, setId);
-                showLoading(false);
-                
-                showToast('Generated ' + generatedUrls.length + ' smart URLs using ' + getStrategyDisplayName(strategy) + '!');
-                console.log('Generated ' + generatedUrls.length + ' URLs using ' + strategy + ' strategy');
-            }, 2000);
+        insightsDiv.innerHTML = 
+            '<div class="community-insight-card">' +
+            '<h4 style="color: #28a745; margin-bottom: 12px; font-size: 1rem;">' +
+            '🎯 SET ' + setId + ' - ' + (isAlgoEnhanced ? 'Algorithm Enhanced Intelligence' : isAlgoTraining ? 'Algorithm Training Data' : isLiveDropData ? 'Live Drop Intelligence' : hasFreshData ? 'Fresh Drop Intelligence' : 'Fresh Drop Data') + '!' + freshDataBadge +
+            '</h4>' +
+            '<div class="live-drop-alert" style="' + (isAlgoEnhanced ? 'background: linear-gradient(135deg, #dc143c, #b91c3c);' : isAlgoTraining ? 'background: linear-gradient(135deg, #17a2b8, #138496);' : isLiveDropData ? 'background: linear-gradient(135deg, #ff1493, #dc143c);' : '') + '">' +
+            '<strong>' + alertTitle + '</strong> ' + alertDescription +
+            '</div>' +
+            dropAnalysisHtml +
+            '<div class="stats-grid">' +
+            '<div class="stat-item">' +
+            '<div class="stat-value">' + setData.contributors + '</div>' +
+            '<div class="stat-label">' + (isAlgoEnhanced ? 'Algorithm Enhanced' : isAlgoTraining ? 'Training Dataset' : isLiveDropData ? 'Live Data Points' : hasFreshData ? 'Fresh Data Points' : 'Pattern Data Points') + '</div>' +
+            '</div>' +
+            '<div class="stat-item">' +
+            '<div class="stat-value">' + Math.round(setData.successRate * 100) + '%</div>' +
+            '<div class="stat-label">Expected Success Rate</div>' +
+            '</div>' +
+            '</div>' +
+            '<div style="background: rgba(255,255,255,0.8); border-radius: 8px; padding: 12px;">' +
+            '<div style="font-weight: 600; color: #155724; margin-bottom: 8px; font-size: 0.9rem;">🎯 ' + (isAlgoEnhanced ? 'Enhanced Prediction Ranges:' : isAlgoTraining ? 'Training Ranges:' : isLiveDropData ? 'Live Pattern Ranges:' : hasFreshData ? 'Fresh Prediction Ranges:' : 'Predicted Active Ranges:') + '</div>' +
+            '<div>' +
+            setData.communityRanges.map(function(range) {
+                return '<span class="range-tag">' + range + '</span>';
+            }).join('') +
+            '</div>' +
+            (isAlgoEnhanced ? '<div style="margin-top: 8px; font-size: 0.8rem; color: #666; font-style: italic;">⚡ Enhanced with advanced algorithm analysis for maximum prediction accuracy!</div>' :
+             isAlgoTraining ? '<div style="margin-top: 8px; font-size: 0.8rem; color: #666; font-style: italic;">🔬 Machine learning algorithms actively training on this dataset!</div>' :
+             isLiveDropData ? '<div style="margin-top: 8px; font-size: 0.8rem; color: #666; font-style: italic;">🔴 Fresh pattern analysis from today\'s drop data - these ranges predict tomorrow\'s boxes!</div>' : 
+             hasFreshData ? '<div style="margin-top: 8px; font-size: 0.8rem; color: #666; font-style: italic;">⚡ Fresh pattern analysis for tomorrow\'s drop predictions!</div>' : '') +
+            '</div>' +
+            '</div>';
+    }
+    
+    // URL generation functions
+    function generateUrls() {
+        const setId = document.getElementById('set-selection').value;
+        const boxNumber = document.getElementById('known-box').value;
+        const quantity = parseInt(document.getElementById('generation-scope').value);
+        const strategy = document.getElementById('pattern-strategy').value;
+        
+        if (!boxNumber || boxNumber.length !== 14) {
+            showToast('Please enter a valid 14-digit box number', 'error');
+            return;
         }
         
-        function getStrategyDisplayName(strategy) {
-            const names = {
-                'basic': 'Basic Search',
-                'smart-granular': 'Smart Granular',
-                'ai-search': 'AI Search'
-            };
-            return names[strategy] || strategy;
-        }
+        showLoading(true);
         
-        function generateBasicUrls(setId, prefix, middle, suffix, baseMiddle, quantity) {
-            const increments = [25, 50, 75, 100, 150, 200, 250, 300, 400, 500, 750, 1000, 1500, 2000];
-            let generated = 0;
-            let incrementIndex = 0;
-            let multiplier = 1;
+        setTimeout(() => {
+            generatedUrls = [];
             
-            for (let i = 1; i <= quantity * 2 && generated < quantity; i++) {
-                const increment = increments[incrementIndex % increments.length] * multiplier;
-                const newMiddle = (baseMiddle + increment).toString().padStart(6, '0');
-                
-                if (newMiddle.length <= 6 && parseInt(newMiddle) <= 999999) {
-                    const newBoxNumber = prefix + newMiddle + suffix;
-                    const url = `https://www.popmart.com/us/pop-now/set/${setId}-${newBoxNumber}`;
-                    generatedUrls.push(url);
-                    generated++;
-                }
-                
-                incrementIndex++;
-                if (incrementIndex % increments.length === 0) {
-                    multiplier++;
-                }
-            }
-        }
-        
-        function generateSmartGranularUrls(setId, prefix, middle, suffix, baseMiddle, quantity) {
-            const setData = setPatterns[setId];
-            let increments = [100, 200, 500, 1000, 2000];
+            const prefix = boxNumber.substring(0, 4);
+            const middle = boxNumber.substring(4, 10);
+            const suffix = boxNumber.substring(10, 14);
+            const baseMiddle = parseInt(middle);
             
-            if (setData && setData.dropAnalysis) {
-                const spread = setData.dropAnalysis.totalSpread;
-                
-                if (spread < 10000) {
-                    increments = [10, 25, 50, 75, 100, 150, 200, 250, 300, 400, 500, 750];
-                } else if (spread < 50000) {
-                    increments = [50, 100, 150, 200, 300, 400, 500, 750, 1000, 1500, 2000];
-                } else {
-                    increments = [200, 500, 1000, 1500, 2000, 3000, 5000, 7500, 10000, 15000];
-                }
+            console.log('Starting ' + strategy + ' generation: Set ' + setId + ', ' + quantity + ' URLs');
+            
+            switch(strategy) {
+                case 'basic':
+                    generateBasicUrls(setId, prefix, middle, suffix, baseMiddle, quantity);
+                    break;
+                case 'smart-granular':
+                    generateSmartGranularUrls(setId, prefix, middle, suffix, baseMiddle, quantity);
+                    break;
+                case 'ai-search':
+                    generateAISearchUrls(setId, prefix, middle, suffix, baseMiddle, quantity);
+                    break;
+                default:
+                    generateBasicUrls(setId, prefix, middle, suffix, baseMiddle, quantity);
             }
             
-            let generated = 0;
-            let incrementIndex = 0;
-            let multiplier = 1;
+            displayResults(strategy, setId);
+            showLoading(false);
             
-            for (let i = 1; i <= quantity * 2 && generated < quantity; i++) {
-                const increment = increments[incrementIndex % increments.length] * multiplier;
-                const newMiddle = (baseMiddle + increment).toString().padStart(6, '0');
-                
-                if (newMiddle.length <= 6 && parseInt(newMiddle) <= 999999) {
-                    const newBoxNumber = prefix + newMiddle + suffix;
-                    const url = `https://www.popmart.com/us/pop-now/set/${setId}-${newBoxNumber}`;
-                    generatedUrls.push(url);
-                    generated++;
-                }
-                
-                incrementIndex++;
-                if (incrementIndex % increments.length === 0) {
-                    multiplier++;
-                }
+            showToast('Generated ' + generatedUrls.length + ' smart URLs using ' + getStrategyDisplayName(strategy) + '!');
+            console.log('Generated ' + generatedUrls.length + ' URLs using ' + strategy + ' strategy');
+        }, 2000);
+    }
+    
+    function getStrategyDisplayName(strategy) {
+        const names = {
+            'basic': 'Basic Search',
+            'smart-granular': 'Smart Granular',
+            'ai-search': 'AI Search'
+        };
+        return names[strategy] || strategy;
+    }
+    
+    function generateBasicUrls(setId, prefix, middle, suffix, baseMiddle, quantity) {
+        const increments = [25, 50, 75, 100, 150, 200, 250, 300, 400, 500, 750, 1000, 1500, 2000];
+        let generated = 0;
+        let incrementIndex = 0;
+        let multiplier = 1;
+        
+        for (let i = 1; i <= quantity * 2 && generated < quantity; i++) {
+            const increment = increments[incrementIndex % increments.length] * multiplier;
+            const newMiddle = (baseMiddle + increment).toString().padStart(6, '0');
+            
+            if (newMiddle.length <= 6 && parseInt(newMiddle) <= 999999) {
+                const newBoxNumber = prefix + newMiddle + suffix;
+                const url = `https://www.popmart.com/us/pop-now/set/${setId}-${newBoxNumber}`;
+                generatedUrls.push(url);
+                generated++;
+            }
+            
+            incrementIndex++;
+            if (incrementIndex % increments.length === 0) {
+                multiplier++;
             }
         }
+    }
+    
+    function generateSmartGranularUrls(setId, prefix, middle, suffix, baseMiddle, quantity) {
+        const setData = setPatterns[setId];
+        let increments = [100, 200, 500, 1000, 2000];
         
-        function generateAISearchUrls(setId, prefix, middle, suffix, baseMiddle, quantity) {
-            const setData = setPatterns[setId];
-            let increments = [];
+        if (setData && setData.dropAnalysis) {
+            const spread = setData.dropAnalysis.totalSpread;
             
-            // Base increments (same as before)
-            const basicIncrements = [25, 50, 75, 100, 150, 200, 250, 300, 400, 500, 750, 1000, 1500, 2000];
-            
-            if (setData && setData.dropAnalysis) {
-                const spread = setData.dropAnalysis.totalSpread;
-                
-                let adaptiveIncrements = [];
-                if (spread < 10000) {
-                    adaptiveIncrements = [10, 25, 50, 75, 100, 150, 200, 250, 300, 400, 500, 750];
-                } else if (spread < 50000) {
-                    adaptiveIncrements = [50, 100, 150, 200, 300, 400, 500, 750, 1000, 1500, 2000];
-                } else {
-                    adaptiveIncrements = [200, 500, 1000, 1500, 2000, 3000, 5000, 7500, 10000, 15000];
-                }
-                
-                const combinedIncrements = [...basicIncrements, ...adaptiveIncrements];
-                increments = combinedIncrements.sort((a, b) => a - b);
-                
-                // AI PREDICTION LOGIC: Target predicted ranges for tomorrow
-                if (setData.communityRanges && setData.communityRanges.length > 0) {
-                    // Calculate predicted range centers
-                    const predictedCenters = setData.communityRanges.map(range => {
-                        return parseInt(range.replace(/x+$/, '50000')); // Use middle of predicted range
-                    });
-                    
-                    // Find closest predicted range to user's input
-                    const userRange = Math.floor(baseMiddle / 10000) * 10000;
-                    const closestPredicted = predictedCenters.reduce((prev, curr) => {
-                        return (Math.abs(curr - userRange) < Math.abs(prev - userRange)) ? curr : prev;
-                    });
-                    
-                    // Generate increments that target the predicted ranges
-                    const targetIncrement = closestPredicted - baseMiddle;
-                    if (targetIncrement > 0 && targetIncrement < 500000) {
-                        // Add prediction-based increments
-                        const predictionIncrements = [
-                            Math.floor(targetIncrement * 0.1),
-                            Math.floor(targetIncrement * 0.25),
-                            Math.floor(targetIncrement * 0.5),
-                            Math.floor(targetIncrement * 0.75),
-                            targetIncrement,
-                            targetIncrement + 1000,
-                            targetIncrement + 2000,
-                            targetIncrement + 5000
-                        ].filter(inc => inc > 0);
-                        
-                        // Priority to prediction-based increments
-                        increments = [...predictionIncrements, ...increments];
-                    }
-                }
+            if (spread < 10000) {
+                increments = [10, 25, 50, 75, 100, 150, 200, 250, 300, 400, 500, 750];
+            } else if (spread < 50000) {
+                increments = [50, 100, 150, 200, 300, 400, 500, 750, 1000, 1500, 2000];
             } else {
-                increments = basicIncrements;
-            }
-            
-            let generated = 0;
-            let incrementIndex = 0;
-            let multiplier = 1;
-            
-            for (let i = 1; i <= quantity * 2 && generated < quantity; i++) {
-                const increment = increments[incrementIndex % increments.length] * multiplier;
-                const newMiddle = (baseMiddle + increment).toString().padStart(6, '0');
-                
-                if (newMiddle.length <= 6 && parseInt(newMiddle) <= 999999) {
-                    const newBoxNumber = prefix + newMiddle + suffix;
-                    const url = `https://www.popmart.com/us/pop-now/set/${setId}-${newBoxNumber}`;
-                    generatedUrls.push(url);
-                    generated++;
-                }
-                
-                incrementIndex++;
-                if (incrementIndex % increments.length === 0) {
-                    multiplier++;
-                }
+                increments = [200, 500, 1000, 1500, 2000, 3000, 5000, 7500, 10000, 15000];
             }
         }
         
-        function displayResults(strategy, setId) {
-            const results = document.getElementById('results');
-            const urlList = document.getElementById('url-list');
-            const urlCount = document.getElementById('url-count');
-            const urlStats = document.getElementById('url-stats');
+        let generated = 0;
+        let incrementIndex = 0;
+        let multiplier = 1;
+        
+        for (let i = 1; i <= quantity * 2 && generated < quantity; i++) {
+            const increment = increments[incrementIndex % increments.length] * multiplier;
+            const newMiddle = (baseMiddle + increment).toString().padStart(6, '0');
             
-            urlCount.textContent = generatedUrls.length + ' smart URLs generated';
+            if (newMiddle.length <= 6 && parseInt(newMiddle) <= 999999) {
+                const newBoxNumber = prefix + newMiddle + suffix;
+                const url = `https://www.popmart.com/us/pop-now/set/${setId}-${newBoxNumber}`;
+                generatedUrls.push(url);
+                generated++;
+            }
             
-            if (urlStats) {
-                document.getElementById('stat-total').textContent = generatedUrls.length;
-                document.getElementById('stat-strategy').textContent = getStrategyDisplayName(strategy);
-                
-                const ranges = new Set();
-                generatedUrls.forEach(function(url) {
-                    const boxNumber = url.split('-')[1];
-                    const middle = boxNumber.substring(4, 10);
-                    const range = middle.substring(0, 3);
-                    ranges.add(range);
+            incrementIndex++;
+            if (incrementIndex % increments.length === 0) {
+                multiplier++;
+            }
+        }
+    }
+    
+    function generateAISearchUrls(setId, prefix, middle, suffix, baseMiddle, quantity) {
+        const setData = setPatterns[setId];
+        let increments = [];
+        
+        // Base increments (same as before)
+        const basicIncrements = [25, 50, 75, 100, 150, 200, 250, 300, 400, 500, 750, 1000, 1500, 2000];
+        
+        if (setData && setData.dropAnalysis) {
+            const spread = setData.dropAnalysis.totalSpread;
+            
+            let adaptiveIncrements = [];
+            if (spread < 10000) {
+                adaptiveIncrements = [10, 25, 50, 75, 100, 150, 200, 250, 300, 400, 500, 750];
+            } else if (spread < 50000) {
+                adaptiveIncrements = [50, 100, 150, 200, 300, 400, 500, 750, 1000, 1500, 2000];
+            } else {
+                adaptiveIncrements = [200, 500, 1000, 1500, 2000, 3000, 5000, 7500, 10000, 15000];
+            }
+            
+            const combinedIncrements = [...basicIncrements, ...adaptiveIncrements];
+            increments = combinedIncrements.sort((a, b) => a - b);
+            
+            // AI PREDICTION LOGIC: Target predicted ranges for tomorrow
+            if (setData.communityRanges && setData.communityRanges.length > 0) {
+                // Calculate predicted range centers
+                const predictedCenters = setData.communityRanges.map(range => {
+                    return parseInt(range.replace(/x+$/, '50000')); // Use middle of predicted range
                 });
-                document.getElementById('stat-ranges').textContent = ranges.size;
                 
-                const setData = setPatterns[setId];
-                let estimatedSuccess = 85;
-                if (setData) {
-                    estimatedSuccess = Math.round(setData.successRate * 100);
-                }
-                
-                const strategyMultipliers = {
-                    'basic': 1.0,
-                    'smart-granular': 1.10,
-                    'ai-search': 1.25
-                };
-                
-                estimatedSuccess = Math.min(99, Math.round(estimatedSuccess * (strategyMultipliers[strategy] || 1.0)));
-                document.getElementById('stat-estimated').textContent = estimatedSuccess + '%';
-                
-                urlStats.style.display = 'block';
-            }
-            
-            let html = '';
-            generatedUrls.forEach(function(url, index) {
-                html += '<div class="url-item">' +
-                        '<div class="url-number">' + (index + 1) + '</div>' +
-                        '<a href="' + url + '" target="_blank" class="url-link">' + url + '</a>' +
-                        '</div>';
-            });
-            
-            urlList.innerHTML = html;
-            results.classList.add('show');
-            results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
-        
-        function copyUrls() {
-            const text = generatedUrls.join('\n');
-            navigator.clipboard.writeText(text).then(() => {
-                showToast('Smart URLs copied to clipboard!');
-            }).catch(() => {
-                showToast('Copy failed - please try again', 'error');
-            });
-        }
-        
-        function loadForMonitoring() {
-            if (generatedUrls.length === 0) {
-                showToast('Please generate URLs first!', 'error');
-                return;
-            }
-            showToast('Monitoring feature coming soon! Node.js backend required.', 'info');
-        }
-        
-        // Feedback functions
-        function openFeedbackForm() {
-            document.getElementById('feedback-overlay').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function closeFeedbackForm() {
-            document.getElementById('feedback-overlay').style.display = 'none';
-            document.body.style.overflow = '';
-        }
-        
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('V3.4.3 Enhanced System Ready - All features unlocked for beta testing!');
-            
-            // Set up event listeners
-            document.getElementById('feedback-btn').addEventListener('click', openFeedbackForm);
-            document.getElementById('feedback-cancel-btn').addEventListener('click', closeFeedbackForm);
-            document.getElementById('generate-urls-btn').addEventListener('click', generateUrls);
-            document.getElementById('copy-urls-btn').addEventListener('click', copyUrls);
-            document.getElementById('load-monitor-btn').addEventListener('click', loadForMonitoring);
-            document.getElementById('set-selection').addEventListener('change', updateSetData);
-            
-            // Tab navigation
-            document.getElementById('generator-btn').addEventListener('click', () => switchToTab('generator'));
-            document.getElementById('help-btn').addEventListener('click', () => switchToTab('help'));
-            document.getElementById('monitor-btn').addEventListener('click', () => showToast('Live Monitoring is coming soon! Node.js backend required for real-time URL checking.', 'info'));
-            document.getElementById('goto-generator-btn').addEventListener('click', () => switchToTab('generator'));
-            
-            // Feedback form submission
-            const feedbackForm = document.querySelector('form[name="feedback"]');
-            if (feedbackForm) {
-                feedbackForm.addEventListener('submit', function(e) {
-                    showToast('Thank you! Your feedback has been submitted.', 'success');
-                    setTimeout(() => {
-                        closeFeedbackForm();
-                        feedbackForm.reset();
-                    }, 1000);
+                // Find closest predicted range to user's input
+                const userRange = Math.floor(baseMiddle / 10000) * 10000;
+                const closestPredicted = predictedCenters.reduce((prev, curr) => {
+                    return (Math.abs(curr - userRange) < Math.abs(prev - userRange)) ? curr : prev;
                 });
+                
+                // Generate increments that target the predicted ranges
+                const targetIncrement = closestPredicted - baseMiddle;
+                if (targetIncrement > 0 && targetIncrement < 500000) {
+                    // Add prediction-based increments
+                    const predictionIncrements = [
+                        Math.floor(targetIncrement * 0.1),
+                        Math.floor(targetIncrement * 0.25),
+                        Math.floor(targetIncrement * 0.5),
+                        Math.floor(targetIncrement * 0.75),
+                        targetIncrement,
+                        targetIncrement + 1000,
+                        targetIncrement + 2000,
+                        targetIncrement + 5000
+                    ].filter(inc => inc > 0);
+                    
+                    // Priority to prediction-based increments
+                    increments = [...predictionIncrements, ...increments];
+                }
+            }
+        } else {
+            increments = basicIncrements;
+        }
+        
+        let generated = 0;
+        let incrementIndex = 0;
+        let multiplier = 1;
+        
+        for (let i = 1; i <= quantity * 2 && generated < quantity; i++) {
+            const increment = increments[incrementIndex % increments.length] * multiplier;
+            const newMiddle = (baseMiddle + increment).toString().padStart(6, '0');
+            
+            if (newMiddle.length <= 6 && parseInt(newMiddle) <= 999999) {
+                const newBoxNumber = prefix + newMiddle + suffix;
+                const url = `https://www.popmart.com/us/pop-now/set/${setId}-${newBoxNumber}`;
+                generatedUrls.push(url);
+                generated++;
             }
             
-            // Close feedback modal when clicking outside
-            document.getElementById('feedback-overlay').addEventListener('click', function(e) {
-                if (e.target === this) {
-                    closeFeedbackForm();
-                }
-            });
+            incrementIndex++;
+            if (incrementIndex % increments.length === 0) {
+                multiplier++;
+            }
+        }
+    }
+    
+    function displayResults(strategy, setId) {
+        const results = document.getElementById('results');
+        const urlList = document.getElementById('url-list');
+        const urlCount = document.getElementById('url-count');
+        const urlStats = document.getElementById('url-stats');
+        
+        urlCount.textContent = generatedUrls.length + ' smart URLs generated';
+        
+        if (urlStats) {
+            document.getElementById('stat-total').textContent = generatedUrls.length;
+            document.getElementById('stat-strategy').textContent = getStrategyDisplayName(strategy);
             
-            // Debug button
-            document.getElementById('debug-btn').addEventListener('click', function() {
-                console.log('Debug clicked');
-                showToast('Debug mode - check console for logs', 'info');
+            const ranges = new Set();
+            generatedUrls.forEach(function(url) {
+                const boxNumber = url.split('-')[1];
+                const middle = boxNumber.substring(4, 10);
+                const range = middle.substring(0, 3);
+                ranges.add(range);
             });
+            document.getElementById('stat-ranges').textContent = ranges.size;
             
-            // Initialize set data
-            updateSetData();
+            const setData = setPatterns[setId];
+            let estimatedSuccess = 85;
+            if (setData) {
+                estimatedSuccess = Math.round(setData.successRate * 100);
+            }
+            
+            const strategyMultipliers = {
+                'basic': 1.0,
+                'smart-granular': 1.10,
+                'ai-search': 1.25
+            };
+            
+            estimatedSuccess = Math.min(99, Math.round(estimatedSuccess * (strategyMultipliers[strategy] || 1.0)));
+            document.getElementById('stat-estimated').textContent = estimatedSuccess + '%';
+            
+            urlStats.style.display = 'block';
+        }
+        
+        let html = '';
+        generatedUrls.forEach(function(url, index) {
+            html += '<div class="url-item">' +
+                    '<div class="url-number">' + (index + 1) + '</div>' +
+                    '<a href="' + url + '" target="_blank" class="url-link">' + url + '</a>' +
+                    '</div>';
         });
-    </script>
+        
+        urlList.innerHTML = html;
+        results.classList.add('show');
+        results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    
+    function copyUrls() {
+        const text = generatedUrls.join('\n');
+        navigator.clipboard.writeText(text).then(() => {
+            showToast('Smart URLs copied to clipboard!');
+        }).catch(() => {
+            showToast('Copy failed - please try again', 'error');
+        });
+    }
+    
+    function loadForMonitoring() {
+        if (generatedUrls.length === 0) {
+            showToast('Please generate URLs first!', 'error');
+            return;
+        }
+        showToast('Monitoring feature coming soon! Node.js backend required.', 'info');
+    }
+    
+    // Feedback functions
+    function openFeedbackForm() {
+        document.getElementById('feedback-overlay').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+    
+    function closeFeedbackForm() {
+        document.getElementById('feedback-overlay').style.display = 'none';
+        document.body.style.overflow = '';
+    }
+    
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('V3.4.3 Enhanced System Ready - All features unlocked for beta testing!');
+        
+        // Set up event listeners
+        document.getElementById('feedback-btn').addEventListener('click', openFeedbackForm);
+        document.getElementById('feedback-cancel-btn').addEventListener('click', closeFeedbackForm);
+        document.getElementById('generate-urls-btn').addEventListener('click', generateUrls);
+        document.getElementById('copy-urls-btn').addEventListener('click', copyUrls);
+        document.getElementById('load-monitor-btn').addEventListener('click', loadForMonitoring);
+        document.getElementById('set-selection').addEventListener('change', updateSetData);
+        
+        // Tab navigation
+        document.getElementById('generator-btn').addEventListener('click', () => switchToTab('generator'));
+        document.getElementById('help-btn').addEventListener('click', () => switchToTab('help'));
+        document.getElementById('monitor-btn').addEventListener('click', () => showToast('Live Monitoring is coming soon! Node.js backend required for real-time URL checking.', 'info'));
+        document.getElementById('goto-generator-btn').addEventListener('click', () => switchToTab('generator'));
+        
+        // Feedback form submission
+        const feedbackForm = document.querySelector('form[name="feedback"]');
+        if (feedbackForm) {
+            feedbackForm.addEventListener('submit', function(e) {
+                showToast('Thank you! Your feedback has been submitted.', 'success');
+                setTimeout(() => {
+                    closeFeedbackForm();
+                    feedbackForm.reset();
+                }, 1000);
+            });
+        }
+        
+        // Close feedback modal when clicking outside
+        document.getElementById('feedback-overlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeFeedbackForm();
+            }
+        });
+        
+        // Debug button
+        document.getElementById('debug-btn').addEventListener('click', function() {
+            console.log('Debug clicked');
+            showToast('Debug mode - check console for logs', 'info');
+        });
+        
+        // Initialize set data
+        updateSetData();
+    });
+</script>
+```
+
 </body>
 </html>
