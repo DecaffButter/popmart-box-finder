@@ -1100,10 +1100,23 @@
                                 <label for="deep-link-mode" style="margin: 0; font-weight: 600; color: #e67e22; font-size: 1rem;">🧪 EXPERIMENTAL: Deep Link Mode</label>
                                 <input type="checkbox" id="deep-link-mode" style="width: 20px; height: 20px;">
                             </div>
-                            <div style="font-size: 0.85rem; color: #8a6d3b; line-height: 1.4;">
-                                <strong>Test Mode:</strong> Generate deep links that attempt to open directly in Pop Mart mobile app<br>
-                                <strong>Pattern:</strong> <code>popmart://us//us/pop-now/set/{setId}-{boxNumber}</code><br>
-                                <strong>Use Case:</strong> May restore functionality for in-app purchase sets (40, 50, 171, 195)
+                            
+                            <div id="deep-link-options" style="display: none; margin-top: 15px;">
+                                <label for="deep-link-pattern" style="font-weight: 600; color: #e67e22; margin-bottom: 8px; display: block;">Test Pattern:</label>
+                                <select id="deep-link-pattern" style="width: 100%; padding: 8px; border: 1px solid #f39c12; border-radius: 5px; background: white;">
+                                    <option value="popmart://us//us/pop-now/set/">Original Pattern (found online)</option>
+                                    <option value="popmart://us/pop-now/set/">Remove Double Slash</option>
+                                    <option value="popmart://pop-now/set/">No Region</option>
+                                    <option value="popmart://set/">Minimal Path</option>
+                                    <option value="popmart://product/">Product Endpoint</option>
+                                    <option value="popmart://box/">Box Endpoint</option>
+                                    <option value="popmart://us/set/">Separated Structure</option>
+                                </select>
+                            </div>
+                            
+                            <div style="font-size: 0.85rem; color: #8a6d3b; line-height: 1.4; margin-top: 10px;">
+                                <strong>Status:</strong> <span id="deep-link-status">App opens but stays on homepage - trying different patterns</span><br>
+                                <strong>Test Result:</strong> The popmart:// scheme works, but we need to find the correct path structure
                             </div>
                         </div>
                     </div>
@@ -1785,6 +1798,7 @@
             let incrementIndex = 0;
             let multiplier = 1;
             const deepLinkMode = document.getElementById('deep-link-mode').checked;
+            const deepLinkPattern = document.getElementById('deep-link-pattern').value;
             
             for (let i = 1; i <= quantity * 2 && generated < quantity; i++) {
                 const increment = increments[incrementIndex % increments.length] * multiplier;
@@ -1792,9 +1806,18 @@
                 
                 if (newMiddle.length <= 6 && parseInt(newMiddle) <= 999999) {
                     const newBoxNumber = prefix + newMiddle + suffix;
-                    const url = deepLinkMode ? 
-                        `popmart://us//us/pop-now/set/${setId}-${newBoxNumber}` :
-                        `https://www.popmart.com/us/pop-now/set/${setId}-${newBoxNumber}`;
+                    let url;
+                    
+                    if (deepLinkMode) {
+                        if (deepLinkPattern === 'popmart://us/set/') {
+                            url = `${deepLinkPattern}${setId}/${newBoxNumber}`;
+                        } else {
+                            url = `${deepLinkPattern}${setId}-${newBoxNumber}`;
+                        }
+                    } else {
+                        url = `https://www.popmart.com/us/pop-now/set/${setId}-${newBoxNumber}`;
+                    }
+                    
                     generatedUrls.push(url);
                     generated++;
                 }
@@ -2065,6 +2088,12 @@
             document.getElementById('debug-btn').addEventListener('click', function() {
                 console.log('Debug clicked');
                 showToast('Debug mode - check console for logs', 'info');
+            });
+            
+            // Deep link mode toggle
+            document.getElementById('deep-link-mode').addEventListener('change', function() {
+                const options = document.getElementById('deep-link-options');
+                options.style.display = this.checked ? 'block' : 'none';
             });
             
             // Initialize set data
