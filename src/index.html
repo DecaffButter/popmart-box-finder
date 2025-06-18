@@ -1097,26 +1097,13 @@
                     <div class="form-group" style="margin-top: 20px;">
                         <div style="background: linear-gradient(135deg, #fff3cd, #ffeaa7); border: 2px solid #f39c12; border-radius: 10px; padding: 15px;">
                             <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
-                                <label for="deep-link-mode" style="margin: 0; font-weight: 600; color: #e67e22; font-size: 1rem;">🧪 EXPERIMENTAL: Universal App Links</label>
+                                <label for="deep-link-mode" style="margin: 0; font-weight: 600; color: #e67e22; font-size: 1rem;">🧪 EXPERIMENTAL: Deep Link Mode</label>
                                 <input type="checkbox" id="deep-link-mode" style="width: 20px; height: 20px;">
                             </div>
-                            
-                            <div id="deep-link-options" style="display: none; margin-top: 15px;">
-                                <label for="deep-link-pattern" style="font-weight: 600; color: #e67e22; margin-bottom: 8px; display: block;">Link Type & Pattern:</label>
-                                <select id="deep-link-pattern" style="width: 100%; padding: 8px; border: 1px solid #f39c12; border-radius: 5px; background: white;">
-                                    <option value="https://www.popmart.com/us/pop-now/set/?isAppShare=true">HTTPS + ?isAppShare=true (Universal Link)</option>
-                                    <option value="popmart://us/pop-now/set/?isAppShare=true">popmart:// + ?isAppShare=true (HYBRID)</option>
-                                    <option value="popmart://us//us/pop-now/set/?isAppShare=true">popmart://us//us + ?isAppShare=true (HYBRID)</option>
-                                    <option value="popmart://pop-now/set/?isAppShare=true">popmart://pop-now + ?isAppShare=true (HYBRID)</option>
-                                    <option value="popmart://set/?isAppShare=true">popmart://set + ?isAppShare=true (HYBRID)</option>
-                                    <option value="popmart://us/pop-now/set/">popmart:// only (no parameters)</option>
-                                </select>
-                            </div>
-                            
-                            <div style="font-size: 0.85rem; color: #8a6d3b; line-height: 1.4; margin-top: 10px;">
-                                <strong>HYBRID THEORY:</strong> Combine deep link scheme + app share parameter<br>
-                                <strong>Logic:</strong> popmart:// opens app + ?isAppShare=true navigates correctly<br>
-                                <strong>Test Order:</strong> Try HYBRID options first, then fallback to others
+                            <div style="font-size: 0.85rem; color: #8a6d3b; line-height: 1.4;">
+                                <strong>Test Mode:</strong> Generate deep links that attempt to open directly in Pop Mart mobile app<br>
+                                <strong>Pattern:</strong> <code>popmart://us//us/pop-now/set/{setId}-{boxNumber}</code><br>
+                                <strong>Use Case:</strong> May restore functionality for in-app purchase sets (40, 50, 171, 195)
                             </div>
                         </div>
                     </div>
@@ -1797,8 +1784,6 @@
             let generated = 0;
             let incrementIndex = 0;
             let multiplier = 1;
-            const experimentalMode = document.getElementById('deep-link-mode').checked;
-            const linkPattern = document.getElementById('deep-link-pattern').value;
             
             for (let i = 1; i <= quantity * 2 && generated < quantity; i++) {
                 const increment = increments[incrementIndex % increments.length] * multiplier;
@@ -1806,19 +1791,7 @@
                 
                 if (newMiddle.length <= 6 && parseInt(newMiddle) <= 999999) {
                     const newBoxNumber = prefix + newMiddle + suffix;
-                    let url;
-                    
-                    if (experimentalMode) {
-                        // Extract base pattern and parameter
-                        const parts = linkPattern.split('?');
-                        const basePattern = parts[0];
-                        const parameter = parts[1] ? '?' + parts[1] : '';
-                        
-                        url = `${basePattern}${setId}-${newBoxNumber}${parameter}`;
-                    } else {
-                        url = `https://www.popmart.com/us/pop-now/set/${setId}-${newBoxNumber}`;
-                    }
-                    
+                    const url = `https://www.popmart.com/us/pop-now/set/${setId}-${newBoxNumber}`;
                     generatedUrls.push(url);
                     generated++;
                 }
@@ -1833,7 +1806,6 @@
         function generateSmartGranularUrls(setId, prefix, middle, suffix, baseMiddle, quantity) {
             const setData = setPatterns[setId];
             let increments = [100, 200, 500, 1000, 2000];
-            const deepLinkMode = document.getElementById('deep-link-mode').checked;
             
             if (setData && setData.dropAnalysis) {
                 const spread = setData.dropAnalysis.totalSpread;
@@ -1857,9 +1829,7 @@
                 
                 if (newMiddle.length <= 6 && parseInt(newMiddle) <= 999999) {
                     const newBoxNumber = prefix + newMiddle + suffix;
-                    const url = deepLinkMode ? 
-                        `popmart://us//us/pop-now/set/${setId}-${newBoxNumber}` :
-                        `https://www.popmart.com/us/pop-now/set/${setId}-${newBoxNumber}`;
+                    const url = `https://www.popmart.com/us/pop-now/set/${setId}-${newBoxNumber}`;
                     generatedUrls.push(url);
                     generated++;
                 }
@@ -1874,7 +1844,6 @@
         function generateAISearchUrls(setId, prefix, middle, suffix, baseMiddle, quantity) {
             const setData = setPatterns[setId];
             let increments = [];
-            const deepLinkMode = document.getElementById('deep-link-mode').checked;
             
             // Base increments (same as before)
             const basicIncrements = [25, 50, 75, 100, 150, 200, 250, 300, 400, 500, 750, 1000, 1500, 2000];
@@ -1940,9 +1909,7 @@
                 
                 if (newMiddle.length <= 6 && parseInt(newMiddle) <= 999999) {
                     const newBoxNumber = prefix + newMiddle + suffix;
-                    const url = deepLinkMode ? 
-                        `popmart://us//us/pop-now/set/${setId}-${newBoxNumber}` :
-                        `https://www.popmart.com/us/pop-now/set/${setId}-${newBoxNumber}`;
+                    const url = `https://www.popmart.com/us/pop-now/set/${setId}-${newBoxNumber}`;
                     generatedUrls.push(url);
                     generated++;
                 }
@@ -1959,10 +1926,8 @@
             const urlList = document.getElementById('url-list');
             const urlCount = document.getElementById('url-count');
             const urlStats = document.getElementById('url-stats');
-            const universalLinkMode = document.getElementById('deep-link-mode').checked;
             
-            const linkType = universalLinkMode ? 'Universal App Links' : 'Web URLs';
-            urlCount.innerHTML = `${generatedUrls.length} ${linkType} generated ${universalLinkMode ? '<span style="color: #f39c12;">(🧪 Experimental)</span>' : ''}`;
+            urlCount.textContent = generatedUrls.length + ' smart URLs generated';
             
             if (urlStats) {
                 document.getElementById('stat-total').textContent = generatedUrls.length;
@@ -1970,13 +1935,10 @@
                 
                 const ranges = new Set();
                 generatedUrls.forEach(function(url) {
-                    const parts = url.split('-');
-                    if (parts.length > 1) {
-                        const boxNumber = parts[1].split('?')[0]; // Remove parameters
-                        const middle = boxNumber.substring(4, 10);
-                        const range = middle.substring(0, 3);
-                        ranges.add(range);
-                    }
+                    const boxNumber = url.split('-')[1];
+                    const middle = boxNumber.substring(4, 10);
+                    const range = middle.substring(0, 3);
+                    ranges.add(range);
                 });
                 document.getElementById('stat-ranges').textContent = ranges.size;
                 
@@ -2007,15 +1969,6 @@
             });
             
             urlList.innerHTML = html;
-            
-            // Add experimental notice for universal links
-            if (universalLinkMode) {
-                const experimentalNotice = document.createElement('div');
-                experimentalNotice.style.cssText = 'background: linear-gradient(135deg, #e8f5e8, #d4f4dd); border: 1px solid #28a745; border-radius: 8px; padding: 12px; margin-top: 15px; text-align: center;';
-                experimentalNotice.innerHTML = '<strong>🚀 UNIVERSAL LINKS MODE:</strong> These URLs should auto-redirect to Pop Mart app if installed. <br><strong>Test:</strong> Click a link → Should open in app automatically → Check if it navigates to the specific box';
-                results.appendChild(experimentalNotice);
-            }
-            
             results.classList.add('show');
             results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
@@ -2089,12 +2042,6 @@
             document.getElementById('debug-btn').addEventListener('click', function() {
                 console.log('Debug clicked');
                 showToast('Debug mode - check console for logs', 'info');
-            });
-            
-            // Deep link mode toggle
-            document.getElementById('deep-link-mode').addEventListener('change', function() {
-                const options = document.getElementById('deep-link-options');
-                options.style.display = this.checked ? 'block' : 'none';
             });
             
             // Initialize set data
