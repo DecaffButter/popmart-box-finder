@@ -1102,21 +1102,21 @@
                             </div>
                             
                             <div id="deep-link-options" style="display: none; margin-top: 15px;">
-                                <label for="deep-link-pattern" style="font-weight: 600; color: #e67e22; margin-bottom: 8px; display: block;">Universal Link Pattern:</label>
+                                <label for="deep-link-pattern" style="font-weight: 600; color: #e67e22; margin-bottom: 8px; display: block;">Link Type & Pattern:</label>
                                 <select id="deep-link-pattern" style="width: 100%; padding: 8px; border: 1px solid #f39c12; border-radius: 5px; background: white;">
-                                    <option value="?isAppShare=true">Add ?isAppShare=true (FOUND FROM APP SHARE!)</option>
-                                    <option value="?openInApp=true">Add ?openInApp=true parameter</option>
-                                    <option value="?mobile=1">Add ?mobile=1 parameter</option>
-                                    <option value="?app=1">Add ?app=1 parameter</option>
-                                    <option value="?utm_source=app">Add ?utm_source=app parameter</option>
-                                    <option value="?ref=app">Add ?ref=app parameter</option>
+                                    <option value="https://www.popmart.com/us/pop-now/set/?isAppShare=true">HTTPS + ?isAppShare=true (Universal Link)</option>
+                                    <option value="popmart://us/pop-now/set/?isAppShare=true">popmart:// + ?isAppShare=true (HYBRID)</option>
+                                    <option value="popmart://us//us/pop-now/set/?isAppShare=true">popmart://us//us + ?isAppShare=true (HYBRID)</option>
+                                    <option value="popmart://pop-now/set/?isAppShare=true">popmart://pop-now + ?isAppShare=true (HYBRID)</option>
+                                    <option value="popmart://set/?isAppShare=true">popmart://set + ?isAppShare=true (HYBRID)</option>
+                                    <option value="popmart://us/pop-now/set/">popmart:// only (no parameters)</option>
                                 </select>
                             </div>
                             
                             <div style="font-size: 0.85rem; color: #8a6d3b; line-height: 1.4; margin-top: 10px;">
-                                <strong>BREAKTHROUGH:</strong> Found ?isAppShare=true from regular product sharing!<br>
-                                <strong>Test Theory:</strong> Pop Now might use same parameter for app detection<br>
-                                <strong>Expected:</strong> Click link → App opens → Navigates to specific box → Purchase works!
+                                <strong>HYBRID THEORY:</strong> Combine deep link scheme + app share parameter<br>
+                                <strong>Logic:</strong> popmart:// opens app + ?isAppShare=true navigates correctly<br>
+                                <strong>Test Order:</strong> Try HYBRID options first, then fallback to others
                             </div>
                         </div>
                     </div>
@@ -1797,8 +1797,8 @@
             let generated = 0;
             let incrementIndex = 0;
             let multiplier = 1;
-            const universalLinkMode = document.getElementById('deep-link-mode').checked;
-            const linkParameter = document.getElementById('deep-link-pattern').value;
+            const experimentalMode = document.getElementById('deep-link-mode').checked;
+            const linkPattern = document.getElementById('deep-link-pattern').value;
             
             for (let i = 1; i <= quantity * 2 && generated < quantity; i++) {
                 const increment = increments[incrementIndex % increments.length] * multiplier;
@@ -1806,10 +1806,17 @@
                 
                 if (newMiddle.length <= 6 && parseInt(newMiddle) <= 999999) {
                     const newBoxNumber = prefix + newMiddle + suffix;
-                    let url = `https://www.popmart.com/us/pop-now/set/${setId}-${newBoxNumber}`;
+                    let url;
                     
-                    if (universalLinkMode) {
-                        url += linkParameter;
+                    if (experimentalMode) {
+                        // Extract base pattern and parameter
+                        const parts = linkPattern.split('?');
+                        const basePattern = parts[0];
+                        const parameter = parts[1] ? '?' + parts[1] : '';
+                        
+                        url = `${basePattern}${setId}-${newBoxNumber}${parameter}`;
+                    } else {
+                        url = `https://www.popmart.com/us/pop-now/set/${setId}-${newBoxNumber}`;
                     }
                     
                     generatedUrls.push(url);
