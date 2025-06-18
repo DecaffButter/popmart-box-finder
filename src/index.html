@@ -1097,26 +1097,26 @@
                     <div class="form-group" style="margin-top: 20px;">
                         <div style="background: linear-gradient(135deg, #fff3cd, #ffeaa7); border: 2px solid #f39c12; border-radius: 10px; padding: 15px;">
                             <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
-                                <label for="deep-link-mode" style="margin: 0; font-weight: 600; color: #e67e22; font-size: 1rem;">🧪 EXPERIMENTAL: Deep Link Mode</label>
+                                <label for="deep-link-mode" style="margin: 0; font-weight: 600; color: #e67e22; font-size: 1rem;">🧪 EXPERIMENTAL: Universal App Links</label>
                                 <input type="checkbox" id="deep-link-mode" style="width: 20px; height: 20px;">
                             </div>
                             
                             <div id="deep-link-options" style="display: none; margin-top: 15px;">
-                                <label for="deep-link-pattern" style="font-weight: 600; color: #e67e22; margin-bottom: 8px; display: block;">Test Pattern:</label>
+                                <label for="deep-link-pattern" style="font-weight: 600; color: #e67e22; margin-bottom: 8px; display: block;">Universal Link Pattern:</label>
                                 <select id="deep-link-pattern" style="width: 100%; padding: 8px; border: 1px solid #f39c12; border-radius: 5px; background: white;">
-                                    <option value="popmart://us//us/pop-now/set/">Original Pattern (found online)</option>
-                                    <option value="popmart://us/pop-now/set/">Remove Double Slash</option>
-                                    <option value="popmart://pop-now/set/">No Region</option>
-                                    <option value="popmart://set/">Minimal Path</option>
-                                    <option value="popmart://product/">Product Endpoint</option>
-                                    <option value="popmart://box/">Box Endpoint</option>
-                                    <option value="popmart://us/set/">Separated Structure</option>
+                                    <option value="?openInApp=true">Add ?openInApp=true parameter</option>
+                                    <option value="?mobile=1">Add ?mobile=1 parameter</option>
+                                    <option value="?app=1">Add ?app=1 parameter</option>
+                                    <option value="?utm_source=app">Add ?utm_source=app parameter</option>
+                                    <option value="?ref=app">Add ?ref=app parameter</option>
+                                    <option value="?force_app=1">Add ?force_app=1 parameter</option>
                                 </select>
                             </div>
                             
                             <div style="font-size: 0.85rem; color: #8a6d3b; line-height: 1.4; margin-top: 10px;">
-                                <strong>Status:</strong> <span id="deep-link-status">App opens but stays on homepage - trying different patterns</span><br>
-                                <strong>Test Result:</strong> The popmart:// scheme works, but we need to find the correct path structure
+                                <strong>Universal Links:</strong> Normal HTTPS URLs that auto-redirect to app if installed<br>
+                                <strong>How it works:</strong> Pop Mart detects if you have their app and redirects automatically<br>
+                                <strong>Advantage:</strong> Works for everyone - app users get app, others get website
                             </div>
                         </div>
                     </div>
@@ -1797,8 +1797,8 @@
             let generated = 0;
             let incrementIndex = 0;
             let multiplier = 1;
-            const deepLinkMode = document.getElementById('deep-link-mode').checked;
-            const deepLinkPattern = document.getElementById('deep-link-pattern').value;
+            const universalLinkMode = document.getElementById('deep-link-mode').checked;
+            const linkParameter = document.getElementById('deep-link-pattern').value;
             
             for (let i = 1; i <= quantity * 2 && generated < quantity; i++) {
                 const increment = increments[incrementIndex % increments.length] * multiplier;
@@ -1806,16 +1806,10 @@
                 
                 if (newMiddle.length <= 6 && parseInt(newMiddle) <= 999999) {
                     const newBoxNumber = prefix + newMiddle + suffix;
-                    let url;
+                    let url = `https://www.popmart.com/us/pop-now/set/${setId}-${newBoxNumber}`;
                     
-                    if (deepLinkMode) {
-                        if (deepLinkPattern === 'popmart://us/set/') {
-                            url = `${deepLinkPattern}${setId}/${newBoxNumber}`;
-                        } else {
-                            url = `${deepLinkPattern}${setId}-${newBoxNumber}`;
-                        }
-                    } else {
-                        url = `https://www.popmart.com/us/pop-now/set/${setId}-${newBoxNumber}`;
+                    if (universalLinkMode) {
+                        url += linkParameter;
                     }
                     
                     generatedUrls.push(url);
@@ -1958,10 +1952,10 @@
             const urlList = document.getElementById('url-list');
             const urlCount = document.getElementById('url-count');
             const urlStats = document.getElementById('url-stats');
-            const deepLinkMode = document.getElementById('deep-link-mode').checked;
+            const universalLinkMode = document.getElementById('deep-link-mode').checked;
             
-            const linkType = deepLinkMode ? 'Deep Links' : 'Web URLs';
-            urlCount.innerHTML = `${generatedUrls.length} ${linkType} generated ${deepLinkMode ? '<span style="color: #f39c12;">(🧪 Experimental)</span>' : ''}`;
+            const linkType = universalLinkMode ? 'Universal App Links' : 'Web URLs';
+            urlCount.innerHTML = `${generatedUrls.length} ${linkType} generated ${universalLinkMode ? '<span style="color: #f39c12;">(🧪 Experimental)</span>' : ''}`;
             
             if (urlStats) {
                 document.getElementById('stat-total').textContent = generatedUrls.length;
@@ -1971,7 +1965,7 @@
                 generatedUrls.forEach(function(url) {
                     const parts = url.split('-');
                     if (parts.length > 1) {
-                        const boxNumber = parts[1];
+                        const boxNumber = parts[1].split('?')[0]; // Remove parameters
                         const middle = boxNumber.substring(4, 10);
                         const range = middle.substring(0, 3);
                         ranges.add(range);
@@ -2007,11 +2001,11 @@
             
             urlList.innerHTML = html;
             
-            // Add experimental notice for deep links
-            if (deepLinkMode) {
+            // Add experimental notice for universal links
+            if (universalLinkMode) {
                 const experimentalNotice = document.createElement('div');
-                experimentalNotice.style.cssText = 'background: linear-gradient(135deg, #fff3cd, #ffeaa7); border: 1px solid #f39c12; border-radius: 8px; padding: 12px; margin-top: 15px; text-align: center;';
-                experimentalNotice.innerHTML = '<strong>🧪 EXPERIMENTAL MODE:</strong> These deep links attempt to open directly in Pop Mart mobile app. <br><strong>Test Instructions:</strong> 1) Install Pop Mart app 2) Click a link 3) Check if it opens the specific box in app';
+                experimentalNotice.style.cssText = 'background: linear-gradient(135deg, #e8f5e8, #d4f4dd); border: 1px solid #28a745; border-radius: 8px; padding: 12px; margin-top: 15px; text-align: center;';
+                experimentalNotice.innerHTML = '<strong>🚀 UNIVERSAL LINKS MODE:</strong> These URLs should auto-redirect to Pop Mart app if installed. <br><strong>Test:</strong> Click a link → Should open in app automatically → Check if it navigates to the specific box';
                 results.appendChild(experimentalNotice);
             }
             
